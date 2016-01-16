@@ -1,128 +1,472 @@
-" release autogroup in MyAutoCmd
-augroup MyAutoCmd
-  autocmd!
-augroup END
+scriptencoding utf-8
 
-" search
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-
-" ¥Ğ¥Ã¥¯¥¹¥é¥Ã¥·¥å¤ä¥¯¥¨¥¹¥Á¥ç¥ó¤ò¾õ¶·¤Ë¹ç¤ï¤»¼«Æ°Åª¤Ë¥¨¥¹¥±¡¼¥×
-cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
-cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-
-
-" modify
-set shiftround          " '<'¤ä'>'¤Ç¥¤¥ó¥Ç¥ó¥È¤¹¤ëºİ¤Ë'shiftwidth'¤ÎÇÜ¿ô¤Ë´İ¤á¤ë
-set infercase           " Êä´°»ş¤ËÂçÊ¸»ú¾®Ê¸»ú¤ò¶èÊÌ¤·¤Ê¤¤
-set virtualedit=all     " ¥«¡¼¥½¥ë¤òÊ¸»ú¤¬Â¸ºß¤·¤Ê¤¤ÉôÊ¬¤Ç¤âÆ°¤±¤ë¤è¤¦¤Ë¤¹¤ë
-set hidden              " ¥Ğ¥Ã¥Õ¥¡¤òÊÄ¤¸¤ëÂå¤ï¤ê¤Ë±£¤¹¡ÊUndoÍúÎò¤ò»Ä¤¹¤¿¤á¡Ë
-set switchbuf=useopen   " ¿·¤·¤¯³«¤¯Âå¤ï¤ê¤Ë¤¹¤Ç¤Ë³«¤¤¤Æ¤¢¤ë¥Ğ¥Ã¥Õ¥¡¤ò³«¤¯
-set showmatch           " ÂĞ±ş¤¹¤ë³ç¸Ì¤Ê¤É¤ò¥Ï¥¤¥é¥¤¥ÈÉ½¼¨¤¹¤ë
-set matchtime=3         " ÂĞ±ş³ç¸Ì¤Î¥Ï¥¤¥é¥¤¥ÈÉ½¼¨¤ò3ÉÃ¤Ë¤¹¤ë
-
-" ÂĞ±ş³ç¸Ì¤Ë'<'¤È'>'¤Î¥Ú¥¢¤òÄÉ²Ã
-set matchpairs& matchpairs+=<:>
-
-" ¥Ğ¥Ã¥¯¥¹¥Ú¡¼¥¹¤Ç¤Ê¤ó¤Ç¤â¾Ã¤»¤ë¤è¤¦¤Ë¤¹¤ë
-set backspace=indent,eol,start
-
-" ¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤ò¥Ç¥Õ¥©¥ë¥È¤Î¥ì¥¸¥¹¥¿¤È¤·¤Æ»ØÄê¡£¸å¤ËYankRing¤ò»È¤¦¤Î¤Ç
-" 'unnamedplus'¤¬Â¸ºß¤·¤Æ¤¤¤ë¤«¤É¤¦¤«¤ÇÀßÄê¤òÊ¬¤±¤ëÉ¬Í×¤¬¤¢¤ë
-if has('unnamedplus')
-    " set clipboard& clipboard+=unnamedplus " 2013-07-03 14:30 unnamed ÄÉ²Ã
-    set clipboard& clipboard+=unnamedplus,unnamed 
-else
-    " set clipboard& clipboard+=unnamed,autoselect 2013-06-24 10:00 autoselect ºï½ü
-    set clipboard& clipboard+=unnamed
-endif
-
-" Swap¥Õ¥¡¥¤¥ë¡©Backup¥Õ¥¡¥¤¥ë¡©Á°»şÂåÅª¤¹¤®
-" ¤Ê¤Î¤ÇÁ´¤ÆÌµ¸ú²½¤¹¤ë
+" ã„ã‚‰ãªã„
 set nowritebackup
 set nobackup
 set noswapfile
 
-
-" view
-set list                " ÉÔ²Ä»ëÊ¸»ú¤Î²Ä»ë²½
-set number              " ¹ÔÈÖ¹æ¤ÎÉ½¼¨
-set wrap                " Ä¹¤¤¥Æ¥­¥¹¥È¤ÎÀŞ¤êÊÖ¤·
-set textwidth=0         " ¼«Æ°Åª¤Ë²ş¹Ô¤¬Æş¤ë¤Î¤òÌµ¸ú²½
-set colorcolumn=80      " ¤½¤ÎÂå¤ï¤ê80Ê¸»úÌÜ¤Ë¥é¥¤¥ó¤òÆş¤ì¤ë
-
-" Á°»şÂåÅª¥¹¥¯¥ê¡¼¥ó¥Ù¥ë¤òÌµ¸ú²½
-set t_vb=
-set novisualbell
+" åŸºæœ¬çš„ãªè¨­å®š
+set list
+set colorcolumn=80
+set number
+" ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¸å¯è¦–æ–‡å­—ã¯ç¾ã—ããªã„ã®ã§Unicodeã§ç¶ºéº—ã«
+set listchars=tab:Â»-,trail:-,extends:Â»,precedes:Â«,nbsp:%,eol:â†²
 
 
-" macro
-" ÆşÎÏ¥â¡¼¥ÉÃæ¤ËÁÇÁá¤¯jj¤ÈÆşÎÏ¤·¤¿¾ì¹ç¤ÏESC¤È¤ß¤Ê¤¹
-inoremap jj <Esc>
+" å„ç¨®è¨­å®š
+if has('vim_starting')
+	set nocompatible
+endif
 
-" ESC¤òÆó²ó²¡¤¹¤³¤È¤Ç¥Ï¥¤¥é¥¤¥È¤ò¾Ã¤¹
-nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
-" ¥«¡¼¥½¥ë²¼¤ÎÃ±¸ì¤ò * ¤Ç¸¡º÷
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+" C++ ã®è¨­å®š
+" FileType_cpp() é–¢æ•°ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚Œã°æœ€å¾Œã«ãã‚Œã‚’å‘¼ã¶
+function! s:cpp()
+	" ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹
+	" gf ãªã©ã§ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ããŸã„å ´åˆã«å½±éŸ¿ã™ã‚‹
+	let &l:path = join(filter(split($VIM_CPP_STDLIB . "," . $VIM_CPP_INCLUDE_DIR, '[,;]'), 'isdirectory(v:val)'), ',')
 
-" ¸¡º÷¸å¤Ë¥¸¥ã¥ó¥×¤·¤¿ºİ¤Ë¸¡º÷Ã±¸ì¤ò²èÌÌÃæ±û¤Ë»ı¤Ã¤Æ¤¯¤ë
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+	" æ‹¬å¼§ã‚’æ§‹æˆã™ã‚‹è¨­å®šã« <> ã‚’è¿½åŠ ã™ã‚‹
+	" template<> ã‚’å¤šç”¨ã™ã‚‹ã®ã§ã‚ã‚Œã°
+	setlocal matchpairs+=<:>
 
-" j, k ¤Ë¤è¤ë°ÜÆ°¤òÀŞ¤êÊÖ¤µ¤ì¤¿¥Æ¥­¥¹¥È¤Ç¤â¼«Á³¤Ë¿¶¤ëÉñ¤¦¤è¤¦¤ËÊÑ¹¹
-nnoremap j gj
-nnoremap k gk
+	" BOOST_PP_XXX ç­‰ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’è¡Œã†
+	syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
+	highlight link boost_pp cppStatement
 
-" v¤òÆó²ó¤Ç¹ÔËö¤Ş¤ÇÁªÂò
-vnoremap v $h
+	" quickrun.vim ã®è¨­å®š
+	let b:quickrun_config = {
+\		"hook/add_include_option/enable" : 1
+\	}
 
-" TAB¤Ë¤ÆÂĞ±ş¥Ú¥¢¤Ë¥¸¥ã¥ó¥×
-nnoremap <Tab> %
-vnoremap <Tab> %
-
-" Ctrl + hjkl ¤Ç¥¦¥£¥ó¥É¥¦´Ö¤ò°ÜÆ°
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Shift + Ìğ°õ¤Ç¥¦¥£¥ó¥É¥¦¥µ¥¤¥º¤òÊÑ¹¹
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
-
-" T + ? ¤Ç³Æ¼ïÀßÄê¤ò¥È¥°¥ë
-nnoremap [toggle] <Nop>
-nmap T [toggle]
-nnoremap <silent> [toggle]s :setl spell!<CR>:setl spell?<CR>
-nnoremap <silent> [toggle]l :setl list!<CR>:setl list?<CR>
-nnoremap <silent> [toggle]t :setl expandtab!<CR>:setl expandtab?<CR>
-nnoremap <silent> [toggle]w :setl wrap!<CR>:setl wrap?<CR>
-
-" make, grep ¤Ê¤É¤Î¥³¥Ş¥ó¥É¸å¤Ë¼«Æ°Åª¤ËQuickFix¤ò³«¤¯
-autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
-
-" QuickFix¤ª¤è¤ÓHelp¤Ç¤Ï q ¤Ç¥Ğ¥Ã¥Õ¥¡¤òÊÄ¤¸¤ë
-autocmd MyAutoCmd FileType help,qf nnoremap <buffer> q <C-w>c
-
-" w!! ¤Ç¥¹¡¼¥Ñ¡¼¥æ¡¼¥¶¡¼¤È¤·¤ÆÊİÂ¸¡Êsudo¤¬»È¤¨¤ë´Ä¶­¸ÂÄê¡Ë
-cmap w!! w !sudo tee > /dev/null %
-
-" :e ¤Ê¤É¤Ç¥Õ¥¡¥¤¥ë¤ò³«¤¯ºİ¤Ë¥Õ¥©¥ë¥À¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¤Ï¼«Æ°ºîÀ®
-function! s:mkdir(dir, force)
-  if !isdirectory(a:dir) && (a:force ||
-        \ input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-  endif
+	if exists("*CppVimrcOnFileType_cpp")
+		call CppVimrcOnFileType_cpp()
+	endif
 endfunction
-autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 
+" goã®ã›ã£ã¦ã„
+set rtp+=$GOROOT/misc/vim
+
+" æ‹¬å¼§ã‚’å…¥åŠ›ã—ãŸæ™‚ã«ã‚«ãƒ¼ã‚½ãƒ«ãŒç§»å‹•ã—ãªã„ã‚ˆã†ã«è¨­å®š
+set matchtime=0
+
+" CursorHold ã®æ›´æ–°é–“éš”
+set updatetime=1000
+
+
+let c_comment_strings=1
+let c_no_curly_error=1
+
+
+" ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+let s:neobundle_plugins_dir = expand(exists("$VIM_NEOBUNDLE_PLUGIN_DIR") ? $VIM_NEOBUNDLE_PLUGIN_DIR : '~/.vim/bundle')
+
+
+" ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+let s:cpp_include_dirs = expand(exists("$VIM_CPP_INCLUDE_DIR") ? $VIM_CPP_INCLUDE_DIR : '')
+
+
+" ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®èª­ã¿è¾¼ã¿
+if !executable("git")
+	echo "Please install git."
+	finish
+endif
+
+
+if !isdirectory(s:neobundle_plugins_dir . "/neobundle.vim")
+	echo "Please install neobundle.vim."
+	function! s:install_neobundle()
+		if input("Install neobundle.vim? [Y/N] : ") =="Y"
+			if !isdirectory(s:neobundle_plugins_dir)
+				call mkdir(s:neobundle_plugins_dir, "p")
+			endif
+
+			execute "!git clone git://github.com/Shougo/neobundle.vim "
+			\ . s:neobundle_plugins_dir . "/neobundle.vim"
+			echo "neobundle installed. Please restart vim."
+		else
+			echo "Canceled."
+		endif
+	endfunction
+	augroup install-neobundle
+		autocmd!
+		autocmd VimEnter * call s:install_neobundle()
+	augroup END
+	finish
+endif
+
+
+" neobundle.vim ã§ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’èª­ã¿è¾¼ã‚€
+" https://github.com/Shougo/neobundle.vim
+if has('vim_starting')
+	execute "set runtimepath+=" . s:neobundle_plugins_dir . "/neobundle.vim"
+endif
+
+call neobundle#begin(s:neobundle_plugins_dir)
+
+" colorscheme
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+
+" neobundle è‡ªèº«ã‚’ neobundle ã§ç®¡ç†
+NeoBundleFetch "Shougo/neobundle.vim"
+
+
+" å„ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®èª­ã¿è¾¼ã¿
+" ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®èª­ã¿è¾¼ã¿ã‚’è¡Œã„ãŸããªã„å ´åˆã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ä¸‹ã•ã„
+
+
+" ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆ
+NeoBundle "tyru/caw.vim"
+
+
+" æ±ç”¨çš„ãªã‚³ãƒ¼ãƒ‰è£œå®Œãƒ—ãƒ©ã‚°ã‚¤ãƒ³
+" +lua ãªç’°å¢ƒã§ã‚ã‚Œã° neocomplete.vim ã‚’åˆ©ç”¨ã™ã‚‹
+if has("lua")
+	NeoBundle "Shougo/neocomplete.vim"
+else
+	NeoBundle "Shougo/neocomplcache"
+endif
+
+" ã‚¹ãƒ‹ãƒšãƒƒãƒˆ
+NeoBundle "Shougo/neosnippet.vim"
+NeoBundle "Shougo/neosnippet-snippets"
+
+" unite.vim
+NeoBundle "Shougo/unite.vim"
+
+" unite-colorscheme
+NeoBundle "ujihisa/unite-colorscheme"
+
+" ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³ã®å‡ºåŠ›
+NeoBundle "Shougo/unite-outline"
+
+
+" C++ ã®ã‚·ãƒ³ã‚¿ãƒƒã‚¯ã‚¹
+NeoBundle "vim-jp/cpp-vim"
+
+" wandbox
+NeoBundle "rhysd/wandbox-vim"
+
+" ã‚³ãƒ¼ãƒ‰è£œå®Œ
+NeoBundle "osyo-manga/vim-marching"
+
+" ã‚³ãƒ¼ãƒ‰ã®å®Ÿè¡Œ
+NeoBundle "thinca/vim-quickrun"
+
+
+" quickfix ã®è©²å½“ç®‡æ‰€ã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆ
+NeoBundle "jceb/vim-hier"
+
+" quickfix ã®è©²å½“ç®‡æ‰€ã®å†…å®¹ã‚’ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã«å‡ºåŠ›
+NeoBundle "dannyob/quickfixstatus"
+
+" ã‚·ãƒ³ã‚¿ãƒƒã‚¯ã‚¹ãƒã‚§ãƒƒã‚«ãƒ¼
+NeoBundle "osyo-manga/vim-watchdogs"
+NeoBundle "osyo-manga/shabadou.vim"
+
+
+" ãƒã‚¤ãƒ©ã‚¤ãƒˆ
+NeoBundle "t9md/vim-quickhl"
+
+
+" pythonç”¨
+NeoBundle "davidhalter/jedi-vim"
+
+
+" vim-filer
+NeoBundle "Shougo/vimfiler.vim"
+
+
+" golang
+NeoBundle 'fatih/vim-go'
+
+" vimproc.vim
+" vimproc.vim ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯è‡ªå‰ã§ãƒ“ãƒ«ãƒ‰ã™ã‚‹å¿…è¦ãŒã‚ã‚Š
+" kaoriya ç‰ˆ vim ã§ã¯ vimproc.vim ãŒåŒæ¢±ã•ã‚Œã¦ã„ã‚‹ã®ã§å¿…è¦ãŒãªã„ã§ã™
+if !has("kaoriya")
+	NeoBundle 'Shougo/vimproc.vim', {
+	\ 'build' : {
+	\     'windows' : 'make -f make_mingw32.mak',
+	\     'cygwin' : 'make -f make_cygwin.mak',
+	\     'mac' : 'make -f make_mac.mak',
+	\     'unix' : 'make -f make_unix.mak',
+	\    },
+	\ }
+endif
+
+
+if exists("*CppVimrcOnNeoBundle")
+	call CppVimrcOnNeoBundle()
+endif
+
+call neobundle#end()
+
+
+filetype plugin indent on
+syntax enable
+
+set background=dark
+colorscheme solarized 
+
+
+" ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯
+NeoBundleCheck
+
+" ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®è¨­å®š
+" ã“ã‚Œã¯ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãŒèª­ã¿è¾¼ã¾ã‚ŒãŸå ´åˆã«æœ‰åŠ¹ã«ãªã‚‹
+
+" caw.vim
+let s:hooks = neobundle#get_hooks("caw.vim")
+function! s:hooks.on_source(bundle)
+	" ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ãƒãƒƒãƒ”ãƒ³ã‚°
+	" <leader>c ã§ã‚«ãƒ¼ã‚½ãƒ«è¡Œã‚’ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆ
+	" å†åº¦ <leader>c ã§ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’è§£é™¤
+	" é¸æŠã—ã¦ã‹ã‚‰è¤‡æ•°è¡Œã® <leader>c ã‚‚å¯èƒ½
+	nmap <leader>c <Plug>(caw:I:toggle)
+	vmap <leader>c <Plug>(caw:I:toggle)
+
+	" <leader>C ã§ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’è§£é™¤
+	nmap <Leader>C <Plug>(caw:I:uncomment)
+	vmap <Leader>C <Plug>(caw:I:uncomment)
+
+endfunction
+unlet s:hooks
+
+
+" neocomplet.vim
+let s:hooks = neobundle#get_hooks("neocomplete.vim")
+function! s:hooks.on_source(bundle)
+	" è£œå®Œã‚’æœ‰åŠ¹ã«ã™ã‚‹
+	let g:neocomplete#enable_at_startup = 1
+
+	" è£œå®Œã«æ™‚é–“ãŒã‹ã‹ã£ã¦ã‚‚ã‚¹ã‚­ãƒƒãƒ—ã—ãªã„
+	let g:neocomplete#skip_auto_completion_time = ""
+endfunction
+unlet s:hooks
+
+
+" neocomplcache
+let s:hooks = neobundle#get_hooks("neocomplcache")
+function! s:hooks.on_source(bundle)
+	" è£œå®Œã‚’æœ‰åŠ¹ã«ã™ã‚‹
+	let g:neocomplcache_enable_at_startup=1
+endfunction
+unlet s:hooks
+
+
+" quickfixstatus
+let s:hooks = neobundle#get_hooks("quickfixstatus")
+function! s:hooks.on_post_source(bundle)
+	QuickfixStatusEnable
+endfunction
+unlet s:hooks
+
+
+" vim-quickhl
+let s:hooks = neobundle#get_hooks("vim-quickhl")
+function! s:hooks.on_source(bundle)
+	" <Space>m ã§ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®å˜èªã€ã‚‚ã—ãã¯é¸æŠã—ãŸç¯„å›²ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’è¡Œã†
+	" å†åº¦ <Space>m ã‚’è¡Œã†ã¨ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’è§£é™¤ã™ã‚‹
+	" ã“ã‚Œã¯è¤‡æ•°ã®å˜èªã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’è¡Œã†äº‹ã‚‚ã§ãã‚‹
+	" <Space>M ã§å…¨ã¦ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’è§£é™¤ã™ã‚‹
+	nmap <Space>m <Plug>(quickhl-manual-this)
+	xmap <Space>m <Plug>(quickhl-manual-this)
+	nmap <Space>M <Plug>(quickhl-manual-reset)
+	xmap <Space>M <Plug>(quickhl-manual-reset)
+endfunction
+unlet s:hooks
+
+
+" neosnippet.vim
+let s:hooks = neobundle#get_hooks("neosnippet.vim")
+function! s:hooks.on_source(bundle)
+	" ã‚¹ãƒ‹ãƒšãƒƒãƒˆã‚’å±•é–‹ã™ã‚‹ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
+	" <Tab> ã§é¸æŠã•ã‚Œã¦ã„ã‚‹ã‚¹ãƒ‹ãƒšãƒƒãƒˆã®å±•é–‹ã‚’è¡Œã†
+	" é¸æŠã•ã‚Œã¦ã„ã‚‹å€™è£œãŒã‚¹ãƒ‹ãƒšãƒƒãƒˆã§ã‚ã‚Œã°å±•é–‹ã—ã€
+	" ãã‚Œä»¥å¤–ã§ã‚ã‚Œã°æ¬¡ã®å€™è£œã‚’é¸æŠã™ã‚‹
+	" ã¾ãŸã€æ—¢ã«ã‚¹ãƒ‹ãƒšãƒƒãƒˆãŒå±•é–‹ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯æ¬¡ã®ãƒãƒ¼ã‚¯ã¸ã¨ç§»å‹•ã™ã‚‹
+	imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: pumvisible() ? "\<C-n>" : "\<TAB>"
+	smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: "\<TAB>"
+
+	let g:neosnippet#snippets_directory = "~/.neosnippet"
+
+	" ç¾åœ¨ã® filetype ã®ã‚¹ãƒ‹ãƒšãƒƒãƒˆã‚’ç·¨é›†ã™ã‚‹ç‚ºã®ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
+	" ã“ã†ã—ã¦ãŠãã“ã¨ã§ã‚µãƒƒã¨ç·¨é›†ã‚„è¿½åŠ ãªã©ã‚’è¡Œã†ã“ã¨ãŒã§ãã‚‹
+	" ä»¥ä¸‹ã®è¨­å®šã§ã¯æ–°ã—ã„ã‚¿ãƒ–ã§ã‚¹ãƒ‹ãƒšãƒƒãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
+	nnoremap <Space>ns :execute "tabnew\|:NeoSnippetEdit ".&filetype<CR>
+endfunction
+unlet s:hooks
+
+
+" marching.vim
+let s:hooks = neobundle#get_hooks("vim-marching")
+function! s:hooks.on_post_source(bundle)
+	if !empty(g:marching_clang_command) && executable(g:marching_clang_command)
+		" éåŒæœŸã§ã¯ãªãã¦åŒæœŸå‡¦ç†ã§è£œå®Œã™ã‚‹
+		let g:marching_backend = "sync_clang_command"
+	else
+		" clang ã‚³ãƒãƒ³ãƒ‰ãŒå®Ÿè¡Œã§ããªã‘ã‚Œã° wandbox ã‚’ä½¿ç”¨ã™ã‚‹
+		let g:marching_backend = "wandbox"
+		let g:marching_clang_command = ""
+	endif
+
+	" ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®è¨­å®š
+	" ã“ã‚Œã¯ clang ã®ã‚³ãƒãƒ³ãƒ‰ã«æ¸¡ã•ã‚Œã‚‹
+	let g:marching#clang_command#options = {
+	\	"cpp" : "-std=gnu++1y"
+	\}
+
+
+	if !neobundle#is_sourced("neocomplete.vim")
+		return
+	endif
+
+	" neocomplete.vim ã¨ä½µç”¨ã—ã¦ä½¿ç”¨ã™ã‚‹å ´åˆ
+	" neocomplete.vim ã‚’ä½¿ç”¨ã™ã‚Œã°è‡ªå‹•è£œå®Œã«ãªã‚‹
+	let g:marching_enable_neocomplete = 1
+
+	if !exists('g:neocomplete#force_omni_input_patterns')
+		let g:neocomplete#force_omni_input_patterns = {}
+	endif
+
+	let g:neocomplete#force_omni_input_patterns.cpp =
+		\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+	endfunction
+unlet s:hooks
+
+
+" quickrun.vim
+let s:hooks = neobundle#get_hooks("vim-quickrun")
+function! s:hooks.on_source(bundle)
+	let g:quickrun_config = {
+\		"_" : {
+\			"runner" : "vimproc",
+\			"runner/vimproc/sleep" : 10,
+\			"runner/vimproc/updatetime" : 500,
+\			"outputter" : "error",
+\			"outputter/error/success" : "buffer",
+\			"outputter/error/error"   : "quickfix",
+\			"outputter/quickfix/open_cmd" : "copen",
+\			"outputter/buffer/split" : ":botright 8sp",
+\			"outputter/buffer/close_on_empty": 1
+\		},
+\
+\		"cpp/wandbox" : {
+\			"runner" : "wandbox",
+\			"runner/wandbox/compiler" : "clang-head",
+\			"runner/wandbox/options" : "warning,c++1y,boost-1.55",
+\		},
+\
+\		"cpp/g++" : {
+\			"cmdopt" : "-std=c++11 -Wall",
+\		},
+\
+\		"cpp/clang++" : {
+\			"cmdopt" : "-std=c++11 -Wall",
+\		},
+\
+\		"cpp/watchdogs_checker" : {
+\			"type" : "watchdogs_checker/clang++",
+\		},
+\	
+\		"watchdogs_checker/_" : {
+\			"outputter/quickfix/open_cmd" : "",
+\		},
+\	
+\		"watchdogs_checker/g++" : {
+\			"cmdopt" : "-Wall",
+\		},
+\	
+\		"watchdogs_checker/clang++" : {
+\			"cmdopt" : "-Wall",
+\		},
+\	}
+
+	let s:hook = {
+	\	"name" : "add_include_option",
+	\	"kind" : "hook",
+	\	"config" : {
+	\		"option_format" : "-I%s"
+	\	},
+	\}
+
+	function! s:hook.on_normalized(session, context)
+		" filetype==cpp ä»¥å¤–ã¯è¨­å®šã—ãªã„
+		if &filetype !=# "cpp"
+			return
+		endif
+		let paths = filter(split(&path, ","), "len(v:val) && v:val !='.' && v:val !~ $VIM_CPP_STDLIB")
+		
+		if len(paths)
+			let a:session.config.cmdopt .= " " . join(map(paths, "printf(self.config.option_format, v:val)")) . " "
+		endif
+	endfunction
+
+	call quickrun#module#register(s:hook, 1)
+	unlet s:hook
+
+
+	let s:hook = {
+	\	"name" : "clear_quickfix",
+	\	"kind" : "hook",
+	\}
+
+	function! s:hook.on_normalized(session, context)
+		call setqflist([])
+	endfunction
+
+	call quickrun#module#register(s:hook, 1)
+	unlet s:hook
+
+endfunction
+unlet s:hooks
+
+
+" vim-watchdogs
+let s:hooks = neobundle#get_hooks("vim-watchdogs")
+function! s:hooks.on_source(bundle)
+	let g:watchdogs_check_BufWritePost_enable = 1
+endfunction
+unlet s:hooks
+
+
+
+if exists("*CppVimrcOnPrePlugin")
+	call CppVimrcOnPrePlugin()
+endif
+
+
+call neobundle#call_hook('on_source')
+
+
+if exists("*CppVimrcOnFinish")
+	call CppVimrcOnFinish()
+endif
+
+
+
+augroup vimrc-cpp
+	autocmd!
+	" filetype=cpp ãŒè¨­å®šã•ã‚ŒãŸå ´åˆã«é–¢æ•°ã‚’å‘¼ã¶
+	autocmd FileType cpp call s:cpp()
+augroup END
+
+
+" jedi-vim
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+	let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^.\t]\.\w*'
+
+autocmd FileType python setlocal completeopt-=preview:
 
