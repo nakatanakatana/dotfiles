@@ -142,3 +142,6 @@ fi
 
 # golang
 export GOPATH=$HOME/go
+
+# PS1の追加
+PS1='$(__git_ps1)[\t]\n'$PS1
