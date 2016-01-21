@@ -3,7 +3,6 @@ encoding utf-8 utf-8
 defencoding utf-8
 
 defbce on
-term xterm-256color
 
 caption always "%-w%10L>%{=b bw}%n %t%{-}%+w%-0="
 hardstatus alwayslastline "%H%=%Y/%m/%d %02c"
