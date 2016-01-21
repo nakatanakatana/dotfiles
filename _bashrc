@@ -126,9 +126,15 @@ PATH=$PATH:/usr/local/games
 
 export PATH
 
+#screen用 PS1の設定
+if [ $TERM == 'screen' ]; then
+    export PS1='\u@\h:\W\$ '
+    export PROMPT_COMMAND='echo -ne "\033k\033\0134\033k$(basename $(pwd))\033\\"'
+else
+    export PS1='\u@\h:\W\$ '
+fi
 
 #enhancd
-
 if [ -f "$HOME/.enhancd/bash/enhancd.bash" ]; then
     source "$HOME/.enhancd/bash/enhancd.bash"
 fi
@@ -142,6 +148,10 @@ fi
 
 # golang
 export GOPATH=$HOME/go
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-# PS1の追加
-PS1='$(__git_ps1)[\t]\n'$PS1
+#CUDA
+export CUDA_HOME=/usr/local/cuda-7.5
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
+export PATH=$PATH:${CUDA_HOME}/bin
