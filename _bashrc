@@ -126,10 +126,13 @@ PATH=$PATH:/usr/local/games
 
 export PATH
 
+# vim風
+set -o vi
+
 #screen用 PS1の設定
 if [ $TERM = 'screen-bce' ]; then
     export PS1='\u@\h:\W\$ '
-    export PROMPT_COMMAND='echo -ne "\033k\033\0134\033k$(basename $(pwd))\033\\"'
+    export PROMPT_COMMAND='echo -ne "\033k\033\0134\033k/$(basename $(pwd))\033\\"'
 else
     export PS1='\u@\h:\W\$ '
 fi
