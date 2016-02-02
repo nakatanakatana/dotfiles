@@ -2,3 +2,6 @@
 	path = enhancd
 	url = https://github.com/b4b4r07/enhancd.git
 	ignore = dirty
+[submodule "screen-cpu-mem"]
+	path = screen-cpu-mem
+	url = https://github.com/thewtex/screen-cpu-mem.git
