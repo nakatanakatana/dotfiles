@@ -1,0 +1,9 @@
+source base
+
+# backticks to display information in the statusbar
+backtick 1 0 0 /usr/local/bin/screen-mem-usage
+backtick 2 0 0 /usr/local/bin/screen-cpu-usage
+
+hardstatus alwayslastline "%{= .b}Mem:%1` %{= .y}Cpu:%2`%% %{= .r}Load:%l%-0=%{-}"
+
+screen screen -qUmc leaf

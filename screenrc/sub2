@@ -1,0 +1,5 @@
+source base
+
+hardstatus alwayslastline "%{= .g}Host:%H %=%{-}%Y/%m/%d %02c"
+
+screen screen -qUmc sub1
