@@ -5,3 +5,4 @@
 [submodule "screen-cpu-mem"]
 	path = screen-cpu-mem
 	url = https://github.com/thewtex/screen-cpu-mem.git
+	ignore = dirty
