@@ -1,1 +1,75 @@
-source dotfiles/screenrc/sub2
+defutf8 on
+encoding utf-8 utf-8
+defencoding utf-8
+
+defbce on
+
+escape ^Tt
+
+# backticks to display information in the statusbar
+backtick 1 0 0 /usr/local/bin/screen-mem-usage
+backtick 2 0 0 /usr/local/bin/screen-cpu-usage
+
+setenv cp ""
+setenv cp "$cp%?%F"
+setenv cp "$cp%{= ky}"
+setenv cp "$cp%:"
+setenv cp "$cp%{= .y}"
+setenv cp "$cp%?"
+setenv cp "$cp%n"
+setenv cp "$cp "
+setenv cp "$cp%t"
+setenv cp "$cp%="
+
+caption always "$cp"
+
+setenv hs ""
+setenv hs "$hs%-w"
+setenv hs "$hs%10L>"
+setenv hs "$hs%{=b bw}"
+setenv hs "$hs%n"
+setenv hs "$hs "
+setenv hs "$hs%t"
+setenv hs "$hs%{-}"
+setenv hs "$hs%+w"
+setenv hs "$hs%="
+setenv hs "$hs%{= .b}"
+setenv hs "$hs Mem:%1`"
+setenv hs "$hs%{-}"
+setenv hs "$hs%{= .y}"
+setenv hs "$hs Cpu:%2`%%"
+setenv hs "$hs %{-}"
+setenv hs "$hs%Y/%m/%d"
+setenv hs "$hs "
+setenv hs "$hs%02c"
+
+hardstatus alwayslastline "$hs"
+shelltitle "$ |bash"
+
+termcap * 'G0:S0=\E(%.:E0=\E(B:TY=iso2022'
+autodetach on
+defflow off
+crlf off
+vbell off
+
+termcapinfo xterm* ti@:te@
+
+#split window
+bind s eval split focus "select 0"
+bind ^s eval split focus "select 0"
+bind | eval split focus "select 0"
+bind ^| eval split focus "select 0"
+
+#resize
+bind r eval 'command -c resize'
+bind ^r eval 'command -c resize'
+bind + eval 'command -c resize'
+bind - eval 'command -c resize'
+bind -c resize + eval 'resize +1' 'command -c resize'
+bind -c resize - eval 'resize -1' 'command -c resize'
+
+chdir
+
+screen 0
+screen 1
+select 0
