@@ -1,0 +1,24 @@
+diff --git a/screen-cpu-usage.cpp b/screen-cpu-usage.cpp
+index 09047f2..501c9f9 100644
+--- a/screen-cpu-usage.cpp
++++ b/screen-cpu-usage.cpp
+@@ -109,7 +109,7 @@ int main(int argc, char** argv)
+   CPUPercentage cpu_per;
+   cout.precision(1);
+   cout.setf(ios::fixed | ios::right);
+-  cout.width(5);
++  // cout.width(5);
+   try
+   {
+   while(true)
+@@ -127,8 +127,8 @@ int main(int argc, char** argv)
+       meter[meter_count] = ' ';
+       meter_count++;
+       }
+-    cout << meter << ' ';
+-    cout.width(5);
++    // cout << meter << ' ';
++    // cout.width(5);
+     cout << percentage << endl; 
+     sleep(1);
+     }
