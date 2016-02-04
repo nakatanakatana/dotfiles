@@ -57,8 +57,6 @@ termcapinfo xterm* ti@:te@
 #split window
 bind s eval split focus "select 0"
 bind ^s eval split focus "select 0"
-bind | eval split focus "select 0"
-bind ^| eval split focus "select 0"
 
 #resize
 bind r eval 'command -c resize'
