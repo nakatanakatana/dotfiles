@@ -14,7 +14,7 @@ setenv cp ""
 setenv cp "$cp%?%F"
 setenv cp "$cp%{= ck}"
 setenv cp "$cp%:"
-setenv cp "$cp%{= .y}"
+setenv cp "$cp%{r .d}"
 setenv cp "$cp%?"
 setenv cp "$cp%n"
 setenv cp "$cp "
@@ -27,13 +27,17 @@ setenv hs ""
 setenv hs "$hs%Y/%m/%d"
 setenv hs "$hs "
 setenv hs "$hs%02c"
-setenv hs "$hs%="
 setenv hs "$hs%{= .b}"
 setenv hs "$hs Mem:%1`"
 setenv hs "$hs%{-}"
 setenv hs "$hs%{= .y}"
 setenv hs "$hs Cpu:%2`%%"
-setenv hs "$hs %{-}"
+setenv hs "$hs%{-}"
+setenv hs "$hs%="
+setenv hs "$hs%-w"
+setenv hs "$hs%n"
+setenv hs "$hs%t"
+setenv hs "$hs%+w"
 
 hardstatus alwayslastline "$hs"
 shelltitle "$ |bash"
@@ -48,7 +52,6 @@ termcapinfo xterm* ti@:te@
 
 #split window
 bind s eval split focus "select 0"
-bind ^s eval split focus "select 0"
 
 #resize
 bind r eval 'command -c resize'
@@ -59,7 +62,3 @@ bind -c resize + eval 'resize +1' 'command -c resize'
 bind -c resize - eval 'resize -1' 'command -c resize'
 
 chdir
-
-screen 0
-screen 1
-select 0
