@@ -61,4 +61,7 @@ bind - eval 'command -c resize'
 bind -c resize + eval 'resize +1' 'command -c resize'
 bind -c resize - eval 'resize -1' 'command -c resize'
 
+# ssh_keybind
+source .screenrc.ssh_keybind
+
 chdir

@@ -1,0 +1,20 @@
+# ssh keybind
+bind ^T eval 'command -c rlogin' 'echo "[0] raspberry_pi, [1] VPN"'
+
+# ssh to raspberry pi 
+bind -c rlogin 0 eval 'command -c ssh_rpi' 'echo "r-[n]"'
+bind -c ssh_rpi 1 eval 'screen -t ssh:r-01 ssh 192.168.202.101'
+bind -c ssh_rpi 2 eval 'screen -t ssh:r-02 ssh 192.168.202.102'
+bind -c ssh_rpi 3 eval 'screen -t ssh:r-03 ssh 192.168.202.103'
+bind -c ssh_rpi 4 eval 'screen -t ssh:r-04 ssh 192.168.202.104'
+bind -c ssh_rpi 5 eval 'screen -t ssh:r-05 ssh 192.168.202.105'
+bind -c ssh_rpi 6 eval 'screen -t ssh:r-06 ssh 192.168.202.106'
+bind -c ssh_rpi 7 eval 'screen -t ssh:r-07 ssh 192.168.202.107'
+bind -c ssh_rpi 8 eval 'screen -t ssh:r-08 ssh 192.168.202.108'
+bind -c ssh_rpi 9 eval 'screen -t ssh:r-09 ssh 192.168.202.109'
+bind -c ssh_rpi 0 eval 'screen -t ssh:r-10 ssh 192.168.202.110'
+
+# ssh to VPN
+bind -c rlogin 1 eval 'command -c ssh_vpn' 'echo "[0] Conoha, "'
+bind -c ssh_vpn 0 eval 'screen -t ssh:conoha ssh conoha'
+
