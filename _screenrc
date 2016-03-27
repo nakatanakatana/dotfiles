@@ -20,6 +20,7 @@ setenv cp "$cp%n"
 setenv cp "$cp "
 setenv cp "$cp%t"
 setenv cp "$cp%="
+setenv cp "$cp%h"
 
 caption always "$cp"
 
@@ -36,6 +37,7 @@ setenv hs "$hs%{-}"
 setenv hs "$hs%="
 setenv hs "$hs%-w"
 setenv hs "$hs%n"
+setenv hs "$hs "
 setenv hs "$hs%t"
 setenv hs "$hs%+w"
 
@@ -49,6 +51,10 @@ crlf off
 vbell off
 
 termcapinfo xterm* ti@:te@
+
+windowlist title  '%{= ck}Num Flags Title%=Hardstatus'
+windowlist string '%3n %f%09= %t%=%h'
+
 
 #split window
 bind s eval split focus "select 0"
