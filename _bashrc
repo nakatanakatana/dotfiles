@@ -167,3 +167,8 @@ export PATH=$PATH:${CUDA_HOME}/bin
 if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
 fi
+
+
+# ssh-keyをagentに登録しておく
+ssh-add .ssh/id_rsa
+
