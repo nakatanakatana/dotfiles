@@ -168,7 +168,5 @@ if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
 fi
 
-
-# ssh-keyをagentに登録しておく
-ssh-add .ssh/id_rsa
-
+#screenを自動起動
+[ ${STY} ] || screen -rx || screen -D -RR
