@@ -132,7 +132,10 @@ set -o vi
 #screen用 PS1の設定
 if [ $(echo $TERM | grep 'screen') ]; then
     export PS1='\u:\W\$ '
-    export PROMPT_COMMAND='echo -ne "\033]0;${PWD} [${USER}@${HOSTNAME}]\007\033k\033\0134\033k/$(basename $(pwd))\033\\"'
+    screen_hstatus_color="\005{= mk}"
+    screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
+    screen_title="$(basename $(pwd))"
+    export PROMPT_COMMAND='echo -ne "\033]0;$screen_hstatus_color$screen_hstatus\007\033k\033\0134\033k/$screen_title\033\\"'
 else
     export PS1='\u@\h:\W\$ '
 fi
