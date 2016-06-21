@@ -131,7 +131,7 @@ set -o vi
 
 #screen用 PS1の設定
 set_prompt_command () {
-    screen_hstatus_color="\005{= ck}"
+    screen_hstatus_color="\005{= mk}"
     screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
     screen_hstatus_str="\033]0;$screen_hstatus_color$screen_hstatus\007"
     screen_title="$(basename $(pwd))"
