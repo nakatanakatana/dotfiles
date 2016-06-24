@@ -1,3 +1,5 @@
 [user]
 	email = nakatanakatana@gmail.com
 	name = tanaka
+[alias]
+	noffmerge = merge --no-ff
