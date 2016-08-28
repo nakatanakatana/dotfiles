@@ -4,7 +4,7 @@ defencoding utf-8
 
 defbce on
 
-escape ^Tt
+escape ^Aa
 
 # backticks to display information in the statusbar
 backtick 1 0 0 /usr/local/bin/screen-mem-usage
