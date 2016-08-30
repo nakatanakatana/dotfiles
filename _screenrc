@@ -67,7 +67,17 @@ bind - eval 'command -c resize'
 bind -c resize + eval 'resize +1' 'command -c resize'
 bind -c resize - eval 'resize -1' 'command -c resize'
 
+# window group
+maxwin 1000
+bind c eval 'screen 0' '@group local/'
+
+select -
+screen -t local/ 0 //group
+
 # ssh_keybind
 source .screenrc.ssh_keybind
+select -
 
 chdir
+select 0
+screen 0

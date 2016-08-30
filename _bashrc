@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -32,117 +32,117 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+debian_chroot=$(cat /etc/debian_chroot)
+	fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+	case "$TERM" in
+	xterm-color) color_prompt=yes;;
+	esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
+	if [ -n "$force_color_prompt" ]; then
+	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+# We have color support; assume it's compliant with Ecma-48
+# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
-    else
+	else
 	color_prompt=
-    fi
-fi
+	fi
+	fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+	if [ "$color_prompt" = yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	else
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	fi
+	unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+	case "$TERM" in
+	xterm*|rxvt*)
+	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	;;
+	*)
+	;;
+	esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+	if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+#alias dir='dir --color=auto'
+#alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+	fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+	alias ll='ls -alF'
+	alias la='ls -A'
+	alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+	if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+	fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+	if ! shopt -oq posix; then
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+	fi
+	fi
 
 # pathの追加
-PATH=$HOME/usr/local/bin
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/usr/local/bin
-PATH=$PATH:/usr/sbin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/bin
-PATH=$PATH:/usr/games
-PATH=$PATH:/usr/local/games
+	PATH=$HOME/usr/local/bin
+	PATH=$PATH:/usr/local/sbin
+	PATH=$PATH:/usr/local/bin
+	PATH=$PATH:/usr/sbin
+	PATH=$PATH:/usr/bin
+	PATH=$PATH:/sbin
+	PATH=$PATH:/bin
+	PATH=$PATH:/usr/games
+	PATH=$PATH:/usr/local/games
 
-export PATH
+	export PATH
 
 # vim風
-set -o vi
+	set -o vi
 
 #screen用 PS1の設定
-set_prompt_command () {
-    screen_hstatus_color="\005{= mk}"
-    screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
-    screen_hstatus_str="\033]0;$screen_hstatus_color$screen_hstatus\007"
-    screen_title="$(basename $(pwd))"
-    screen_title_str="\033k\033\0134\033k/$screen_title\033\\"
-    echo -ne "$screen_hstatus_str$screen_title_str"
-}
+	set_prompt_command () {
+		screen_hstatus_color="\005{= mk}"
+			screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
+			screen_hstatus_str="\033]0;$screen_hstatus_color$screen_hstatus\007"
+			screen_title="$(basename $(pwd))"
+			screen_title_str="\033k\033\0134\033k/$screen_title\033\\"
+			echo -ne "$screen_hstatus_str$screen_title_str"
+	}
 if [ $(echo $TERM | grep 'screen') ]; then
-    export PS1='\u:\W\$ '
-    export PROMPT_COMMAND="set_prompt_command"
+export PS1='\u:\W\$ '
+export PROMPT_COMMAND="set_prompt_command"
 else
-    export PS1='\u@\h:\W\$ '
+export PS1='\u@\h:\W\$ '
 fi
 
 
@@ -151,21 +151,21 @@ PS1='$(__git_ps1)[\t]\n'$PS1
 
 #enhancd
 if [ -f "$HOME/.enhancd/bash/enhancd.bash" ]; then
-    source "$HOME/.enhancd/bash/enhancd.bash"
+source "$HOME/.enhancd/bash/enhancd.bash"
 fi
 
 
 ### Virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # golang
-export GOPATH=$HOME/go
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export GOPATH=$HOME/go
 
 # nvm
 if [[ -s ~/.nvm/nvm.sh ]];
- then source ~/.nvm/nvm.sh
+then source ~/.nvm/nvm.sh
 fi
