@@ -9,9 +9,46 @@ set noswapfile
 set list
 set colorcolumn=80
 set number
-" デフォルト不可視文字は美しくないのでUnicodeで綺麗に
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:>.,trail:-,extends:»,precedes:«,nbsp:%,eol:¬
+set incsearch
+set hlsearch
+set tabstop=4
+set shiftwidth=4
+set smartindent
+set cursorline
+set autoread
 
+" セミコロンをコロンと入れ替え
+noremap ; :
+
+" 画面分割・タブページの設定
+" http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca 
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
 " 各種設定
 if has('vim_starting')
@@ -128,10 +165,6 @@ else
 	NeoBundle "Shougo/neocomplcache"
 endif
 
-" スニペット
-NeoBundle "Shougo/neosnippet.vim"
-NeoBundle "Shougo/neosnippet-snippets"
-
 " unite.vim
 NeoBundle "Shougo/unite.vim"
 
@@ -219,17 +252,8 @@ NeoBundleCheck
 " caw.vim
 let s:hooks = neobundle#get_hooks("caw.vim")
 function! s:hooks.on_source(bundle)
-	" コメントアウトを切り替えるマッピング
-	" <leader>c でカーソル行をコメントアウト
-	" 再度 <leader>c でコメントアウトを解除
-	" 選択してから複数行の <leader>c も可能
-	nmap <leader>c <Plug>(caw:I:toggle)
-	vmap <leader>c <Plug>(caw:I:toggle)
-
-	" <leader>C でコメントアウトを解除
-	nmap <Leader>C <Plug>(caw:I:uncomment)
-	vmap <Leader>C <Plug>(caw:I:uncomment)
-
+	nmap <C-_> <Plug>(caw:zeropos:toggle)
+	vmap <C-_> <Plug>(caw:zeropos:toggle)
 endfunction
 unlet s:hooks
 
@@ -237,9 +261,7 @@ unlet s:hooks
 " neocomplet.vim
 let s:hooks = neobundle#get_hooks("neocomplete.vim")
 function! s:hooks.on_source(bundle)
-	" 補完を有効にする
 	let g:neocomplete#enable_at_startup = 1
-
 	" 補完に時間がかかってもスキップしない
 	let g:neocomplete#skip_auto_completion_time = ""
 endfunction
@@ -249,7 +271,6 @@ unlet s:hooks
 " neocomplcache
 let s:hooks = neobundle#get_hooks("neocomplcache")
 function! s:hooks.on_source(bundle)
-	" 補完を有効にする
 	let g:neocomplcache_enable_at_startup=1
 endfunction
 unlet s:hooks
@@ -274,31 +295,6 @@ function! s:hooks.on_source(bundle)
 	xmap <Space>m <Plug>(quickhl-manual-this)
 	nmap <Space>M <Plug>(quickhl-manual-reset)
 	xmap <Space>M <Plug>(quickhl-manual-reset)
-endfunction
-unlet s:hooks
-
-
-" neosnippet.vim
-let s:hooks = neobundle#get_hooks("neosnippet.vim")
-function! s:hooks.on_source(bundle)
-	" スニペットを展開するキーマッピング
-	" <Tab> で選択されているスニペットの展開を行う
-	" 選択されている候補がスニペットであれば展開し、
-	" それ以外であれば次の候補を選択する
-	" また、既にスニペットが展開されている場合は次のマークへと移動する
-	imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)"
-	\: pumvisible() ? "\<C-n>" : "\<TAB>"
-	smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)"
-	\: "\<TAB>"
-
-	let g:neosnippet#snippets_directory = "~/.neosnippet"
-
-	" 現在の filetype のスニペットを編集する為のキーマッピング
-	" こうしておくことでサッと編集や追加などを行うことができる
-	" 以下の設定では新しいタブでスニペットファイルを開く
-	nnoremap <Space>ns :execute "tabnew\|:NeoSnippetEdit ".&filetype<CR>
 endfunction
 unlet s:hooks
 
