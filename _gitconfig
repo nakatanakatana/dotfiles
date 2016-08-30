@@ -3,3 +3,10 @@
 	name = tanaka
 [alias]
 	noffmerge = merge --no-ff
+	st = status
+	co = checkout
+	br = branch
+	rpull = pull --rebase
+	logp = log -p
+	tree = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	logc = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'

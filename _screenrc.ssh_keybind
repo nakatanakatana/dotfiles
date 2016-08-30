@@ -1,0 +1,41 @@
+select -
+
+# ssh keybind
+bind ^T eval 'command -c rlogin' 'echo "[1] raspberry_pi, [2] VPN, [0] other"'
+
+# ssh to raspberry pi 
+screen -t rpi/ 1 //group
+select -
+bind -c rlogin 1 eval 'command -c ssh_rpi' 'echo "[1~0] r_worker, [q~i] rs_worker, [a] macbook"'
+bind -c ssh_rpi a eval 'screen -t ssh:macbook 100 ssh tanaka@192.168.202.3' '@group rpi/'
+bind -c ssh_rpi 1 eval 'screen -t ssh:r-01 100 ssh r-01' '@group rpi/'
+bind -c ssh_rpi 2 eval 'screen -t ssh:r-02 100 ssh r-02' '@group rpi/'
+bind -c ssh_rpi 3 eval 'screen -t ssh:r-03 100 ssh r-03' '@group rpi/'
+bind -c ssh_rpi 4 eval 'screen -t ssh:r-04 100 ssh r-04' '@group rpi/'
+bind -c ssh_rpi 5 eval 'screen -t ssh:r-05 100 ssh r-05' '@group rpi/'
+bind -c ssh_rpi 6 eval 'screen -t ssh:r-06 100 ssh r-06' '@group rpi/'
+bind -c ssh_rpi 7 eval 'screen -t ssh:r-07 100 ssh r-07' '@group rpi/'
+bind -c ssh_rpi 8 eval 'screen -t ssh:r-08 100 ssh r-08' '@group rpi/'
+bind -c ssh_rpi 9 eval 'screen -t ssh:r-09 100 ssh r-09' '@group rpi/'
+bind -c ssh_rpi 0 eval 'screen -t ssh:r-10 100 ssh r-10' '@group rpi/'
+bind -c ssh_rpi q eval 'screen -t ssh:rs-01 100 ssh rs-01' '@group rpi/'
+bind -c ssh_rpi w eval 'screen -t ssh:rs-02 100 ssh rs-02' '@group rpi/'
+bind -c ssh_rpi e eval 'screen -t ssh:rs-03 100 ssh rs-03' '@group rpi/'
+bind -c ssh_rpi r eval 'screen -t ssh:rs-04 100 ssh rs-04' '@group rpi/'
+bind -c ssh_rpi t eval 'screen -t ssh:rs-05 100 ssh rs-05' '@group rpi/'
+bind -c ssh_rpi y eval 'screen -t ssh:rs-06 100 ssh rs-06' '@group rpi/'
+bind -c ssh_rpi u eval 'screen -t ssh:rs-07 100 ssh rs-07' '@group rpi/'
+bind -c ssh_rpi i eval 'screen -t ssh:rs-08 100 ssh rs-08' '@group rpi/'
+
+# ssh to VPN
+screen -t vps/ 2 //group
+select -
+bind -c rlogin 2 eval 'command -c ssh_vpn' 'echo "[1] ConoHa, [2] ConoHa_SSD"'
+bind -c ssh_vpn 1 eval 'screen -t ssh:conoha 200 ssh conoha' '@group vps/'
+bind -c ssh_vpn 2 eval 'screen -t ssh:conoha_ssd 200 ssh conoha_ssd' '@group vps/'
+
+# other
+screen -t other/ 9 //group
+select -
+bind -c rlogin 0 eval 'command -c other_bind' 'echo "[1] rtx-1200"'
+bind -c other_bind 1 eval 'screen -t telnet:rtx-1200 900 telnet 192.168.201.1' '@group other/'
