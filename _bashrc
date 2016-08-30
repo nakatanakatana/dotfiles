@@ -162,8 +162,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 fi
 
 # golang
-export GOPATH=$HOME/go
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export GOPATH=$HOME/go
 
 #CUDA
 export CUDA_HOME=/usr/local/cuda-7.5
@@ -176,7 +176,5 @@ if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
 fi
 
-
 # ssh-keyをagentに登録しておく
 ssh-add $HOME/.ssh/id_rsa
-
