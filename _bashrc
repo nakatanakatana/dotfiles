@@ -123,6 +123,7 @@ PATH=$PATH:/sbin
 PATH=$PATH:/bin
 PATH=$PATH:/usr/games
 PATH=$PATH:/usr/local/games
+PATH=$PATH:/usr/local/go/bin
 
 export PATH
 
@@ -178,3 +179,5 @@ fi
 
 # ssh-keyをagentに登録しておく
 ssh-add $HOME/.ssh/id_rsa
+# capsをctrlにする
+setxkbmap -option ctrl:nocaps
