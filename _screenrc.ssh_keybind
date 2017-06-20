@@ -6,8 +6,9 @@ bind ^T eval 'command -c rlogin' 'echo "[1] raspberry_pi, [2] VPN, [0] other"'
 # ssh to raspberry pi 
 screen -t rpi/ 1 //group
 select -
-bind -c rlogin 1 eval 'command -c ssh_rpi' 'echo "[1~0] r_worker, [q~i] rs_worker, [a] macbook"'
-bind -c ssh_rpi a eval 'screen -t ssh:macbook 100 ssh tanaka@192.168.202.3' '@group rpi/'
+bind -c rlogin 1 eval 'command -c ssh_cluster' 'echo "[1] macbook, [2] raspberry pi, [3] orange pi"'
+bind -c ssh_cluster 1 eval 'screen -t ssh:macbook 100 ssh tanaka@macbook' '@group rpi/'
+bind -c ssh_cluster 2 eval 'command -c ssh_rpi' 'echo "[1~8] r-0x"'
 bind -c ssh_rpi 1 eval 'screen -t ssh:r-01 100 ssh r-01' '@group rpi/'
 bind -c ssh_rpi 2 eval 'screen -t ssh:r-02 100 ssh r-02' '@group rpi/'
 bind -c ssh_rpi 3 eval 'screen -t ssh:r-03 100 ssh r-03' '@group rpi/'
@@ -16,23 +17,29 @@ bind -c ssh_rpi 5 eval 'screen -t ssh:r-05 100 ssh r-05' '@group rpi/'
 bind -c ssh_rpi 6 eval 'screen -t ssh:r-06 100 ssh r-06' '@group rpi/'
 bind -c ssh_rpi 7 eval 'screen -t ssh:r-07 100 ssh r-07' '@group rpi/'
 bind -c ssh_rpi 8 eval 'screen -t ssh:r-08 100 ssh r-08' '@group rpi/'
-bind -c ssh_rpi 9 eval 'screen -t ssh:r-09 100 ssh r-09' '@group rpi/'
-bind -c ssh_rpi 0 eval 'screen -t ssh:r-10 100 ssh r-10' '@group rpi/'
-bind -c ssh_rpi q eval 'screen -t ssh:rs-01 100 ssh rs-01' '@group rpi/'
-bind -c ssh_rpi w eval 'screen -t ssh:rs-02 100 ssh rs-02' '@group rpi/'
-bind -c ssh_rpi e eval 'screen -t ssh:rs-03 100 ssh rs-03' '@group rpi/'
-bind -c ssh_rpi r eval 'screen -t ssh:rs-04 100 ssh rs-04' '@group rpi/'
-bind -c ssh_rpi t eval 'screen -t ssh:rs-05 100 ssh rs-05' '@group rpi/'
-bind -c ssh_rpi y eval 'screen -t ssh:rs-06 100 ssh rs-06' '@group rpi/'
-bind -c ssh_rpi u eval 'screen -t ssh:rs-07 100 ssh rs-07' '@group rpi/'
-bind -c ssh_rpi i eval 'screen -t ssh:rs-08 100 ssh rs-08' '@group rpi/'
+bind -c ssh_cluster 3 eval 'command -c ssh_oz' 'echo "[01~14] oz-xx"'
+bind -c ssh_oz 0 eval 'command -c ssh_oz0' 'echo "[01~14] oz-0x"'
+bind -c ssh_oz 1 eval 'command -c ssh_oz1' 'echo "[01~14] oz-1x"'
+bind -c ssh_oz0 1 eval 'screen -t ssh:oz-01 100 ssh oz-01' '@group rpi/'
+bind -c ssh_oz0 2 eval 'screen -t ssh:oz-02 100 ssh oz-02' '@group rpi/'
+bind -c ssh_oz0 3 eval 'screen -t ssh:oz-03 100 ssh oz-03' '@group rpi/'
+bind -c ssh_oz0 4 eval 'screen -t ssh:oz-04 100 ssh oz-04' '@group rpi/'
+bind -c ssh_oz0 5 eval 'screen -t ssh:oz-05 100 ssh oz-05' '@group rpi/'
+bind -c ssh_oz0 6 eval 'screen -t ssh:oz-06 100 ssh oz-06' '@group rpi/'
+bind -c ssh_oz0 7 eval 'screen -t ssh:oz-07 100 ssh oz-07' '@group rpi/'
+bind -c ssh_oz0 8 eval 'screen -t ssh:oz-08 100 ssh oz-08' '@group rpi/'
+bind -c ssh_oz0 9 eval 'screen -t ssh:oz-09 100 ssh oz-09' '@group rpi/'
+bind -c ssh_oz1 0 eval 'screen -t ssh:oz-10 100 ssh oz-10' '@group rpi/'
+bind -c ssh_oz1 1 eval 'screen -t ssh:oz-11 100 ssh oz-11' '@group rpi/'
+bind -c ssh_oz1 2 eval 'screen -t ssh:oz-12 100 ssh oz-12' '@group rpi/'
+bind -c ssh_oz1 3 eval 'screen -t ssh:oz-13 100 ssh oz-13' '@group rpi/'
+bind -c ssh_oz1 4 eval 'screen -t ssh:oz-14 100 ssh oz-14' '@group rpi/'
 
 # ssh to VPN
 screen -t vps/ 2 //group
 select -
-bind -c rlogin 2 eval 'command -c ssh_vpn' 'echo "[1] ConoHa, [2] ConoHa_SSD"'
+bind -c rlogin 2 eval 'command -c ssh_vpn' 'echo "[1] ConoHa"'
 bind -c ssh_vpn 1 eval 'screen -t ssh:conoha 200 ssh conoha' '@group vps/'
-bind -c ssh_vpn 2 eval 'screen -t ssh:conoha_ssd 200 ssh conoha_ssd' '@group vps/'
 
 # other
 screen -t other/ 9 //group

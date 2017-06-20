@@ -124,6 +124,7 @@ PATH=$PATH:/bin
 PATH=$PATH:/usr/games
 PATH=$PATH:/usr/local/games
 PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$HOME/go/bin
 
 export PATH
 
@@ -166,12 +167,6 @@ fi
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 export GOPATH=$HOME/go
 
-#CUDA
-export CUDA_HOME=/usr/local/cuda-7.5
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
-export PATH=$PATH:${CUDA_HOME}/bin
-
 # nvm
 if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
@@ -181,3 +176,27 @@ fi
 ssh-add $HOME/.ssh/id_rsa
 # capsをctrlにする
 setxkbmap -option ctrl:nocaps
+
+### ghq
+
+function ghql() {
+  local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$selected_file" ]; then
+    if [ -t 1 ]; then
+      echo ${selected_file}
+      cd ${selected_file}
+    fi
+  fi
+}
+bind -x '"\C-r": ghql'
+
+### history
+
+# settings for peco
+_replace_by_history() {
+    local l=$(HISTTIMEFORMAT= history | tac | sed -e 's/^\s*[0-9]*    \+\s\+//' | peco --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": _replace_by_history'
+bind    '"\C-xr": reverse-search-history'

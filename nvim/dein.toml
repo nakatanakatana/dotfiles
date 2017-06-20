@@ -1,0 +1,47 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ==========================================================
+# color
+# ==========================================================
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+source ~/.config/nvim/plugins/solarized.vim
+'''
+
+# ==========================================================
+# powerline
+# ==========================================================
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['tagbar', 'vim-fugitive']
+hook_add = '''
+source ~/.config/nvim/plugins/vim-airline.vim
+'''
+
+# ==========================================================
+# edit
+# ==========================================================
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/caw.vim
+'''
+
+# ==========================================================
+# terminal
+# ==========================================================
+
+[[plugins]]
+repo = 'kassio/neoterm'
+if = "has('nvim')"

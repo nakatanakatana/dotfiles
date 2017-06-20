@@ -1,8 +1,8 @@
 defutf8 on
 encoding utf-8 utf-8
 defencoding utf-8
-
-defbce on
+cjkwidth off
+term xterm
 
 escape ^Tt
 

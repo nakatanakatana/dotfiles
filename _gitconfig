@@ -12,3 +12,6 @@
 	logc = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
 [core]
 	editor = vim -c \"set fenc=utf-8\"
+[ghq]
+	root = ~/source
+	root = ~/go/src
