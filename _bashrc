@@ -140,7 +140,7 @@ set_prompt_command () {
     screen_title_str="\033k\033\0134\033k/$screen_title\033\\"
     echo -ne "$screen_hstatus_str$screen_title_str"
 }
-if [ $(echo $TERM | grep 'screen') ]; then
+if [ $(echo $TERM | grep -e 'screen' -e 'xterm' ) ]; then
     export PS1='\u:\W\$ '
     export PROMPT_COMMAND="set_prompt_command"
 else
