@@ -11,6 +11,12 @@ hook_add = '''
 source ~/.config/nvim/plugins/solarized.vim
 '''
 
+# [[plugins]]
+# repo = 'jacoborus/tender.vim'
+# hook_add = '''
+# source ~/.config/nvim/plugins/tender.vim
+# '''
+
 # ==========================================================
 # powerline
 # ==========================================================
@@ -26,6 +32,23 @@ repo = 'vim-airline/vim-airline'
 depends = ['tagbar', 'vim-fugitive']
 hook_add = '''
 source ~/.config/nvim/plugins/vim-airline.vim
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline'
+hook_add = '''
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
+'''
+
+[[plugins]]
+repo = 'gcmt/taboo.vim'
+depends = 'vim-airline'
+hook_add = '''
+"set guioptions-=e
+"set sessionoptions+=tabpages,globals
+let g:taboo_tab_format=' %N %f%m %w '
 '''
 
 # ==========================================================
@@ -45,3 +68,15 @@ source ~/.config/nvim/plugins/caw.vim
 [[plugins]]
 repo = 'kassio/neoterm'
 if = "has('nvim')"
+
+
+# ==========================================================
+# linter
+# ==========================================================
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/neomake.vim
+'''
+
