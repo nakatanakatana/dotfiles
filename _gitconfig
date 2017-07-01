@@ -15,3 +15,5 @@
 [ghq]
 	root = ~/source
 	root = ~/go/src
+[init]
+	templatedir = ~/.git-tmp
