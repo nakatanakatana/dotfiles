@@ -68,11 +68,14 @@ source ~/.config/nvim/plugins/caw.vim
 [[plugins]]
 repo = 'kassio/neoterm'
 if = "has('nvim')"
-
+hook_add = '''
+source ~/.config/nvim/plugins/neoterm.vim
+'''
 
 # ==========================================================
 # linter
 # ==========================================================
+
 [[plugins]]
 repo = 'neomake/neomake'
 if = "has('nvim')"
@@ -80,3 +83,37 @@ hook_add = '''
 source ~/.config/nvim/plugins/neomake.vim
 '''
 
+# ==========================================================
+# util
+# ==========================================================
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+source ~/.config/nvim/plugins/denite.vim
+'''
+
+#[[plugins]]
+#repo = 'nixprime/cpsm'
+#build = 'env PY3=ON ./install.sh'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+source ~/.config/nvim/plugins/easy-align.vim
+'''
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+hook_add = '''
+source ~/.config/nvim/plugins/expand-region.vim
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+source ~/.config/nvim/plugins/gitgutter.vim
+'''

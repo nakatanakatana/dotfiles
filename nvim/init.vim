@@ -1,13 +1,11 @@
-" init
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
 if &compatible
   set nocompatible
 endif
 
-" dein
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 if has('nvim')
   let s:dein_cache_path = expand('~/.cache/nvim/dein')
 else
@@ -37,6 +35,9 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+filetype plugin indent on
+syntax enable
 
 runtime! options.rc.vim
 runtime! keymap.rc.vim
