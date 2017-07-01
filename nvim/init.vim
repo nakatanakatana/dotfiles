@@ -1,6 +1,7 @@
 if &compatible
   set nocompatible
 endif
+let mapleader = "\<Space>"
 
 augroup MyAutoCmd
   autocmd!

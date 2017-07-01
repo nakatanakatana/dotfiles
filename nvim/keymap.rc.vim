@@ -1,4 +1,3 @@
-let mapleader = "\<Space>"
 nnoremap ; :
 
 if has('nvim')
@@ -8,6 +7,9 @@ endif
 " move
 nnoremap <Leader>h ^
 nnoremap <Leader>l &
+
+" save
+nnoremap <Leader>w :w<CR>
 
 " tag jump
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>

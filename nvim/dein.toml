@@ -93,9 +93,9 @@ hook_add = '''
 source ~/.config/nvim/plugins/denite.vim
 '''
 
-#[[plugins]]
-#repo = 'nixprime/cpsm'
-#build = 'env PY3=ON ./install.sh'
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
