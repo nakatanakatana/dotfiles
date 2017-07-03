@@ -3,6 +3,7 @@ encoding utf-8 utf-8
 defencoding utf-8
 cjkwidth off
 term xterm-256color
+maptimeout 10
 
 escape ^Tt
 
