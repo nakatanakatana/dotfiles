@@ -60,13 +60,19 @@ windowlist string '%3n %f%09= %t%=%h'
 #split window
 bind s eval split focus "select 0"
 
-#resize
+#resize/focus
 bind r eval 'command -c resize'
 bind ^r eval 'command -c resize'
 bind + eval 'command -c resize'
 bind - eval 'command -c resize'
 bind -c resize + eval 'resize +1' 'command -c resize'
+bind -c resize = eval 'resize +1' 'command -c resize'
+bind -c resize _ eval 'resize -1' 'command -c resize'
 bind -c resize - eval 'resize -1' 'command -c resize'
+bind -c resize j eval 'focus down' 'command -c resize'
+bind -c resize k eval 'focus up' 'command -c resize'
+bind -c resize l eval 'focus right' 'command -c resize'
+bind -c resize h eval 'focus left' 'command -c resize'
 
 # window group
 maxwin 1000
