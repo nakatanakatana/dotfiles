@@ -14,6 +14,7 @@
 	editor = vim -c \"set fenc=utf-8\"
 [ghq]
 	root = ~/source
+	root = ~/repos
 	root = ~/go/src
 [init]
 	templatedir = ~/.git-tmp

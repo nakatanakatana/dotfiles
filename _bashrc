@@ -124,6 +124,7 @@ PATH=$PATH:/bin
 PATH=$PATH:/usr/games
 PATH=$PATH:/usr/local/games
 PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/go/bin
 
 export PATH
@@ -194,7 +195,8 @@ bind -x '"\C-]": ghql'
 
 # settings for peco
 _replace_by_history() {
-    local l=$(HISTTIMEFORMAT= history | tac | sed -e 's/^\s*[0-9]*    \+\s\+//' | peco --query "$READLINE_LINE")
+
+    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
     READLINE_LINE="$l"
     READLINE_POINT=${#l}
 }
