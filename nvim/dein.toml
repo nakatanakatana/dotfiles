@@ -113,6 +113,8 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
