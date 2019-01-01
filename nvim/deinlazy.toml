@@ -14,35 +14,14 @@ source ~/.config/nvim/plugins/deoplete.vim
 # lang
 # ==========================================================
 
-
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'zchee/deoplete-jedi'
-depends = 'deoplete.nvim'
-if = "has('nvim')"
-on_ft = 'python'
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete-jedi.vim
-'''
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
 
-[[plugins]]
-repo = 'zchee/deoplete-go'
-depends = 'deoplete.nvim'
-if = "has('nvim')"
-on_ft = 'go'
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete-go.vim
-'''
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_source = '''
-source ~/.config/nvim/plugins/go.vim
-'''
 
 # ==========================================================
 # fileformat
@@ -51,7 +30,3 @@ source ~/.config/nvim/plugins/go.vim
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-
-[[plugins]]
-repo = 'elzr/vim-json'
-on_ft = 'json'

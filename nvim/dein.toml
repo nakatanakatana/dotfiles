@@ -11,12 +11,6 @@ hook_add = '''
 source ~/.config/nvim/plugins/solarized.vim
 '''
 
-# [[plugins]]
-# repo = 'jacoborus/tender.vim'
-# hook_add = '''
-# source ~/.config/nvim/plugins/tender.vim
-# '''
-
 # ==========================================================
 # powerline
 # ==========================================================
@@ -76,12 +70,42 @@ source ~/.config/nvim/plugins/neoterm.vim
 # linter
 # ==========================================================
 
+# ==========================================================
+# lsp
+# ==========================================================
+
 [[plugins]]
-repo = 'neomake/neomake'
-if = "has('nvim')"
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-source ~/.config/nvim/plugins/neomake.vim
+source ~/.config/nvim/plugins/vim-lsp.vim
 '''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_remove_duplicates = 1
+
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+
+# ==========================================================
+# lang
+# ==========================================================
+
 
 # ==========================================================
 # util

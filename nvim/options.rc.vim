@@ -1,4 +1,3 @@
-
 set list
 set colorcolumn=80
 set number
@@ -11,3 +10,4 @@ set ttimeoutlen=10
 set nocursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
 
+set signcolumn=yes
