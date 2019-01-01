@@ -124,7 +124,9 @@ PATH=$PATH:/bin
 PATH=$PATH:/usr/games
 PATH=$PATH:/usr/local/games
 PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:/snap/bin
 PATH=$PATH:$HOME/.cargo/bin
+PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/go/bin
 
 export PATH
@@ -204,3 +206,4 @@ bind -x '"\C-r": _replace_by_history'
 bind    '"\C-xr": reverse-search-history'
 
 alias vim=nvim
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
