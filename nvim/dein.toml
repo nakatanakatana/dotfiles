@@ -8,7 +8,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-source ~/.config/nvim/plugins/solarized.vim
+syntax enable
+set background=dark
+au MyAutoCmd VimEnter * nested colorscheme solarized
 '''
 
 # ==========================================================
@@ -24,9 +26,6 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 depends = ['tagbar', 'vim-fugitive']
-hook_add = '''
-source ~/.config/nvim/plugins/vim-airline.vim
-'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
@@ -52,7 +51,8 @@ let g:taboo_tab_format=' %N %f%m %w '
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-source ~/.config/nvim/plugins/caw.vim
+nmap <Leader>c <Plug>(caw:hatpos:toggle)
+vmap <Leader>c <Plug>(caw:hatpos:toggle)
 '''
 
 # ==========================================================
@@ -63,7 +63,7 @@ source ~/.config/nvim/plugins/caw.vim
 repo = 'kassio/neoterm'
 if = "has('nvim')"
 hook_add = '''
-source ~/.config/nvim/plugins/neoterm.vim
+let g:neoterm_default_mod = 'vertical'
 '''
 
 # ==========================================================
@@ -110,6 +110,9 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 # ==========================================================
 # util
 # ==========================================================
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -127,17 +130,18 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 hook_add = '''
-source ~/.config/nvim/plugins/easy-align.vim
+vmap <Enter> <Plug>(EasyAlign)
 '''
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
 hook_add = '''
-source ~/.config/nvim/plugins/expand-region.vim
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-source ~/.config/nvim/plugins/gitgutter.vim
+nnoremap <Leader><BS> :GitGutterLineHighlightsToggle<CR>
 '''
