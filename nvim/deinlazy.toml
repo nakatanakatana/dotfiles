@@ -11,8 +11,12 @@ repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 
 [[plugins]]
-repo = "posva/vim-vue"
-on_ft = ["vue"]
+repo = 'posva/vim-vue'
+on_ft = 'vue'
+
+[[plugins]]
+repo = "fatih/vim-go"
+on_ft = 'go'
 
 # ==========================================================
 # fileformat
