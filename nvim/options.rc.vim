@@ -1,4 +1,5 @@
 set list
+set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 set colorcolumn=80
 set number
 set incsearch

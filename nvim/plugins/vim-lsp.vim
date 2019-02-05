@@ -1,6 +1,21 @@
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:lsp_diagnostics_echo_cursor = 1
 
+let g:lsp_diagnostics_enabled = 0 " for ale
+
+function! s:configure_lsp() abort
+  setlocal omnifunc=lsp#complete
+  nnoremap <buffer> <leader>d :<C-u>LspDefinition<CR>
+  nnoremap <buffer> <leader>D :<C-u>LspReferences<CR>
+  nnoremap <buffer> <leader>s :<C-u>LspDocumentSymbol<CR>
+  nnoremap <buffer> <leader>S :<C-u>LspWorkspaceSymbol<CR>
+  nnoremap <buffer> <leader>Q :<C-u>LspDocumentFormat<CR>
+  vnoremap <buffer> <leader>Q :LspDocumentRangeFormat<CR>
+  nnoremap <buffer> <leader>K :<C-u>LspHover<CR>
+  nnoremap <buffer> <F1> :<C-u>LspImplementation<CR>
+  nnoremap <buffer> <F6> :<C-u>LspRename<CR>
+endfunction
 
 if executable('golsp')
   augroup LspGo

@@ -107,6 +107,13 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 # ==========================================================
 [[plugins]]
 repo = 'w0rp/ale'
+hook_add = '''
+let g:ale_sign_column_always = 1
+
+nmap <silent> <leader>p <Plug>(ale_previous)
+nmap <silent> <leader>n <Plug>(ale_next)
+nmap <silent> <leader>a <Plug>(ale_toggle)
+'''
 
 
 # ==========================================================

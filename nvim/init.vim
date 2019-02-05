@@ -40,5 +40,5 @@ endif
 filetype plugin indent on
 syntax enable
 
-runtime! options.rc.vim
-runtime! keymap.rc.vim
+source ~/.config/nvim/options.rc.vim
+source ~/.config/nvim/keymap.rc.vim
