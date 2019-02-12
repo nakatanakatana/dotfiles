@@ -17,7 +17,18 @@ on_ft = 'vue'
 [[plugins]]
 repo = "fatih/vim-go"
 on_ft = 'go'
+hook_add = '''
 
+" keymap
+au FileType go nmap <leader>s <Plug>(go-def-split)
+au FileType go nmap <leader>v <Plug>(go-def-vertical)
+au FileType go nmap <leader>4 <Plug>(go-test)
+au FileType go nmap <leader>5 <Plug>(go-test-func)
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
 # ==========================================================
 # fileformat
 # ==========================================================
