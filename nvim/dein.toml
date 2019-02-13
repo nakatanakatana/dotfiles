@@ -22,6 +22,11 @@ repo = 'majutsushi/tagbar'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+nnoremap <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gw :<C-u>Gwrite<CR>
+nnoremap <Leader>gd :<C-u>Gdiff<CR>
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -154,5 +159,5 @@ vmap V <Plug>(expand_region_shrink)
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-nnoremap <Leader><BS> :GitGutterLineHighlightsToggle<CR>
+nnoremap <Leader>g<BS> :GitGutterLineHighlightsToggle<CR>
 '''

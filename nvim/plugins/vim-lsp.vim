@@ -1,21 +1,23 @@
+" 
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
 let g:lsp_diagnostics_echo_cursor = 1
 
-let g:lsp_diagnostics_enabled = 0 " for ale
-
 function! s:configure_lsp() abort
   setlocal omnifunc=lsp#complete
-  nnoremap <buffer> <leader>d :<C-u>LspDefinition<CR>
-  nnoremap <buffer> <leader>D :<C-u>LspReferences<CR>
-  nnoremap <buffer> <leader>s :<C-u>LspDocumentSymbol<CR>
-  nnoremap <buffer> <leader>S :<C-u>LspWorkspaceSymbol<CR>
-  nnoremap <buffer> <leader>Q :<C-u>LspDocumentFormat<CR>
-  vnoremap <buffer> <leader>Q :LspDocumentRangeFormat<CR>
-  nnoremap <buffer> <leader>K :<C-u>LspHover<CR>
-  nnoremap <buffer> <F1> :<C-u>LspImplementation<CR>
-  nnoremap <buffer> <F6> :<C-u>LspRename<CR>
 endfunction
+
+let g:lsp_diagnostics_enabled = 0 " for ale
+
+nnoremap <buffer> <Leader>jd :<C-u>LspDefinition<CR>
+nnoremap <buffer> <Leader>jD :<C-u>LspReferences<CR>
+nnoremap <buffer> <Leader>jK :<C-u>LspHover<CR>
+nnoremap <buffer> <Leader>j1 :<C-u>LspImplementation<CR>
+nnoremap <buffer> <Leader>jr :<C-u>LspRename<CR>
+nnoremap <silent> <Leader>js :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>jv :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <Leader>jk :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>jj :vsplit \| :LspDefinition <CR>
 
 if executable('golsp')
   augroup LspGo
