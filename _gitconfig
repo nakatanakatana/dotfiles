@@ -18,3 +18,5 @@
 	root = ~/go/src
 [init]
 	templatedir = ~/.git-tmp
+[credential]
+	helper = cache --timeout=86400
