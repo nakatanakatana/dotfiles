@@ -67,11 +67,8 @@ vmap <Leader>c <Plug>(caw:hatpos:toggle)
 # ==========================================================
 
 [[plugins]]
-repo = 'kassio/neoterm'
-if = "has('nvim')"
-hook_add = '''
-let g:neoterm_default_mod = 'vertical'
-'''
+repo = 'tpope/vim-dispatch'
+
 
 # ==========================================================
 # linter
@@ -120,6 +117,17 @@ let g:ale_sign_column_always = 1
 nmap <silent> <leader>p <Plug>(ale_previous)
 nmap <silent> <leader>n <Plug>(ale_next)
 nmap <silent> <leader>a <Plug>(ale_toggle)
+'''
+
+[[plugins]]
+repo = 'janko-m/vim-test'
+hook_add = '''
+let g:test#strategy = 'dispatch'
+
+nnoremap <Leader>t5 :TestFile<CR>
+nnoremap <Leader>t4 :TestSuite<CR>
+nnoremap <Leader>t3 :TestNearest<CR>
+nnoremap <Leader>t2 :TestLast<CR>
 '''
 
 
