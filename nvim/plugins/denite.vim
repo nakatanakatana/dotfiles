@@ -8,6 +8,7 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', 'build/', '__pycache__/',
       \ 'images/', '*.o', '*.make',
+      \ 'node_modules/',
       \ '*.min.*',
      \ 'img/', 'fonts/'])
 if executable('rg')

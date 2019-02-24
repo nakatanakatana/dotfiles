@@ -9,6 +9,15 @@ set smartindent
 set t_Co=256
 set ttimeoutlen=10
 set nocursorline
+set splitbelow
+set splitright
+set autoread
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
+
 autocmd InsertEnter,InsertLeave * set cursorline!
+
 
 set signcolumn=yes

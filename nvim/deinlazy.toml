@@ -29,6 +29,15 @@ au FileType go nmap <leader>5 <Plug>(go-test-func)
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
+
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+hook_add = '''
+nnoremap <Leader>fp :<C-u>PrettierAsync<CR>
+'''
+
 # ==========================================================
 # fileformat
 # ==========================================================

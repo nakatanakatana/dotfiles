@@ -23,7 +23,7 @@ if executable('golsp')
   augroup LspGo
     au!
     autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'go-lang',
+        \ 'name': 'golsp',
         \ 'cmd': {server_info->['golsp', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
@@ -55,5 +55,14 @@ if executable('rls')
         \ 'cmd': {server_info->['rustup', 'run', 'nightly-2019-02-08', 'rls']},
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
         \ 'whitelist': ['rust'],
+        \ })
+endif
+
+if executable('vls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vls',
+        \ 'cmd': {server_info->['vls']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'whitelist': ['vue'],
         \ })
 endif
