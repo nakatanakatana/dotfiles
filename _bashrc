@@ -206,3 +206,7 @@ bind -x '"\C-r": _replace_by_history'
 bind    '"\C-xr": reverse-search-history'
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+alias vim="nvim"
+alias k3ctl="sudo k3s kubectl"

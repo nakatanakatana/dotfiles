@@ -11,6 +11,33 @@ repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 
 [[plugins]]
+repo = 'ruanyl/coverage.vim'
+on_ft = 'typescript'
+hook_add = '''
+let g:coverage_json_report_path = 'coverage/coverage-final.json'
+let g:coverage_show_covered = 1
+let g:coverage_sign_covered = 'o'
+let g:coverage_show_uncovered = 1
+let g:coverage_sign_uncovered = 'x'
+let g:coverage_sign_column_always = 0
+'''
+
+[[plugins]]
+repo = 'yardnsm/vim-import-cost'
+build = 'npm install'
+on_ft = 'typescript'
+hook_add = '''
+let g:import_cost_always_open_split = 0
+let g:import_cost_split_pos = 'right'
+
+augroup import_cost_auto_run
+  autocmd!
+  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+augroup END
+'''
+
+
+[[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
 
