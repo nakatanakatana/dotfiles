@@ -1,6 +1,10 @@
 # ==========================================================
 # lang
 # ==========================================================
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+on_ft = 'toml'
+
 
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
@@ -12,10 +16,10 @@ on_ft = 'typescript'
 
 [[plugins]]
 repo = 'ruanyl/coverage.vim'
-on_ft = 'typescript'
+on_ft = ['typescript', 'vue']
 hook_add = '''
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
-let g:coverage_show_covered = 1
+let g:coverage_show_covered = 0
 let g:coverage_sign_covered = 'o'
 let g:coverage_show_uncovered = 1
 let g:coverage_sign_uncovered = 'x'
@@ -25,7 +29,7 @@ let g:coverage_sign_column_always = 0
 [[plugins]]
 repo = 'yardnsm/vim-import-cost'
 build = 'npm install'
-on_ft = 'typescript'
+on_ft = ['typescript', 'vue']
 hook_add = '''
 let g:import_cost_always_open_split = 0
 let g:import_cost_split_pos = 'right'
@@ -49,6 +53,7 @@ hook_add = '''
 " keymap
 au FileType go nmap <leader>s <Plug>(go-def-split)
 au FileType go nmap <leader>v <Plug>(go-def-vertical)
+au FileType go nmap <leader>3 <Plug>(go-coverage-toggle)
 au FileType go nmap <leader>4 <Plug>(go-test)
 au FileType go nmap <leader>5 <Plug>(go-test-func)
 '''
