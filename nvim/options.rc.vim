@@ -12,7 +12,7 @@ set nocursorline
 set splitbelow
 set splitright
 set autoread
-set wildignore=*/node_modules/*,*/dist/*
+set wildignore=*/,git/*,*/node_modules/*,*/dist/*,*/coverage/*
 augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
