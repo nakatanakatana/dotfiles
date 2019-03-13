@@ -5,12 +5,11 @@ if has('nvim')
 endif
 
 " move
-nnoremap <Leader>h ^
-nnoremap <Leader>l $
+nnoremap <C-h> ^
+nnoremap <C-l> $
 
 " save,quit
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader><Leader>q :q<CR>
 
 " yank
 vnoremap <Leader><Leader>y "+y
@@ -23,18 +22,17 @@ nnoremap <C-Left> <C-w>h
 nnoremap <C-Right> <C-w>l
 
 " split
-nnoremap <Leader><Leader>s :<C-u>split<CR>
-nnoremap <Leader><Leader>v :<C-u>vsplit<CR>
+nnoremap <Leader>s :<C-u>split<CR>
+nnoremap <Leader>v :<C-u>vsplit<CR>
 
 " tab
-nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>
-nnoremap <Leader><Leader>n :<C-u>tabnext<CR>
-nnoremap <Leader><Leader>p :<C-u>tabprevious<CR>
+nnoremap <Leader><Leader> :<C-u>tabnew<CR>
+nnoremap <Leader>n :<C-u>tabnext<CR>
+nnoremap <Leader>p :<C-u>tabprevious<CR>
 
 "hide hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>nohlsearch<CR>
 
-" util
-nnoremap <Leader>r :%s/
-nnoremap <Leader>f /
-
+" search/replace
+nnoremap <Leader>f :vimgrep // **/*.*<Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>8 :vimgrep /<C-R><C-W>/ **/*.*<CR>

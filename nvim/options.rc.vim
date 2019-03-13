@@ -12,12 +12,13 @@ set nocursorline
 set splitbelow
 set splitright
 set autoread
+set wildignore=*/node_modules/*,*/dist/*
 augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
 augroup END
 
 autocmd InsertEnter,InsertLeave * set cursorline!
-
+autocmd QuickFixCmdPost *grep* cwindow
 
 set signcolumn=yes
