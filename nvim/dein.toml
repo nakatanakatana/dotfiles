@@ -172,3 +172,14 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
 nnoremap <Leader>g<BS> :GitGutterLineHighlightsToggle<CR>
 '''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'junegunn/fzf'
+hook_add = '''
+nnoremap <Leader>b :<C-u>Buffers<CR>
+'''

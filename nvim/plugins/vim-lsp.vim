@@ -9,12 +9,12 @@ endfunction
 
 let g:lsp_diagnostics_enabled = 0 " for ale
 
-nnoremap <buffer> <Leader>d :<C-u>LspDefinition<CR>
-nnoremap <buffer> <Leader>r :<C-u>LspReferences<CR>
-nnoremap <buffer> <Leader>h :<C-u>LspHover<CR>
-nnoremap <buffer> <Leader>i :<C-u>LspImplementation<CR>
-nnoremap <silent> <Leader>s :split \| :LspDefinition <CR>
-nnoremap <silent> <Leader>v :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <Leader>dd :<C-u>LspDefinition<CR>
+nnoremap <silent> <Leader>ds :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>dv :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
+nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
+nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 if executable('golsp')
   augroup LspGo
