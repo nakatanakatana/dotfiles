@@ -34,5 +34,4 @@ nnoremap <Leader>p :<C-u>tabprevious<CR>
 nnoremap <silent><Esc><Esc> :<C-u>nohlsearch<CR>
 
 " search/replace
-nnoremap <Leader>f :vimgrep // **/*.*<Left><Left><Left><Left><Left><Left><Left><Left>
 nnoremap <Leader>8 :vimgrep /<C-R><C-W>/ **/*.*<CR>
