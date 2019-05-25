@@ -5,7 +5,6 @@
 repo = 'osyo-manga/vim-precious'
 on_ft = 'toml'
 
-
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
@@ -40,6 +39,9 @@ augroup import_cost_auto_run
 augroup END
 '''
 
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['vue', 'html']
 
 [[plugins]]
 repo = 'posva/vim-vue'
@@ -49,6 +51,8 @@ on_ft = 'vue'
 repo = "fatih/vim-go"
 on_ft = 'go'
 hook_add = '''
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
 
 " keymap
 au FileType go nmap <leader>s <Plug>(go-def-split)
@@ -67,6 +71,12 @@ on_ft = 'rust'
 repo = 'prettier/vim-prettier'
 on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
 hook_add = '''
+augroup pretteir
+  autocmd!
+  autocmd BufWritePre * PrettierAsync
+augroup END
+
+" keymap
 nnoremap <Leader>fp :<C-u>PrettierAsync<CR>
 '''
 
