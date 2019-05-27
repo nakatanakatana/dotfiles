@@ -8,8 +8,8 @@ maptimeout 10
 escape ^Tt
 
 # backticks to display information in the statusbar
-backtick 1 0 0 /usr/local/bin/screen-mem-usage
-backtick 2 0 0 /usr/local/bin/screen-cpu-usage
+# backtick 1 0 0 /usr/local/bin/screen-mem-usage
+# backtick 2 0 0 /usr/local/bin/screen-cpu-usage
 
 setenv cp ""
 setenv cp "$cp%?%F"
@@ -27,7 +27,7 @@ caption always "$cp"
 
 setenv hs ""
 setenv hs "$hs%-w"
-setenv hs "$hs%{= bw}"
+setenv hs "$hs%{= yw}"
 setenv hs "$hs%n"
 setenv hs "$hs "
 setenv hs "$hs%t"
