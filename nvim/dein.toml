@@ -196,3 +196,34 @@ nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>f :<C-u>Ag<CR>
 nnoremap <C-p> :<C-u>GFiles<CR>
 '''
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = '''
+" undo/redo
+call submode#enter_with('undo/redo', 'n', '', 'g-', 'g-')
+call submode#enter_with('undo/redo', 'n', '', 'g+', 'g+')
+call submode#enter_with('undo/redo', 'n', '', 'g=', 'g+')
+call submode#leave_with('undo/redo', 'n', '', '<Esc>')
+call submode#map('undo/redo', 'n', '', '-', 'g-')
+call submode#map('undo/redo', 'n', '', '+', 'g+')
+call submode#map('undo/redo', 'n', '', '=', 'g+')
+" splitsize
+call submode#enter_with('bufmove', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<C-w>.', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<C-w>,', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<C-w>=', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<C-w>-', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', '<C-w>0', '<C-w>=')
+call submode#leave_with('bufmove', 'n', '', '<Esc>')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '.', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', ',', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '=', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '0', '<C-w>=')
+'''

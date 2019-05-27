@@ -73,7 +73,7 @@ on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', '
 hook_add = '''
 augroup pretteir
   autocmd!
-  autocmd BufWritePre * PrettierAsync
+  autocmd BufWritePre *.js,*.ts,*.json,*.md,*.vue,*.html PrettierAsync
 augroup END
 
 " keymap
