@@ -150,9 +150,9 @@ hook_add = '''
 source ~/.config/nvim/plugins/denite.vim
 '''
 
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
+# [[plugins]]
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -161,6 +161,28 @@ repo = 'Shougo/neomru.vim'
 repo = 'junegunn/vim-easy-align'
 hook_add = '''
 vmap <Enter> <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+nnoremap <Leader><Leader> :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+hook_add = '''
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 '''
 
 [[plugins]]
@@ -226,4 +248,13 @@ call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '=', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 call submode#map('bufmove', 'n', '', '0', '<C-w>=')
+" splitselect
+call submode#enter_with('splitselect', 'n', '', '<C-w>h', '<C-w>h')
+call submode#enter_with('splitselect', 'n', '', '<C-w>j', '<C-w>j')
+call submode#enter_with('splitselect', 'n', '', '<C-w>k', '<C-w>k')
+call submode#enter_with('splitselect', 'n', '', '<C-w>l', '<C-w>l')
+call submode#map('splitselect', 'n', '', 'h', '<C-w>h')
+call submode#map('splitselect', 'n', '', 'j', '<C-w>j')
+call submode#map('splitselect', 'n', '', 'k', '<C-w>k')
+call submode#map('splitselect', 'n', '', 'l', '<C-w>l')
 '''

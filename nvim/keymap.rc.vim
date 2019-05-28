@@ -26,7 +26,7 @@ nnoremap <Leader>s :<C-u>split<CR>
 nnoremap <Leader>v :<C-u>vsplit<CR>
 
 " tab
-nnoremap <Leader><Leader> :<C-u>tabnew<CR>
+nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>
 nnoremap <Leader>n :<C-u>tabnext<CR>
 nnoremap <Leader>p :<C-u>tabprevious<CR>
 
