@@ -166,6 +166,9 @@ vmap <Enter> <Plug>(EasyAlign)
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
+autocmd VimEnter * execute 'NERDTree'
+let g:NERDTreeShowBookmarks=1
+
 nnoremap <Leader><Leader> :NERDTreeToggle<CR>
 '''
 
