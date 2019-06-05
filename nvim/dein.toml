@@ -134,6 +134,11 @@ nnoremap <Leader>t3 :TestNearest<CR>
 nnoremap <Leader>t2 :TestLast<CR>
 '''
 
+[[plugins]]
+repo = 'alvan/vim-closetag'
+hook_add = '''
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+'''
 
 # ==========================================================
 # util
@@ -164,28 +169,49 @@ vmap <Enter> <Plug>(EasyAlign)
 '''
 
 [[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
 autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeShowBookmarks=1
+let g:NERDTreeChDirMode=2
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
 
 nnoremap <Leader><Leader> :NERDTreeToggle<CR>
 '''
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 hook_add = '''
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
+'''
+
+[[plugins]]
+repo = 'tsony-tsonev/nerdtree-git-plugin'
+hook_add = '''
+let g:NERDTreeGitStatusWithFlags = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+    \ "Modified"  : "#529AB3",
+    \ "Staged"    : "#538B54",
+    \ "Untracked" : "#BE5849",
+    \ "Dirty"     : "#299999",
+    \ "Clean"     : "#87939A",
+    \ "Ignored"   : "#808080"
     \ }
+'''
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add = '''
+let g:rooter_use_lcd = 1
+let g:rooter_patterns = ['tags', '.git', 'node_modules/','.git/', '_darcs/', '.hg/', '.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
 '''
 
 [[plugins]]

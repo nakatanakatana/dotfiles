@@ -12,6 +12,7 @@ set nocursorline
 set splitbelow
 set splitright
 set autoread
+set title
 set noswapfile
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
 augroup vimrc-checktime
