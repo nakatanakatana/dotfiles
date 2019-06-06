@@ -22,8 +22,8 @@ nnoremap <C-Left> <C-w>h
 nnoremap <C-Right> <C-w>l
 
 " split
-nnoremap <Leader>s :<C-u>split<CR>
-nnoremap <Leader>v :<C-u>vsplit<CR>
+nnoremap <Leader>ws :<C-u>split<CR>
+nnoremap <Leader>wv :<C-u>vsplit<CR>
 
 " tab
 nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>
