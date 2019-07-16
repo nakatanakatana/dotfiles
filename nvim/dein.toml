@@ -174,7 +174,7 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-autocmd VimEnter * execute 'NERDTree'
+" autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 
