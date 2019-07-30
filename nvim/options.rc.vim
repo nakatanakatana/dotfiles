@@ -18,6 +18,7 @@ set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
 augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
+  autocmd TermOpen * setlocal nonumber
 augroup END
 
 autocmd InsertEnter,InsertLeave * set cursorline!
