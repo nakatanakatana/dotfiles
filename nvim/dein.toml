@@ -118,9 +118,9 @@ hook_add = '''
 let g:ale_sign_column_always = 1
 let g:ale_virtualtext_cursor = 1
 
-nmap <silent> <leader>p <Plug>(ale_previous)
-nmap <silent> <leader>n <Plug>(ale_next)
-nmap <silent> <leader>a <Plug>(ale_toggle)
+nmap <silent> <leader>ap <Plug>(ale_previous)
+nmap <silent> <leader>an <Plug>(ale_next)
+nmap <silent> <leader>aa <Plug>(ale_toggle)
 '''
 
 [[plugins]]
@@ -155,10 +155,6 @@ hook_add = '''
 source ~/.config/nvim/plugins/denite.vim
 '''
 
-# [[plugins]]
-# repo = 'nixprime/cpsm'
-# build = 'env PY3=ON ./install.sh'
-
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
@@ -174,7 +170,6 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-" autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 
@@ -184,6 +179,11 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 
 nnoremap <Leader><Leader> :NERDTreeToggle<CR>
+" vue
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = ''
+let g:NERDTreeExtensionHighlightColor = {}
+let g:NERDTreeExtensionHighlightColor['vue'] = '42B983'
 '''
 
 [[plugins]]
@@ -247,6 +247,10 @@ nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>f :<C-u>Ag<CR>
 nnoremap <C-p> :<C-u>GFiles<CR>
 '''
+
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+
 
 [[plugins]]
 repo = 'kana/vim-submode'
