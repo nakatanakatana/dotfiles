@@ -21,17 +21,20 @@ au MyAutoCmd VimEnter * nested colorscheme solarized
 repo = 'majutsushi/tagbar'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'lambdalisue/gina.vim'
 hook_add = '''
-nnoremap <Leader>gb :<C-u>Gblame<CR>
-nnoremap <Leader>gl :<C-u>0Glog<CR>
-
-set diffopt+=vertical
+nnoremap <Leader>gs :<C-u>Gina status<CR>
+nnoremap <Leader>gc :<C-u>Gina commit<CR>
+nnoremap <Leader>gl :<C-u>Gina log<CR>
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['tagbar', 'vim-fugitive']
+depends = ['tagbar', 'gina.vim']
+hook_add = '''
+call airline#parts#define_function('gina', 'gina#component#repo#branch')
+let g:airline_section_b = airline#section#create(['hunks', 'gina'])
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
@@ -162,14 +165,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
-
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
-hook_add = '''
-nnoremap <Leader>gs :<C-u>Gina status<CR>
-nnoremap <Leader>gc :<C-u>Gina commit<CR>
-nnoremap <Leader>gl :<C-u>Gina log<CR>
-'''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
