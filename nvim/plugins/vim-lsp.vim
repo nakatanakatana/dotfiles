@@ -16,12 +16,12 @@ nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
-if executable('golsp')
+if executable('gopls')
   augroup LspGo
     au!
     autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'golsp',
-        \ 'cmd': {server_info->['golsp', '-mode', 'stdio']},
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
     autocmd FileType go setlocal omnifunc=lsp#complete
