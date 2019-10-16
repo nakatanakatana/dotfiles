@@ -133,11 +133,6 @@ nnoremap <Leader>t3 :TestNearest<CR>
 nnoremap <Leader>t2 :TestLast<CR>
 '''
 
-[[plugins]]
-repo = 'alvan/vim-closetag'
-hook_add = '''
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
-'''
 
 # ==========================================================
 # util
@@ -167,43 +162,110 @@ vmap <Enter> <Plug>(EasyAlign)
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
+repo = 'Shougo/defx.nvim'
 hook_add = '''
-let g:NERDTreeShowBookmarks=1
-let g:NERDTreeChDirMode=2
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
+nnoremap <silent> <leader>q :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+" defx Config: start -----------------
 
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
+autocmd FileType defx call s:defx_my_settings()
+    function! s:defx_my_settings() abort
+     " Define mappings
+      nnoremap <silent><buffer><expr> <CR>
+     \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> c
+     \ defx#do_action('copy')
+      nnoremap <silent><buffer><expr> m
+     \ defx#do_action('move')
+      nnoremap <silent><buffer><expr> p
+     \ defx#do_action('paste')
+      nnoremap <silent><buffer><expr> l
+     \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> E
+     \ defx#do_action('open', 'vsplit')
+      nnoremap <silent><buffer><expr> P
+     \ defx#do_action('open', 'pedit')
+      nnoremap <silent><buffer><expr> K
+     \ defx#do_action('new_directory')
+      nnoremap <silent><buffer><expr> N
+     \ defx#do_action('new_file')
+      nnoremap <silent><buffer><expr> d
+     \ defx#do_action('remove')
+      nnoremap <silent><buffer><expr> r
+     \ defx#do_action('rename')
+      nnoremap <silent><buffer><expr> x
+     \ defx#do_action('execute_system')
+      nnoremap <silent><buffer><expr> yy
+     \ defx#do_action('yank_path')
+      nnoremap <silent><buffer><expr> .
+     \ defx#do_action('toggle_ignored_files')
+      nnoremap <silent><buffer><expr> h
+     \ defx#do_action('cd', ['..'])
+      nnoremap <silent><buffer><expr> ~
+     \ defx#do_action('cd')
+      nnoremap <silent><buffer><expr> q
+     \ defx#do_action('quit')
+      nnoremap <silent><buffer><expr> <Space>
+     \ defx#do_action('toggle_select') . 'j'
+      nnoremap <silent><buffer><expr> *
+     \ defx#do_action('toggle_select_all')
+      nnoremap <silent><buffer><expr> j
+     \ line('.') == line('$') ? 'gg' : 'j'
+      nnoremap <silent><buffer><expr> k
+     \ line('.') == 1 ? 'G' : 'k'
+      nnoremap <silent><buffer><expr> <C-l>
+     \ defx#do_action('redraw')
+      nnoremap <silent><buffer><expr> <C-g>
+     \ defx#do_action('print')
+      nnoremap <silent><buffer><expr> cd
+     \ defx#do_action('change_vim_cwd')
+    endfunction
 
-nnoremap <Leader><Leader> :NERDTreeToggle<CR>
-" vue
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = ''
-let g:NERDTreeExtensionHighlightColor = {}
-let g:NERDTreeExtensionHighlightColor['vue'] = '42B983'
+" defx Config: end -------------------
+'''
+hook_source = '''
+function! Root(path) abort
+  return fnamemodify(a:path, ':t')
+endfunction
+
+call defx#custom#source('file', {
+    \ 'root': 'Root',
+    \})
+
+call defx#custom#column('filename', {
+    \ 'directory_icon': '',
+    \ 'opened_icon': '',
+    \ })
+
+call defx#custom#column('mark', {
+    \ 'readonly_icon': '✗',
+    \ 'selected_icon': '✓',
+    \ })
+
+call defx#custom#option('_', {
+    \ 'columns': 'indent:git:icons:filename',
+    \ 'show_ignored_files': 1,
+    \ })
 '''
 
 [[plugins]]
-repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
-hook_add = '''
-'''
+repo ='kristijanhusak/defx-icons'
 
 [[plugins]]
-repo = 'tsony-tsonev/nerdtree-git-plugin'
+repo ='kristijanhusak/defx-git'
 hook_add = '''
-let g:NERDTreeGitStatusWithFlags = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Modified"  : "#529AB3",
-    \ "Staged"    : "#538B54",
-    \ "Untracked" : "#BE5849",
-    \ "Dirty"     : "#299999",
-    \ "Clean"     : "#87939A",
-    \ "Ignored"   : "#808080"
-    \ }
+let g:defx_git#indicators = {
+\ 'Modified'  : '+',
+\ 'Staged'    : '●',
+\ 'Untracked' : '?',
+\ 'Renamed'   : '➜',
+\ 'Unmerged'  : '═',
+\ 'Deleted'   : 'x',
+\ 'Unknown'   : '?'
+\ }
 '''
 
 [[plugins]]

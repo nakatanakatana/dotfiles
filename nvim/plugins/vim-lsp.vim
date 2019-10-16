@@ -65,7 +65,10 @@ if executable('vls')
         \         'config': {
         \             'html': {},
         \              'vetur': {
-        \                  'validation': {}
+        \                  'validation': {}, 
+        \                  'completion': {
+        \                      'scaffoldSnippetSources': {}
+        \                  }
         \              }
         \         }
         \     }
