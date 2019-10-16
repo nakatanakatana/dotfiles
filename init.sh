@@ -2,6 +2,7 @@
 
 sudo apt update
 sudo apt install -y curl screen git ibus-mozc python-pip python3-pip exfat-fuse exfat-utils unrar
+sudo snap install insomnia
 
 # mozc
 # https://qiita.com/nabenabe0928/items/09affae67df9c150ad50
@@ -23,10 +24,14 @@ sudo apt install -y curl screen git ibus-mozc python-pip python3-pip exfat-fuse 
 
 # python
 sudo pip install virtualenvwrapper
+pip install pynvim
+pip3 install pynvim
 
 # nvm
 # https://github.com/nvm-sh/nvm#installation-and-update
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+nvm use 8
+npm install -g neovim firebase-tools 
 
 # java
 # https://www.java.com/ja/download/linux_manual.jsp
