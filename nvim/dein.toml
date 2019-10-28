@@ -289,6 +289,13 @@ nnoremap <Leader>g<BS> :GitGutterLineHighlightsToggle<CR>
 '''
 
 [[plugins]]
+repo = 'ruanyl/vim-gh-line'
+hook_add = '''
+let g:gh_line_map = '<leader>go'
+let g:gh_line_blame_map = '<leader>gob'
+'''
+
+[[plugins]]
 repo = 'vim-scripts/vim-auto-save'
 hook_add = '''
 let g:auto_save = 1
