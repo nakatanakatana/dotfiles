@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do enything
 case $- in
     *i*) ;;
       *) return;;
@@ -115,6 +115,7 @@ fi
 
 # pathの追加
 PATH=$HOME/usr/local/bin
+PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/sbin
@@ -129,8 +130,10 @@ PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/go/bin
-
 export PATH
+
+# homebrew
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # vim風
 set -o vi
@@ -151,15 +154,8 @@ else
     export PS1='\u@\h:\W\$ '
 fi
 
-
 # PS1の追加
 PS1='$(__git_ps1)[\t]\n'$PS1
-
-#enhancd
-if [ -f "$HOME/.enhancd/bash/enhancd.bash" ]; then
-    source "$HOME/.enhancd/bash/enhancd.bash"
-fi
-
 
 ### Virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -172,18 +168,18 @@ fi
 export GOPATH=$HOME/go
 
 # nvm
-if [[ -s ~/.nvm/nvm.sh ]];
- then source ~/.nvm/nvm.sh
-fi
+export NVM_DIR=~/.nvm
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
 # ssh-keyをagentに登録しておく
 ssh-add $HOME/.ssh/id_rsa
+
 # capsをctrlにする
 setxkbmap -option ctrl:nocaps
 
 ### ghq
-
-function ghql() {
+function ghql () {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
   if [ -n "$selected_file" ]; then
     if [ -t 1 ]; then
@@ -205,9 +201,6 @@ _replace_by_history() {
 }
 bind -x '"\C-r": _replace_by_history'
 bind    '"\C-xr": reverse-search-history'
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 alias vim="nvim"
 alias k3ctl="sudo k3s kubectl"
