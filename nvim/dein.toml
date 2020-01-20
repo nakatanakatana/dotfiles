@@ -312,9 +312,22 @@ repo = 'junegunn/fzf.vim'
 depends = 'junegunn/fzf'
 hook_add = '''
 nnoremap <Leader>b :<C-u>Buffers<CR>
-nnoremap <Leader>f :<C-u>Ag<CR>
+nnoremap <Leader>f :<C-u>Rg<CR>
 nnoremap <C-p> :<C-u>GFiles<CR>
 '''
+
+[[plugins]]
+repo = 'mileszs/ack.vim'
+hook_add = '''
+if executable('rg')
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = 'rg --files --no-ignore --ignore-file ~/.config/ripgrep/ignore --hidden %s'
+  let g:ackprg = 'rg --vimgrep --hidden'
+endif
+'''
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
 
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
