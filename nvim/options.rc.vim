@@ -25,3 +25,8 @@ autocmd InsertEnter,InsertLeave * set cursorline!
 autocmd QuickFixCmdPost *grep* cwindow
 
 set signcolumn=yes
+" neovim-remote
+if has('nvim')
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+endif
+autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
