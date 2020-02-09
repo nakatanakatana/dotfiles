@@ -6,11 +6,15 @@ repo = 'Shougo/dein.vim'
 # ==========================================================
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'lifepillar/vim-solarized8'
 hook_add = '''
-syntax enable
+" syntax enable
+set termguicolors
 set background=dark
-au MyAutoCmd VimEnter * nested colorscheme solarized
+colorscheme solarized8
+
+let &t_8f = "\[38;2;%lu;%lu;%lum"
+let &t_8b = "\[48;2;%lu;%lu;%lum"
 '''
 
 # ==========================================================
