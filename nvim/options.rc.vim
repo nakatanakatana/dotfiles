@@ -15,11 +15,13 @@ set autoread
 set title
 set noswapfile
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
-augroup vimrc-checktime
-  autocmd!
-  autocmd WinEnter * checktime
-  autocmd TermOpen * setlocal nonumber
-augroup END
+if has('nvim')
+  augroup vimrc-checktime
+    autocmd!
+    autocmd WinEnter * checktime
+    autocmd TermOpen * setlocal nonumber
+  augroup END
+endif
 
 autocmd InsertEnter,InsertLeave * set cursorline!
 autocmd QuickFixCmdPost *grep* cwindow
@@ -30,3 +32,6 @@ if has('nvim')
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 endif
 autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+" for tmux
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window 'vim: " . substitute(expand("%:p:h"), expand("~/"), "", "g") . "'")
+autocmd VimLeave * call system("tmux setw automatic-rename")
