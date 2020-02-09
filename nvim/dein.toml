@@ -88,12 +88,6 @@ repo = 'tpope/vim-dispatch'
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-lsp.vim
-'''
-
-[[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
 let g:asyncomplete_log_file = expand('~/asyncomplete.log')
@@ -110,6 +104,22 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+let g:lsp_diagnostics_enabled = 0 " for ale
+
+nnoremap <silent> <Leader>dd :<C-u>LspDefinition<CR>
+nnoremap <silent> <Leader>ds :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>dv :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
+nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
+nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
 
 
 # ==========================================================
