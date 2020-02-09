@@ -309,6 +309,17 @@ let g:gh_line_map = '<leader>go'
 let g:gh_line_blame_map = '<leader>gob'
 '''
 
+# [[plugins]]
+# repo = 'lilydjwg/colorizer'
+
+[[plugins]]
+repo = 'rrethy/vim-hexokinase'
+build = 'make hexokinase'
+hook_add = '''
+" let g:Hexokinase_highlighters = ['sign_column']
+let g:Hexokinase_highlighters = ['backgroundfull']
+'''
+
 [[plugins]]
 repo = 'vim-scripts/vim-auto-save'
 hook_add = '''
