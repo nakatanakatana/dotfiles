@@ -203,8 +203,8 @@ bind -x '"\C-r": _replace_by_history'
 bind    '"\C-xr": reverse-search-history'
 
 alias tmux="tmux new-session -A -s local"
-alias vim="nvim"
-export EDITOR="nvim"
+alias vim="vim"
+export EDITOR="vim"
 alias k3ctl="sudo k3s kubectl"
 
 # The next line updates PATH for the Google Cloud SDK.

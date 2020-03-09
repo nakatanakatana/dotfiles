@@ -112,11 +112,13 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-let g:lsp_diagnostics_enabled = 0 " for ale
+" let g:lsp_diagnostics_enabled = 0 " for ale
 
-nnoremap <silent> <Leader>dd :<C-u>LspDefinition<CR>
+nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>ds :split \| :LspDefinition <CR>
 nnoremap <silent> <Leader>dv :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <leader>dd :<C-u>LspDocumentDiagnostics<CR>
+nnoremap <silent> <leader>df :<C-u>LspDocumentFormat<CR>
 nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
@@ -124,21 +126,26 @@ nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+let g:lsp_settings = {
+\  'efm-langserver': {'disabled': v:false}
+\}
+'''
 
 
 # ==========================================================
 # lang
 # ==========================================================
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-let g:ale_sign_column_always = 1
-let g:ale_virtualtext_cursor = 1
-
-nmap <silent> <leader>ap <Plug>(ale_previous)
-nmap <silent> <leader>an <Plug>(ale_next)
-nmap <silent> <leader>aa <Plug>(ale_toggle)
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# hook_add = '''
+# let g:ale_sign_column_always = 1
+# let g:ale_virtualtext_cursor = 1
+#
+# nmap <silent> <leader>ap <Plug>(ale_previous)
+# nmap <silent> <leader>an <Plug>(ale_next)
+# nmap <silent> <leader>aa <Plug>(ale_toggle)
+# '''
 
 [[plugins]]
 repo = 'janko-m/vim-test'

@@ -24,7 +24,13 @@ nnoremap <C-Right> <C-w>l
 " split
 nnoremap <Leader>ws :<C-u>split<CR>
 nnoremap <Leader>wv :<C-u>vsplit<CR>
-nnoremap <Leader>wt :<C-u>terminal<CR>
+if has('nvim')
+  nnoremap <Leader>wt :<C-u>terminal<CR>
+elseif !has('nvim')
+  nnoremap <Leader>wt :<C-u>terminal ++curwin<CR>
+  tnoremap <Leader>n <C-W>N
+endif
+
 
 " tab
 nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>

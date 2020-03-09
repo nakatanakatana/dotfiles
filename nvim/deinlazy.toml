@@ -27,8 +27,9 @@ build = 'npm install'
 on_ft = ['typescript', 'typescriptreact', 'vue']
 hook_add = '''
 let g:import_cost_always_open_split = 0
-let g:import_cost_split_pos = 'right'
-
+if has('nvim')
+  let g:import_cost_split_pos = 'right'
+endif
 augroup import_cost_auto_run
   autocmd!
   autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
@@ -64,18 +65,18 @@ repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
 
 
-[[plugins]]
-repo = 'prettier/vim-prettier'
-on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
-hook_add = '''
-augroup pretteir
-  autocmd!
-  autocmd BufWritePre *.js,*.ts,*.json,*.vue,*.html PrettierAsync
-augroup END
-
-" keymap
-nnoremap <Leader>fp :<C-u>PrettierAsync<CR>
-'''
+# [[plugins]]
+# repo = 'prettier/vim-prettier'
+# on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+# hook_add = '''
+# augroup pretteir
+#   autocmd!
+#   autocmd BufWritePre *.js,*.ts,*.json,*.vue,*.html PrettierAsync
+# augroup END
+#
+# " keymap
+# nnoremap <Leader>fp :<C-u>PrettierAsync<CR>
+# '''
 
 # ==========================================================
 # fileformat
