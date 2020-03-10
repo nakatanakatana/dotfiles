@@ -128,9 +128,17 @@ nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 repo = 'mattn/vim-lsp-settings'
 hook_add = '''
 let g:lsp_settings = {
-\  'efm-langserver': {'disabled': v:false}
+\ 'vls': {
+\   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+\  }
 \}
 '''
+
+[[plugins]]
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+build = 'go get github.com/mattn/efm-langserver'
+depends = ['vim-lsp']
+
 
 
 # ==========================================================
