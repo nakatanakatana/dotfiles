@@ -28,7 +28,7 @@ if has('nvim')
   nnoremap <Leader>wt :<C-u>terminal<CR>
 elseif !has('nvim')
   nnoremap <Leader>wt :<C-u>terminal ++curwin<CR>
-  tnoremap <Leader>n <C-W>N
+  tnoremap <C-W><C-n> <C-W>N
 endif
 
 
