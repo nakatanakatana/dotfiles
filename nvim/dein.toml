@@ -10,15 +10,12 @@ repo = 'lifepillar/vim-solarized8'
 hook_add = '''
 " syntax enable
 if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 set background=dark
 colorscheme solarized8
-
-let &t_8f = "\[38;2;%lu;%lu;%lum"
-let &t_8b = "\[48;2;%lu;%lu;%lum"
 '''
 
 # ==========================================================
@@ -32,6 +29,8 @@ repo = 'majutsushi/tagbar'
 repo = 'lambdalisue/gina.vim'
 hook_add = '''
 nnoremap <Leader>gs :<C-u>Gina status<CR>
+nnoremap <Leader>gd :<C-u>Gina diff<CR>
+nnoremap <Leader>gb :<C-u>Gina blame<CR>
 nnoremap <Leader>gc :<C-u>Gina commit<CR>
 nnoremap <Leader>gl :<C-u>Gina log<CR>
 '''
@@ -112,16 +111,19 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-" let g:lsp_diagnostics_enabled = 0 " for ale
+let g:lsp_text_edit_enabled = 1
 
 nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
+nnoremap <silent> <Leader>da :LspCodeAction <CR>
 nnoremap <silent> <Leader>ds :split \| :LspDefinition <CR>
 nnoremap <silent> <Leader>dv :vsplit \| :LspDefinition <CR>
 nnoremap <silent> <leader>dd :<C-u>LspDocumentDiagnostics<CR>
-nnoremap <silent> <leader>df :<C-u>LspDocumentFormat<CR>
 nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
+
+autocmd BufEnter * nnoremap <silent> <leader>df :<C-u>LspDocumentFormatSync<CR>
+autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npm run lint:exec -- "%" --fix<CR>
 '''
 
 [[plugins]]
@@ -136,7 +138,7 @@ let g:lsp_settings = {
 
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
-build = 'go get github.com/mattn/efm-langserver'
+build = 'go get -u github.com/mattn/efm-langserver'
 depends = ['vim-lsp']
 
 
