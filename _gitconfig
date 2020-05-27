@@ -12,6 +12,9 @@
 	logc = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
 [core]
 	editor = vim -c \"set fenc=utf-8\"
+	pager = delta --color-only --theme 'Solarized (dark)'
+[interactive]
+    diffFilter = delta --color-only --theme 'Solarized (dark)'
 [ghq]
 	root = ~/source
 	root = ~/repos
