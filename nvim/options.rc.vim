@@ -16,13 +16,10 @@ set autoread
 set title
 set noswapfile
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
-if has('nvim')
-  augroup vimrc-checktime
-    autocmd!
-    autocmd WinEnter * checktime
-    autocmd TermOpen * setlocal nonumber
-  augroup END
-endif
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
