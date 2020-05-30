@@ -1,4 +1,0 @@
-colour
-netifaces
-basiciw
-psutil
