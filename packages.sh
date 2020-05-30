@@ -20,15 +20,31 @@ function is_exist() {
 	type $command_name > /dev/null 2>&1
 }
 
+
+# ----- init -----
+INIT_SCRIPT="packages/initialize"
+function initialize() {
+	for script in $(find $INIT_SCRIPT); do
+		echo $script
+		source $script
+	done
+}
+
 # -----  apt  -----
 APT_LIST="packages/aptlist"
+function apt_before() {
+	source $APT_LIST.before
+	sudo apt update
+
+}
 function apt_install() {
+	apt_before
 	local l=$(read_list $APT_LIST)
 	sudo apt install -y $l
 }
 
 function apt_update() {
-	sudo apt update
+	apt_before
 	sudo apt upgrade -y
 }
 
@@ -71,11 +87,15 @@ function script_install() {
 }
 
 case "$1" in
+	"init")
+		initialize
+		exit 0
+		;;
 	"install")
 		echo "install"
 		is_exist apt && [ -e $APT_LIST ] && apt_install
-		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist brew && [ -e $BREW_LIST ] && brew_install
+		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_install
 		[ -e $SCRIPT_LIST ] && script_install
 		exit 0
@@ -83,8 +103,8 @@ case "$1" in
 	"update")
 		echo "update"
 		is_exist apt && [ -e $APT_LIST ] && apt_update
-		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist brew && [ -e $BREW_LIST ] && brew_upgrade
+		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_update
 		[ -e $SCRIPT_LIST ] && script_install
 		exit 0

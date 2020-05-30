@@ -6,6 +6,8 @@ rust
 neovim
 jq
 ghq
+fzf
 peco
+octant
 tmux
 tmux-xpanes
