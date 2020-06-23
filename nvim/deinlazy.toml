@@ -45,6 +45,10 @@ repo = 'posva/vim-vue'
 on_ft = 'vue'
 
 [[plugins]]
+repo = 'peitalin/vim-jsx-typescript'
+on_ft = 'typescriptreact'
+
+[[plugins]]
 repo = 'mattn/vim-goimports'
 
 [[plugins]]
