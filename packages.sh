@@ -80,6 +80,15 @@ function npm_update() {
 	npm update -g $l
 }
 
+# ----- ghq -----
+GHQ_LIST="packages/ghqlist"
+function ghq_get() {
+	local l=$(read_list $GHQ_LIST)
+	for i in $l; do
+		ghq get -u $i
+	done
+}
+
 # ----- install script -----
 SCRIPT_LIST="packages/scriptlist"
 function script_install() {
@@ -97,6 +106,7 @@ case "$1" in
 		is_exist brew && [ -e $BREW_LIST ] && brew_install
 		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_install
+		is_exist ghq && [ -e $GHQ_LIST ] && ghq_get
 		[ -e $SCRIPT_LIST ] && script_install
 		exit 0
 		;;
@@ -106,6 +116,7 @@ case "$1" in
 		is_exist brew && [ -e $BREW_LIST ] && brew_upgrade
 		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_update
+		is_exist ghq && [ -e $GHQ_LIST ] && ghq_get
 		[ -e $SCRIPT_LIST ] && script_install
 		exit 0
 		;;
