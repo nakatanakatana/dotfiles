@@ -16,9 +16,7 @@
 [interactive]
     diffFilter = delta --color-only --theme 'Solarized (dark)'
 [ghq]
-	root = ~/source
 	root = ~/repos
-	root = ~/go/src
 [init]
 	templatedir = ~/.git-tmp
 [credential]
