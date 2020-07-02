@@ -3,6 +3,7 @@ git-delta
 nvm
 go
 rust
+direnv
 neovim
 jq
 ghq
