@@ -3,6 +3,7 @@ git-delta
 nvm
 go
 rust
+kubectx
 direnv
 neovim
 jq
