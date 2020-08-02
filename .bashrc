@@ -172,12 +172,6 @@ export NVM_DIR=~/.nvm
 [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
 [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
-# ssh-keyをagentに登録しておく
-ssh-add $HOME/.ssh/id_rsa
-
-# capsをctrlにする
-setxkbmap -option ctrl:nocaps
-
 ### ghq
 function ghql () {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
@@ -202,13 +196,24 @@ _replace_by_history() {
 bind -x '"\C-r": _replace_by_history'
 bind    '"\C-xr": reverse-search-history'
 
+gcop() {
+  git branch -a --sort=-authordate |
+    grep -v -e '->' -e '*' |
+    perl -pe 's/^\h+//g' |
+    perl -pe 's#^remotes/origin/###' |
+    perl -nle 'print if !$c{$_}++' |
+    peco |
+    xargs git checkout
+}
+bind -x '"\C-b": gcop'
+
 alias tmux="tmux new-session -A -s local"
 alias vim="vim"
 export EDITOR="vim"
 alias k3ctl="sudo k3s kubectl"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/tanaka/google-cloud-sdk/path.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ]; then . '$HOME/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ]; then . '$HOME/google-cloud-sdk/completion.bash.inc'; fi
