@@ -8,6 +8,7 @@ direnv
 neovim
 jq
 ghq
+k9s
 fzf
 ripgrep
 peco

@@ -103,11 +103,11 @@ case "$1" in
 	"install")
 		echo "install"
 		is_exist apt && [ -e $APT_LIST ] && apt_install
+		[ -e $SCRIPT_LIST ] && script_install
 		is_exist brew && [ -e $BREW_LIST ] && brew_install
 		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_install
 		is_exist ghq && [ -e $GHQ_LIST ] && ghq_get
-		[ -e $SCRIPT_LIST ] && script_install
 		exit 0
 		;;
 	"update")

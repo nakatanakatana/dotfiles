@@ -1,2 +1,4 @@
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -sfL https://get.k3s.io | sh -
 curl https://get.okteto.com -sSfL | sh
