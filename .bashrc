@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
 fi
 
 # pathの追加
-PATH=$HOME/usr/local/bin
+PATH=$PATH:$HOME/usr/local/bin
 PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/bin
