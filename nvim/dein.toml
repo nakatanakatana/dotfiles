@@ -306,7 +306,7 @@ let g:defx_git#indicators = {
 [[plugins]]
 repo = 'airblade/vim-rooter'
 hook_add = '''
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 let g:rooter_patterns = ['tags', '.git', 'node_modules/','.git/', '_darcs/', '.hg/', '.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
 '''
 
