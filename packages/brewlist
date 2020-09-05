@@ -9,9 +9,11 @@ neovim
 jq
 ghq
 k9s
+octant
+kustomize
+helm
 fzf
 ripgrep
 peco
-octant
 tmux
 tmux-xpanes
