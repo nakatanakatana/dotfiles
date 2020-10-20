@@ -88,9 +88,6 @@ repo = 'tpope/vim-dispatch'
 # ==========================================================
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
 let g:asyncomplete_log_file = expand('~/asyncomplete.log')
@@ -123,7 +120,7 @@ nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 autocmd BufEnter * nnoremap <silent> <leader>df :<C-u>LspDocumentFormatSync<CR>
-autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npm run lint:exec -- "%" --fix<CR>
+autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npx --no-install eslint --fix "%"<CR>
 '''
 
 [[plugins]]
@@ -139,24 +136,47 @@ let g:lsp_settings = {
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
 build = 'go get -u github.com/mattn/efm-langserver'
-depends = ['vim-lsp']
 
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+depends = ['vim-lsp']
+hook_add = '''
+" NOTE: You can use other key to expand snippet.
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+
+" If you want to use snippet for multiple filetypes, you can `g:vsip_filetypes` for it.
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
+'''
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
 
 
 # ==========================================================
 # lang
 # ==========================================================
-# [[plugins]]
-# repo = 'w0rp/ale'
-# hook_add = '''
-# let g:ale_sign_column_always = 1
-# let g:ale_virtualtext_cursor = 1
-#
-# nmap <silent> <leader>ap <Plug>(ale_previous)
-# nmap <silent> <leader>an <Plug>(ale_next)
-# nmap <silent> <leader>aa <Plug>(ale_toggle)
-# '''
-
 [[plugins]]
 repo = 'janko-m/vim-test'
 hook_add = '''

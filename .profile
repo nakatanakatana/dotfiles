@@ -8,6 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -20,4 +21,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

@@ -29,11 +29,11 @@ hook_add = '''
 let g:import_cost_always_open_split = 0
 if has('nvim')
   let g:import_cost_split_pos = 'right'
+  augroup import_cost_auto_run
+    autocmd!
+    autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+  augroup END
 endif
-augroup import_cost_auto_run
-  autocmd!
-  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
-augroup END
 '''
 
 [[plugins]]
