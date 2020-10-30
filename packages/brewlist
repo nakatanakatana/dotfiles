@@ -8,6 +8,7 @@ direnv
 neovim
 jq
 ghq
+k3d
 k9s
 octant
 kustomize
