@@ -27,7 +27,7 @@ nnoremap <Leader>wv :<C-u>vsplit<CR>
 if has('nvim')
   nnoremap <Leader>wt :<C-u>terminal<CR>
 elseif !has('nvim')
-  nnoremap <Leader>wt :<C-u>terminal ++curwin<CR>
+  nnoremap <Leader>wt :<C-u>bo terminal ++close ++rows=20<CR>
   tnoremap <C-W><C-n> <C-W>N
 endif
 
