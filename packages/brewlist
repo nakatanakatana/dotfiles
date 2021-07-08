@@ -2,8 +2,10 @@ git
 git-delta
 nvm
 go
+golangci-lint
 rust
 kubectx
+asdf
 direnv
 neovim
 jq

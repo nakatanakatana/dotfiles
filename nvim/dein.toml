@@ -178,6 +178,9 @@ repo = 'hrsh7th/vim-vsnip-integ'
 # lang
 # ==========================================================
 [[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
 repo = 'janko-m/vim-test'
 hook_add = '''
 let g:test#strategy = 'dispatch'
