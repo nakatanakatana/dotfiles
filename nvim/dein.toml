@@ -131,6 +131,7 @@ let g:lsp_settings = {
 \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
 \  }
 \}
+let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
 '''
 
 [[plugins]]
