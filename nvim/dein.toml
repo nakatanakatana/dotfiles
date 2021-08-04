@@ -129,6 +129,9 @@ hook_add = '''
 let g:lsp_settings = {
 \ 'vls': {
 \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+\  },
+\ 'golangci-lint-langserver': {
+\   'initialization_options': {'command': ['golangci-lint', 'run', '--out-format', 'json']},
 \  }
 \}
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
