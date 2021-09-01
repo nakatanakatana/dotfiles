@@ -254,6 +254,7 @@ repo = 'ruanyl/vim-gh-line'
 hook_add = '''
 let g:gh_line_map = '<leader>go'
 let g:gh_line_blame_map = '<leader>gob'
+let g:gh_open_command = 'wsl-open '
 '''
 
 # [[plugins]]

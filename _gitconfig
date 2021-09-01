@@ -1,21 +1,31 @@
 [user]
 	email = nakatanakatana@gmail.com
 	name = tanaka
-[alias]
-	noffmerge = merge --no-ff
-	st = status
-	co = checkout
-	br = branch
-	rpull = pull --rebase
-	logp = log -p
-	tree = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-	logc = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
 [core]
 	editor = vim -c \"set fenc=utf-8\"
-	pager = delta --color-only --24-bit-color="always" --theme 'Solarized (dark)'
+	pager = delta --24-bit-color="always" --color-only --theme 'Solarized (dark)'
 [interactive]
-    diffFilter = delta --color-only --24-bit-color="always" --theme 'Solarized (dark)'
+	diffFilter = delta --24-bit-color="always" --color-only --theme 'Solarized (dark)'
+[alias]
+	noffmerge = merge --no-ff
+	logp = log -p --color
+	logc = log --pretty=format:\"[%h: %cd] (%an) %s\"
+	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
+	delete-merged-branch = !sh -c 'git merged-branch | xargs git branch -d'
+	st = status
+	br = branch
+[push]
+	default = current
+[fetch]
+	prune = true
+[pull]
+	prune = true
+[merge]
+	ff = true
 [ghq]
 	root = ~/repos
 [credential]
 	helper = cache --timeout=86400
+[web]
+	browser = open
