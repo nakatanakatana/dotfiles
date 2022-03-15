@@ -129,6 +129,7 @@ PATH=$PATH:/snap/bin
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/.istioctl/bin
 PATH=$PATH:$HOME/go/bin
 export PATH
 
@@ -136,19 +137,21 @@ export PATH
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # vim風
-set -o vi
+set editiong-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string "+"
+set vi-cmd-mode-string ":"
 
 #screen用 PS1の設定
 set_prompt_command () {
-    screen_hstatus_color="\005{= ck}"
     screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
-    screen_hstatus_str="\033]0;$screen_hstatus_color$screen_hstatus\007"
-    screen_title="$(basename $(pwd))"
+    screen_hstatus_str="\033]0;$screen_hstatus\007"
+    screen_title="$(basename "$(pwd)")"
     screen_title_str="\033k\033\0134\033k/$screen_title\033\\"
     echo -ne "$screen_hstatus_str$screen_title_str"
 }
-if [ $(echo $TERM | grep -e 'screen' -e 'xterm' ) ]; then
-    export PS1='\u:\W\$ '
+if [ $(echo "$TERM" | grep -e 'xterm' -e 'screen' ) ]; then
+    export PS1='\$ '
     export PROMPT_COMMAND="set_prompt_command"
 else
     export PS1='\u@\h:\W\$ '
@@ -157,23 +160,19 @@ fi
 # PS1の追加
 PS1='$(__git_ps1)[\t]\n'$PS1
 
-### Virtualenvwrapper
+# Virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-# golang
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-export GOPATH=$HOME/go
+function peco-select-history() {
+    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
 
-# nvm
-export NVM_DIR=~/.nvm
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
-
-### ghq
-function ghql () {
+function ghql() {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
   if [ -n "$selected_file" ]; then
     if [ -t 1 ]; then
@@ -182,38 +181,67 @@ function ghql () {
     fi
   fi
 }
+
+bind -x '"\C-r": peco-select-history'
 bind -x '"\C-]": ghql'
 
-### history
-
-# settings for peco
-_replace_by_history() {
-
-    declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
-    READLINE_LINE="$l"
-    READLINE_POINT=${#l}
-}
-bind -x '"\C-r": _replace_by_history'
-bind    '"\C-xr": reverse-search-history'
-
 gcop() {
-  git branch -a --sort=-authordate |
+  git branch -v -a --sort=-authordate |
     grep -v -e '->' -e '*' |
-    perl -pe 's/^\h+//g' |
-    perl -pe 's#^remotes/origin/###' |
-    perl -nle 'print if !$c{$_}++' |
     peco |
+    sed -r 's#^\s*(remotes/origin/)?([^ ]+)\s*.+#\2#g' |
     xargs git checkout
 }
 bind -x '"\C-b": gcop'
 
 alias tmux="tmux new-session -A -s local"
-alias vim="vim"
 export EDITOR="vim"
+
+[ -s "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/asdf.sh"
+[ -s "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
+
+if [ -d "/usr/local/etc/bash_completion.d" ]; then
+  source /usr/local/etc/bash_completion.d/git-prompt.sh
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
+if [ -d "$HOME/bin/google-cloud-sdk" ]; then
+  source $HOME/bin/google-cloud-sdk/completion.bash.inc
+  source $HOME/bin/google-cloud-sdk/path.bash.inc
+fi
+
+
+## use windows ssh-agent
+export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+ss -a | grep -q $SSH_AUTH_SOCK
+if [ $? -ne 0   ]; then
+    rm -f $SSH_AUTH_SOCK
+    ( setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/npiperelay_windows/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork & ) >/dev/null 2>&1
+fi
+
+# aws-cli
+complete -C '/usr/local/bin/aws_completer' aws
+
+## aws-vault
+export AWS_VAULT_BACKEND="pass"
+
+eval "$(direnv hook bash)"
+
+KUBECONFIG="$HOME/.kube/config"
+[ -e "$HOME/.kube/k3s.yaml" ] && KUBECONFIG="$KUBECONFIG:$HOME/.kube/k3s.yaml"
 alias k3ctl="sudo k3s kubectl"
 
+export KUBECONFIG
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.bash.inc' ]; then . '$HOME/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/home/tanaka/google-cloud-sdk/path.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.bash.inc' ]; then . '$HOME/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/completion.bash.inc'; fi
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+;
