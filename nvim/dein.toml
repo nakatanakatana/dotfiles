@@ -71,7 +71,7 @@ repo = 'tpope/vim-dispatch'
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
-let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_smart_completion = 1
@@ -87,43 +87,42 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete-file.vim'
+hook_add = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+   \ 'name': 'file',
+   \ 'allowlist': ['*'],
+   \ 'priority': 10,
+   \ 'completor': function('asyncomplete#sources#file#completor')
+   \ }))
+'''
+
+[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
 let g:lsp_text_edit_enabled = 1
+let g:lsp_document_code_action_signs_enabled = 0
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
 nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>da :LspCodeAction <CR>
 nnoremap <silent> <Leader>ds :split \| :LspDefinition <CR>
 nnoremap <silent> <Leader>dv :vsplit \| :LspDefinition <CR>
 nnoremap <silent> <leader>dd :<C-u>LspDocumentDiagnostics<CR>
+nnoremap <silent> <leader>de :<C-u>LspNextError<CR>
+nnoremap <silent> <leader>dw :<C-u>LspNextWarning<CR>
+nnoremap <silent> <leader>dn :<C-u>LspNextDiagnostic<CR>
+nnoremap <silent> <leader>dp :<C-u>LspPreviousDiagnostic<CR>
 nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 autocmd BufEnter * nnoremap <silent> <leader>df :<C-u>LspDocumentFormatSync<CR>
+autocmd BufEnter * nnoremap <silent> <leader>dl :<C-u>LspDocumentFormatSync --server=efm-langserver<CR>
 autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npx --no-install eslint --fix "%"<CR>
-
-" for lightline
-function! LightlineLSPWarnings() abort
-  let l:counts = lsp#get_buffer_diagnostics_counts()
-  return l:counts.warning == 0 ? '' : printf('W:%d', l:counts.warning)
-endfunction
-
-function! LightlineLSPErrors() abort
-  let l:counts = lsp#get_buffer_diagnostics_counts()
-  return l:counts.error == 0 ? '' : printf('E:%d', l:counts.error)
-endfunction
-
-function! LightlineLSPOk() abort
-  let l:counts = lsp#get_buffer_diagnostics_counts()
-  let l:total = l:counts.error + l:counts.warning
-  return l:total == 0 ? 'OK' : ''
-endfunction
-
-augroup LightLineOnLSP
-  autocmd!
-  autocmd User lsp_diagnostics_updated call lightline#update()
-augroup END
+autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <silent> <leader>h :<C-u>LspHover --server=typescript-language-server<CR>
+" autocmd BufEnter *.ts,*.tsx call execute('LspDocumentFormatSync --server=eslint-language-server')
 '''
 
 [[plugins]]
@@ -136,16 +135,24 @@ let g:lsp_settings = {
 \ 'golangci-lint-langserver': {
 \   'initialization_options': {'command': ['golangci-lint', 'run', '--out-format', 'json']},
 \  },
+\ 'efm-langserver': {
+\   'disabled': v:false,
+\   'allowlist':['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown'],
+\  },
 \}
 
 " for languages
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
-let g:lsp_settings_filetype_typescript = ['eslint-language-server', 'typescript-language-server']
+let g:lsp_settings_filetype_typescript = ['efm-langserver', 'typescript-language-server']
+" let g:lsp_settings_filetype_typescript = ['eslint-language-server', 'typescript-language-server']
 '''
 
 [[plugins]]
+repo = 'halkn/lightline-lsp'
+
+[[plugins]]
 repo = 'micchy326/lightline-lsp-progress'
-depends = ['lightline.vim', 'vim-lsp']
+depends = ['lightline.vim', 'vim-lsp', 'halkn/lightline-lsp']
 hook_add = '''
 let g:lsp_work_done_progress_enabled = 1
 let g:lightline = {
@@ -165,9 +172,9 @@ let g:lightline = {
 \   'lsp_status': 'lightline_lsp_progress#progress',
 \ },
 \ 'component_expand': {
-\   'lsp_warnings': 'LightlineLSPWarnings',
-\   'lsp_errors':   'LightlineLSPErrors',
-\   'lsp_ok':       'LightlineLSPOk',
+\   'lsp_warnings': 'lightline_lsp#warnings',
+\   'lsp_errors':   'lightline_lsp#errors',
+\   'lsp_ok':       'lightline_lsp#ok',
 \ },
 \ 'component_type': {
 \   'lsp_warnings': 'warning',
@@ -225,7 +232,7 @@ repo = 'hrsh7th/vim-vsnip-integ'
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
-repo = 'janko-m/vim-test'
+repo = 'vim-test/vim-test'
 hook_add = '''
 let g:test#strategy = 'dispatch'
 
