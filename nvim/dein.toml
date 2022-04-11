@@ -36,28 +36,9 @@ nnoremap <Leader>gl :<C-u>Gina log<CR>
 '''
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-depends = ['tagbar', 'gina.vim']
+repo = 'itchyny/lightline.vim'
 hook_add = '''
-call airline#parts#define_function('gina', 'gina#component#repo#branch')
-let g:airline_section_b = airline#section#create(['hunks', 'gina'])
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-depends = 'vim-airline'
-hook_add = '''
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-'''
-
-[[plugins]]
-repo = 'gcmt/taboo.vim'
-depends = 'vim-airline'
-hook_add = '''
-"set guioptions-=e
-"set sessionoptions+=tabpages,globals
-let g:taboo_tab_format=' %N %f%m %w '
+set laststatus=2
 '''
 
 # ==========================================================
@@ -121,6 +102,28 @@ nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 autocmd BufEnter * nnoremap <silent> <leader>df :<C-u>LspDocumentFormatSync<CR>
 autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npx --no-install eslint --fix "%"<CR>
+
+" for lightline
+function! LightlineLSPWarnings() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.warning == 0 ? '' : printf('W:%d', l:counts.warning)
+endfunction
+
+function! LightlineLSPErrors() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.error == 0 ? '' : printf('E:%d', l:counts.error)
+endfunction
+
+function! LightlineLSPOk() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  let l:total = l:counts.error + l:counts.warning
+  return l:total == 0 ? 'OK' : ''
+endfunction
+
+augroup LightLineOnLSP
+  autocmd!
+  autocmd User lsp_diagnostics_updated call lightline#update()
+augroup END
 '''
 
 [[plugins]]
@@ -132,14 +135,51 @@ let g:lsp_settings = {
 \  },
 \ 'golangci-lint-langserver': {
 \   'initialization_options': {'command': ['golangci-lint', 'run', '--out-format', 'json']},
-\  }
+\  },
 \}
+
+" for languages
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+let g:lsp_settings_filetype_typescript = ['eslint-language-server', 'typescript-language-server']
+'''
+
+[[plugins]]
+repo = 'micchy326/lightline-lsp-progress'
+depends = ['lightline.vim', 'vim-lsp']
+hook_add = '''
+let g:lsp_work_done_progress_enabled = 1
+let g:lightline = {
+\ 'colorscheme': 'solarized',
+\ 'active': {
+\   'left': [
+\     [ 'mode', 'paste' ],
+\     [ 'readonly', 'filename', 'modified', 'lsp_status' ],
+\   ],
+\   'right': [
+\     [ 'lsp_errors', 'lsp_warnings', 'lsp_ok' ],
+\     [ 'lineinfo', 'percent' ],
+\     [ 'fileformat', 'fileencoding', 'filetype' ],
+\   ],
+\ },
+\ 'component_function': {
+\   'lsp_status': 'lightline_lsp_progress#progress',
+\ },
+\ 'component_expand': {
+\   'lsp_warnings': 'LightlineLSPWarnings',
+\   'lsp_errors':   'LightlineLSPErrors',
+\   'lsp_ok':       'LightlineLSPOk',
+\ },
+\ 'component_type': {
+\   'lsp_warnings': 'warning',
+\   'lsp_errors':   'error',
+\   'lsp_ok':       'middle',
+\ },
+\ }
 '''
 
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
-build = 'go get -u github.com/mattn/efm-langserver'
+# build = 'go install -u github.com/mattn/efm-langserver@latest'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
