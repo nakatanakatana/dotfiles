@@ -87,17 +87,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-file.vim'
-hook_add = '''
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-   \ 'name': 'file',
-   \ 'allowlist': ['*'],
-   \ 'priority': 10,
-   \ 'completor': function('asyncomplete#sources#file#completor')
-   \ }))
-'''
-
-[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
 let g:lsp_text_edit_enabled = 1
@@ -126,8 +115,29 @@ autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <silent> <leader>h :<C-u>LspHover
 '''
 
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+depends = ['vim-lsp']
+# build = 'go install github.com/mattn/efm-langserver@latest'
 hook_add = '''
+let g:efm_langserver_settings#debug = 1
+let g:efm_langserver_settings#filetype_whitelist = ['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown']
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+depends = ['vim-lsp', 'vim-efm-langserver-settings']
+hook_add = '''
+
+" for efm-langserver-settings
+let s:efm_args = []
+if efm_langserver_settings#config_enable()
+  let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
+endif
+if efm_langserver_settings#debug_enable()
+  let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
+  let s:efm_args = extend(s:efm_args, ['-loglevel', efm_langserver_settings#debug_enable()])
+endif
+
 let g:lsp_settings = {
 \ 'vls': {
 \   'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
@@ -137,7 +147,9 @@ let g:lsp_settings = {
 \  },
 \ 'efm-langserver': {
 \   'disabled': v:false,
-\   'allowlist':['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown'],
+\   'args': s:efm_args,
+\   'allowlist': efm_langserver_settings#whitelist(),
+\   'blocklist': efm_langserver_settings#blacklist(),
 \  },
 \}
 
@@ -183,10 +195,6 @@ let g:lightline = {
 \ },
 \ }
 '''
-
-[[plugins]]
-repo = 'tsuyoshicho/vim-efm-langserver-settings'
-# build = 'go install -u github.com/mattn/efm-langserver@latest'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
