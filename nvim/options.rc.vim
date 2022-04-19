@@ -17,6 +17,8 @@ set title
 set noswapfile
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
 
+au BufRead,BufNewFile *.cue set filetype=cue
+
 function! IsWSL()
   if has("unix")
     let lines = readfile("/proc/version")

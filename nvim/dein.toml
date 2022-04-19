@@ -120,7 +120,7 @@ depends = ['vim-lsp']
 # build = 'go install github.com/mattn/efm-langserver@latest'
 hook_add = '''
 let g:efm_langserver_settings#debug = 1
-let g:efm_langserver_settings#filetype_whitelist = ['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown']
+let g:efm_langserver_settings#filetype_whitelist = ['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown', 'cue']
 '''
 
 [[plugins]]

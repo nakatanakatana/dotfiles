@@ -22,3 +22,6 @@ tmux
 tmux-xpanes
 go-task/tap/go-task
 aws-vault
+jc
+cue-lang/tap/cue
+dagger/tap/dagger
