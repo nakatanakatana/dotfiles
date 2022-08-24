@@ -1,6 +1,9 @@
 [user]
 	email = nakatanakatana@gmail.com
 	name = tanaka
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPbVSFzP7Ie/Dk1+wtFlMG6HLq2srD/J257nnTwZgzkS github.com:nakatanakatana
+[gpg]
+	format = ssh
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	pager = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
@@ -23,6 +26,10 @@
 	prune = true
 [merge]
 	ff = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
 [ghq]
 	root = ~/repos
 [credential]
