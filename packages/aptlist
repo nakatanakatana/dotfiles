@@ -1,5 +1,8 @@
 google-chrome-stable
-docker.io
+docker-ce
+docker-ce-cli
+containerd.io
+docker-compose-plugin
 socat
 ibus-mozc
 exfat-fuse
