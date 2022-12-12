@@ -15,6 +15,7 @@ set splitright
 set autoread
 set title
 set noswapfile
+set ambiwidth=single
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
 
 au BufRead,BufNewFile *.cue set filetype=cue

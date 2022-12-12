@@ -9,17 +9,17 @@ on_ft = 'toml'
 repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
 
-[[plugins]]
-repo = 'ruanyl/coverage.vim'
-on_ft = ['typescript', 'typescriptreact','vue']
-hook_add = '''
-let g:coverage_json_report_path = 'coverage/coverage-final.json'
-let g:coverage_show_covered = 0
-let g:coverage_sign_covered = 'o'
-let g:coverage_show_uncovered = 1
-let g:coverage_sign_uncovered = 'x'
-let g:coverage_sign_column_always = 0
-'''
+# [[plugins]]
+# repo = 'ruanyl/coverage.vim'
+# on_ft = ['typescript', 'typescriptreact','vue']
+# hook_add = '''
+# let g:coverage_json_report_path = 'coverage/coverage-final.json'
+# let g:coverage_show_covered = 0
+# let g:coverage_sign_covered = 'o'
+# let g:coverage_show_uncovered = 1
+# let g:coverage_sign_uncovered = 'x'
+# let g:coverage_sign_column_always = 0
+# '''
 
 [[plugins]]
 repo = 'yardnsm/vim-import-cost'
@@ -65,6 +65,6 @@ on_ft = 'cue'
 # fileformat
 # ==========================================================
 
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+# [[plugins]]
+# repo = 'cespare/vim-toml'
+# on_ft = 'toml'

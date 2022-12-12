@@ -6,6 +6,9 @@ repo = 'Shougo/dein.vim'
 # ==========================================================
 
 [[plugins]]
+repo = 'rbtnn/vim-ambiwidth'
+
+[[plugins]]
 repo = 'lifepillar/vim-solarized8'
 hook_add = '''
 " syntax enable
@@ -53,12 +56,31 @@ vmap <Leader>c <Plug>(caw:hatpos:toggle)
 '''
 
 # ==========================================================
-# terminal
+# task runner
 # ==========================================================
+[[plugins]]
+repo = 'mattn/vim-notification'
 
 [[plugins]]
-repo = 'tpope/vim-dispatch'
+repo = 'skywind3000/asyncrun.vim'
+hook_add = '''
+autocmd User AsyncRunStart call notification#show(#{title: 'start job', text: 'start'})
+autocmd User AsyncRunStop call notification#show(#{title: 'stop jon', text: 'stop'})
+'''
 
+[[plugins]]
+repo = 'skywind3000/asynctasks.vim'
+
+[[plugins]]
+repo = 'vim-test/vim-test'
+hook_add = '''
+let g:test#strategy = 'asyncrun'
+
+nnoremap <Leader>t5 :TestFile<CR>
+nnoremap <Leader>t4 :TestSuite<CR>
+nnoremap <Leader>t3 :TestNearest<CR>
+nnoremap <Leader>t2 :TestLast<CR>
+'''
 
 # ==========================================================
 # linter
@@ -92,7 +114,7 @@ hook_add = '''
 let g:lsp_text_edit_enabled = 1
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_diagnostics_float_cursor = 1
-let g:lsp_diagnostics_echo_cursor = 1
+" let g:lsp_diagnostics_echo_cursor = 1
 
 nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>da :LspCodeAction <CR>
@@ -109,7 +131,7 @@ nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 
 autocmd BufEnter * nnoremap <silent> <leader>df :<C-u>LspDocumentFormatSync<CR>
 autocmd BufEnter * nnoremap <silent> <leader>dl :<C-u>LspDocumentFormatSync --server=efm-langserver<CR>
-autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :!npx --no-install eslint --fix "%"<CR>
+autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <Leader>df :AsyncRun! npx --no-install eslint --fix "%"<CR>
 autocmd BufEnter *.ts,*tsx,*.js,*.jsx nnoremap <silent> <leader>h :<C-u>LspHover --server=typescript-language-server<CR>
 " autocmd BufEnter *.ts,*.tsx call execute('LspDocumentFormatSync --server=eslint-language-server')
 '''
@@ -164,7 +186,7 @@ repo = 'halkn/lightline-lsp'
 
 [[plugins]]
 repo = 'micchy326/lightline-lsp-progress'
-depends = ['lightline.vim', 'vim-lsp', 'halkn/lightline-lsp']
+depends = ['lightline.vim', 'vim-lsp', 'halkn/lightline-lsp', '']
 hook_add = '''
 let g:lsp_work_done_progress_enabled = 1
 let g:lightline = {
@@ -173,6 +195,7 @@ let g:lightline = {
 \   'left': [
 \     [ 'mode', 'paste' ],
 \     [ 'readonly', 'filename', 'modified', 'lsp_status' ],
+\     [],
 \   ],
 \   'right': [
 \     [ 'lsp_errors', 'lsp_warnings', 'lsp_ok' ],
@@ -184,6 +207,7 @@ let g:lightline = {
 \   'lsp_status': 'lightline_lsp_progress#progress',
 \ },
 \ 'component_expand': {
+\   'asyncrun_ok':  '',
 \   'lsp_warnings': 'lightline_lsp#warnings',
 \   'lsp_errors':   'lightline_lsp#errors',
 \   'lsp_ok':       'lightline_lsp#ok',
@@ -239,17 +263,25 @@ repo = 'hrsh7th/vim-vsnip-integ'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
-[[plugins]]
-repo = 'vim-test/vim-test'
-hook_add = '''
-let g:test#strategy = 'dispatch'
-
-nnoremap <Leader>t5 :TestFile<CR>
-nnoremap <Leader>t4 :TestSuite<CR>
-nnoremap <Leader>t3 :TestNearest<CR>
-nnoremap <Leader>t2 :TestLast<CR>
-'''
-
+# [[plugins]]
+# repo = 'google/vim-maktaba'
+#
+# [[plugins]]
+# repo = 'google/vim-glaive'
+# build = 'glaive#Install()'
+# depends = ['vim-maktaba']
+# merged = false
+#
+# [[plugins]]
+# repo = 'google/vim-coverage'
+# depends = ['vim-maktaba', 'vim-glaive']
+# merged = false
+# hook_add = '''
+# augroup coverage
+#   autocmd!
+#   autocmd BufReadPost *.py,*.c,*.cc,*.h,*.java,*.go,*.js :CoverageShow
+# augroup END
+# '''
 
 # ==========================================================
 # util
@@ -334,6 +366,7 @@ let g:auto_save_silent = 1
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install'
+merged = false
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
@@ -360,6 +393,19 @@ repo = 'thinca/vim-qfreplace'
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey10
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey25
+
+let g:indent_guides_color_change_percent = 1
+
+'''
 
 [[plugins]]
 repo = 'kana/vim-submode'
