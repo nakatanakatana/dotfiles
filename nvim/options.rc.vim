@@ -1,3 +1,4 @@
+set encoding=utf-8
 set list
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 set colorcolumn=80

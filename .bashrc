@@ -244,4 +244,3 @@ if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tan
 [ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-;

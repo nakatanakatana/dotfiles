@@ -94,7 +94,6 @@ nnoremap <Leader>t2 :TestLast<CR>
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_smart_completion = 1
 let g:asyncomplete_remove_duplicates = 1
@@ -186,7 +185,7 @@ repo = 'halkn/lightline-lsp'
 
 [[plugins]]
 repo = 'micchy326/lightline-lsp-progress'
-depends = ['lightline.vim', 'vim-lsp', 'halkn/lightline-lsp', '']
+depends = ['lightline.vim', 'vim-lsp', 'halkn/lightline-lsp']
 hook_add = '''
 let g:lsp_work_done_progress_enabled = 1
 let g:lightline = {
@@ -195,7 +194,6 @@ let g:lightline = {
 \   'left': [
 \     [ 'mode', 'paste' ],
 \     [ 'readonly', 'filename', 'modified', 'lsp_status' ],
-\     [],
 \   ],
 \   'right': [
 \     [ 'lsp_errors', 'lsp_warnings', 'lsp_ok' ],
@@ -344,9 +342,6 @@ let g:gh_line_blame_map = '<leader>gob'
 let g:gh_open_command = 'wsl-open '
 '''
 
-# [[plugins]]
-# repo = 'lilydjwg/colorizer'
-
 [[plugins]]
 repo = 'rrethy/vim-hexokinase'
 build = 'make hexokinase'
@@ -404,7 +399,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey10
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey25
 
 let g:indent_guides_color_change_percent = 1
-
 '''
 
 [[plugins]]
