@@ -261,26 +261,6 @@ repo = 'hrsh7th/vim-vsnip-integ'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
-# [[plugins]]
-# repo = 'google/vim-maktaba'
-#
-# [[plugins]]
-# repo = 'google/vim-glaive'
-# build = 'glaive#Install()'
-# depends = ['vim-maktaba']
-# merged = false
-#
-# [[plugins]]
-# repo = 'google/vim-coverage'
-# depends = ['vim-maktaba', 'vim-glaive']
-# merged = false
-# hook_add = '''
-# augroup coverage
-#   autocmd!
-#   autocmd BufReadPost *.py,*.c,*.cc,*.h,*.java,*.go,*.js :CoverageShow
-# augroup END
-# '''
-
 # ==========================================================
 # util
 # ==========================================================

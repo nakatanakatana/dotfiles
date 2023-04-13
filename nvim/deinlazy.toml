@@ -53,6 +53,10 @@ repo = 'mattn/vim-goimports'
 on_ft = 'go'
 
 [[plugins]]
+repo = 'kyoh86/vim-go-coverage'
+on_ft = 'go'
+
+[[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
 
