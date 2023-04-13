@@ -239,8 +239,5 @@ if [ -f '/home/tanaka/google-cloud-sdk/path.bash.inc' ]; then . '/home/tanaka/go
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/completion.bash.inc'; fi
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

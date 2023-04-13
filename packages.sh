@@ -59,15 +59,6 @@ function brew_upgrade() {
 	brew upgrade
 }
 
-# ----- go -----
-GO_LIST="packages/golist"
-function go_get() {
-	local l=$(read_list $GO_LIST)
-	for i in $l; do
-		echo "go get -u $i"
-	done
-}
-
 # ----- npm -----
 NPM_LIST="packages/npmlist"
 function npm_install() {
