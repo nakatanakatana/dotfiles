@@ -131,7 +131,10 @@ PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.istioctl/bin
 PATH=$PATH:$HOME/go/bin
+PATH=$PATH:${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin
 export PATH
+
+export AQUA_GLOBAL_CONFIG=$HOME/aqua.yaml
 
 # homebrew
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
