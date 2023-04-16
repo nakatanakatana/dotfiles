@@ -48,17 +48,6 @@ function apt_update() {
 	sudo apt upgrade -y
 }
 
-# -----  brew  -----
-BREW_LIST="packages/brewlist"
-function brew_install() {
-	local l=$(read_list $BREW_LIST)
-	brew install $l
-}
-
-function brew_upgrade() {
-	brew upgrade
-}
-
 # ----- npm -----
 NPM_LIST="packages/npmlist"
 function npm_install() {
@@ -95,8 +84,6 @@ case "$1" in
 		echo "install"
 		is_exist apt && [ -e $APT_LIST ] && apt_install
 		[ -e $SCRIPT_LIST ] && script_install
-		is_exist brew && [ -e $BREW_LIST ] && brew_install
-		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_install
 		is_exist ghq && [ -e $GHQ_LIST ] && ghq_get
 		exit 0
@@ -104,8 +91,6 @@ case "$1" in
 	"update")
 		echo "update"
 		is_exist apt && [ -e $APT_LIST ] && apt_update
-		is_exist brew && [ -e $BREW_LIST ] && brew_upgrade
-		is_exist go && [ -e $GO_LIST ] && go_get
 		is_exist npm && [ -e $NPM_LIST ] &&  npm_update
 		is_exist ghq && [ -e $GHQ_LIST ] && ghq_get
 		[ -e $SCRIPT_LIST ] && script_install
