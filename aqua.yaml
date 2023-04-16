@@ -33,3 +33,4 @@ packages:
 - name: mergestat/mergestat-lite@v0.6.0
 - name: fluxcd/flux2@v2.0.0-rc.1
 - name: kubernetes/kubectl@v1.27.1
+- name: golang/go@go1.20.3
