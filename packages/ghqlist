@@ -1,6 +1,12 @@
 git@github.com:nakatanakatana/dotfiles.git
-git@github.com:nakatanakatana/vue-okteto-example.git
-git@github.com:nakatanakatana/slack-activity.git
-git@github.com:nakatanakatana/k8s-example.git
-git@github.com:nakatanakatana/k8s-example-app.git
+git@github.com:nakatanakatana/eslint-config.git
+git@github.com:nakatanakatana/slack-poker-planner.git
+git@github.com:nakatanakatana/gokv-gcs.git
 git@github.com:nakatanakatana/slackStatusLogger.git
+git@github.com:nakatanakatana/pocket-to-feed.git
+git@github.com:nakatanakatana/gcs-proxy.git
+git@github.com:nakatanakatana/iap_auth.git
+git@github.com:nakatanakatana/slackbot.git
+git@github.com:nakatanakatana/lhci-server.git
+git@github.com:nakatanakatana/iap_proxy.git
+git@github.com:nakatanakatana/ff.git
