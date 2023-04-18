@@ -44,7 +44,7 @@ endif
 if IsWSL()
   augroup Yank
     au!
-    autocmd TextYankPost * :call system('clip.exe', @")
+    autocmd TextYankPost * :call system('iconv -t utf16 | clip.exe', @")
   augroup END
 endif
 
