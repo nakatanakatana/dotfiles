@@ -20,5 +20,11 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+if [ -f "$HOME/wsl2-ssh-agent" ]; then
+  eval $($HOME/wsl2-ssh-agent)
+fi
+
