@@ -115,7 +115,6 @@ fi
 
 # pathの追加
 PATH=$PATH:$HOME/usr/local/bin
-PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/sbin
@@ -135,9 +134,6 @@ PATH=$PATH:${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/
 export PATH
 
 export AQUA_GLOBAL_CONFIG=$HOME/aqua.yaml
-
-# homebrew
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # vim風
 set editiong-mode vi
@@ -200,9 +196,6 @@ bind -x '"\C-b": gcop'
 alias tmux="tmux new-session -A -s local"
 export EDITOR="vim"
 
-[ -s "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/asdf.sh"
-[ -s "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
-
 if [ -d "/usr/local/etc/bash_completion.d" ]; then
   source /usr/local/etc/bash_completion.d/git-prompt.sh
   source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -233,6 +226,3 @@ if [ -f '/home/tanaka/google-cloud-sdk/path.bash.inc' ]; then . '/home/tanaka/go
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/completion.bash.inc'; fi
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
