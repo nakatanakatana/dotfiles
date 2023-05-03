@@ -22,7 +22,7 @@ packages:
 - name: k3d-io/k3d@v5.4.9
 - name: derailed/k9s@v0.27.3
 - name: helm/helm@v3.11.3
-- name: junegunn/fzf@0.39.0
+- name: junegunn/fzf@0.40.0
 - name: peco/peco@v0.5.11
 - name: 99designs/aws-vault@v7.2.0
 - name: tomnomnom/gron@v0.7.1
