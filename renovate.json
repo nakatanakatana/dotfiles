@@ -4,6 +4,7 @@
     "config:base",
     "github>aquaproj/aqua-renovate-config#1.5.2"
   ],
+  "prHourlyLimit": 10,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
