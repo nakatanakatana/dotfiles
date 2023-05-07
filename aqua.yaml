@@ -20,7 +20,7 @@ packages:
 - name: stedolan/jq@jq-1.6
 - name: x-motemen/ghq@v1.4.2
 - name: k3d-io/k3d@v5.4.9
-- name: derailed/k9s@v0.27.3
+- name: derailed/k9s@v0.27.4
 - name: helm/helm@v3.11.3
 - name: junegunn/fzf@0.40.0
 - name: peco/peco@v0.5.11
