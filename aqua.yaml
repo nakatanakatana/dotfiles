@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.1.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.3.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: mattn/efm-langserver@v0.0.44
 - name: twistedpair/google-cloud-sdk@430.0.0
