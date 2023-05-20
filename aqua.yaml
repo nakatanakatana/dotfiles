@@ -16,7 +16,7 @@ packages:
 - name: dandavison/delta@0.15.1
 - name: golangci/golangci-lint@v1.52.2
 - name: ahmetb/kubectx@v0.9.4
-- name: direnv/direnv@v2.32.2
+- name: direnv/direnv@v2.32.3
 - name: stedolan/jq@jq-1.6
 - name: x-motemen/ghq@v1.4.2
 - name: k3d-io/k3d@v5.5.1
