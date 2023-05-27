@@ -226,3 +226,17 @@ if [ -f '/home/tanaka/google-cloud-sdk/path.bash.inc' ]; then . '/home/tanaka/go
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tanaka/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tanaka/google-cloud-sdk/completion.bash.inc'; fi
+
+gcloud-switch() {
+  local selected=$(
+    gcloud config configurations list --format='table[no-heading](is_active.yesno(yes="[x]",no="[_]"), name, properties.core.account, properties.core.project.yesno(no="(unset)"))' \
+      | fzf --select-1 --query="$1" \
+      | awk '{print $2}'
+  )
+  if [ -n "$selected" ]; then
+	rm $HOME/.kube/gke_gcloud_auth_plugin_cache
+    gcloud config configurations activate $selected
+  fi
+}
+
+bind -x '"\C-g": gcloud-switch'
