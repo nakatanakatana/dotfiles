@@ -38,5 +38,5 @@ packages:
 - name: volta-cli/volta@v1.1.1
 - name: hashicorp/terraform@v1.5.2
 - name: buildpacks/pack@v0.29.0
-- name: okteto/okteto@2.16.4
+- name: okteto/okteto@2.16.5
 - name: twpayne/chezmoi@v2.34.2
