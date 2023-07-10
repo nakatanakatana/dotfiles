@@ -49,6 +49,18 @@ repo = 'peitalin/vim-jsx-typescript'
 on_ft = 'typescriptreact'
 
 [[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript', 'svelte', 'vue']
+
+[[plugins]]
+repo = 'leafOfTree/vim-svelte-plugin'
+on_ft = 'svelte'
+depends = ['yats.vim']
+hook_add = '''
+let g:vim_svelte_plugin_use_typescript = 1
+'''
+
+[[plugins]]
 repo = 'mattn/vim-goimports'
 on_ft = 'go'
 
