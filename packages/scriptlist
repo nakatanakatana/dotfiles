@@ -1,2 +1,1 @@
-curl -fsSL https://get.docker.com/ | sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
