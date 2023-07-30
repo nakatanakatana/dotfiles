@@ -39,5 +39,5 @@ packages:
 - name: hashicorp/terraform@v1.5.4
 - name: buildpacks/pack@v0.29.0
 - name: okteto/okteto@2.18.0
-- name: twpayne/chezmoi@v2.36.0
+- name: twpayne/chezmoi@v2.36.1
 - name: wagoodman/dive@v0.11.0
