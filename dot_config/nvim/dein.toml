@@ -26,9 +26,6 @@ colorscheme solarized8
 # ==========================================================
 
 [[plugins]]
-repo = 'majutsushi/tagbar'
-
-[[plugins]]
 repo = 'lambdalisue/gina.vim'
 hook_add = '''
 nnoremap <Leader>gs :<C-u>Gina status<CR>
@@ -43,48 +40,6 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
 set laststatus=2
 '''
-
-# ==========================================================
-# edit
-# ==========================================================
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-hook_add = '''
-nmap <Leader>c <Plug>(caw:hatpos:toggle)
-vmap <Leader>c <Plug>(caw:hatpos:toggle)
-'''
-
-# ==========================================================
-# task runner
-# ==========================================================
-[[plugins]]
-repo = 'mattn/vim-notification'
-
-[[plugins]]
-repo = 'skywind3000/asyncrun.vim'
-hook_add = '''
-autocmd User AsyncRunStart call notification#show(#{title: 'start job', text: 'start'})
-autocmd User AsyncRunStop call notification#show(#{title: 'stop jon', text: 'stop'})
-'''
-
-[[plugins]]
-repo = 'skywind3000/asynctasks.vim'
-
-[[plugins]]
-repo = 'vim-test/vim-test'
-hook_add = '''
-let g:test#strategy = 'asyncrun'
-
-nnoremap <Leader>t5 :TestFile<CR>
-nnoremap <Leader>t4 :TestSuite<CR>
-nnoremap <Leader>t3 :TestNearest<CR>
-nnoremap <Leader>t2 :TestLast<CR>
-'''
-
-# ==========================================================
-# linter
-# ==========================================================
 
 # ==========================================================
 # lsp
@@ -140,7 +95,9 @@ repo = 'tsuyoshicho/vim-efm-langserver-settings'
 depends = ['vim-lsp']
 # build = 'go install github.com/mattn/efm-langserver@latest'
 hook_add = '''
-let g:efm_langserver_settings#debug = 1
+let g:loaded_ale_efm_langserver_settings = 0
+let g:loaded_coc_efm_langserver_settings = 0
+let g:efm_langserver_settings#customlist = 1
 let g:efm_langserver_settings#filetype_whitelist = ['typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'json', 'markdown', 'cue']
 '''
 
@@ -218,43 +175,6 @@ let g:lightline = {
 \ }
 '''
 
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip'
-depends = ['vim-lsp']
-hook_add = '''
-" NOTE: You can use other key to expand snippet.
-
-" Expand
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-" Expand or jump
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-
-" Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
-" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-" See https://github.com/hrsh7th/vim-vsnip/pull/50
-nmap        s   <Plug>(vsnip-select-text)
-xmap        s   <Plug>(vsnip-select-text)
-nmap        S   <Plug>(vsnip-cut-text)
-xmap        S   <Plug>(vsnip-cut-text)
-
-" If you want to use snippet for multiple filetypes, you can `g:vsip_filetypes` for it.
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']
-'''
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
-
-
 # ==========================================================
 # lang
 # ==========================================================
@@ -274,27 +194,6 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'lambdalisue/nerdfont.vim'
 
 [[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-hook_add = '''
-let g:fern#renderer = "nerdfont"
-'''
-
-[[plugins]]
-repo = 'lambdalisue/fern-hijack.vim'
-
-[[plugins]]
-repo = 'LumaKernel/fern-mapping-fzf.vim'
-depends = ['fzf', 'fern.vim']
-
-[[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = '''
-nnoremap <Leader><Leader>c :Fern . -drawer -toggle<CR>
-nnoremap <Leader><Leader>. :Fern . -drawer<CR>
-nnoremap <Leader><Leader> :Fern %:h -drawer<CR>
-'''
-
-[[plugins]]
 repo = 'airblade/vim-rooter'
 hook_add = '''
 let g:rooter_cd_cmd="lcd"
@@ -309,10 +208,7 @@ vmap V <Plug>(expand_region_shrink)
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-nnoremap <Leader>g<BS> :GitGutterLineHighlightsToggle<CR>
-'''
+repo = 'mhinz/vim-signify'
 
 [[plugins]]
 repo = 'ruanyl/vim-gh-line'
@@ -320,22 +216,6 @@ hook_add = '''
 let g:gh_line_map = '<leader>go'
 let g:gh_line_blame_map = '<leader>gob'
 let g:gh_open_command = 'wsl-open '
-'''
-
-[[plugins]]
-repo = 'rrethy/vim-hexokinase'
-build = 'make hexokinase'
-hook_add = '''
-" let g:Hexokinase_highlighters = ['sign_column']
-let g:Hexokinase_highlighters = ['backgroundfull']
-'''
-
-[[plugins]]
-repo = 'vim-scripts/vim-auto-save'
-hook_add = '''
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-let g:auto_save_silent = 1
 '''
 
 [[plugins]]
@@ -350,16 +230,6 @@ hook_add = '''
 nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>f :<C-u>Rg<CR>
 nnoremap <C-p> :<C-u>GFiles<CR>
-'''
-
-[[plugins]]
-repo = 'mileszs/ack.vim'
-hook_add = '''
-if executable('rg')
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_user_command = 'rg --files --no-ignore --ignore-file ~/.config/ripgrep/ignore --hidden %s'
-  let g:ackprg = 'rg --vimgrep --hidden'
-endif
 '''
 
 [[plugins]]
@@ -379,45 +249,4 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey10
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey25
 
 let g:indent_guides_color_change_percent = 1
-'''
-
-[[plugins]]
-repo = 'kana/vim-submode'
-hook_add = '''
-" undo/redo
-call submode#enter_with('undo/redo', 'n', '', 'g-', 'g-')
-call submode#enter_with('undo/redo', 'n', '', 'g+', 'g+')
-call submode#enter_with('undo/redo', 'n', '', 'g=', 'g+')
-call submode#leave_with('undo/redo', 'n', '', '<Esc>')
-call submode#map('undo/redo', 'n', '', '-', 'g-')
-call submode#map('undo/redo', 'n', '', '+', 'g+')
-call submode#map('undo/redo', 'n', '', '=', 'g+')
-" splitsize
-call submode#enter_with('bufmove', 'n', '', '<Leader>w>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w.', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w,', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w=', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w-', '<C-w>-')
-call submode#enter_with('bufmove', 'n', '', '<Leader>w0', '<C-w>=')
-call submode#leave_with('bufmove', 'n', '', '<Esc>')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '.', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', ',', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '=', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '0', '<C-w>=')
-" splitselect
-call submode#enter_with('splitselect', 'n', '', '<Leader>wh', '<C-w>h')
-call submode#enter_with('splitselect', 'n', '', '<Leader>wj', '<C-w>j')
-call submode#enter_with('splitselect', 'n', '', '<Leader>wk', '<C-w>k')
-call submode#enter_with('splitselect', 'n', '', '<Leader>wl', '<C-w>l')
-call submode#leave_with('splitselect', 'n', '', '<Esc>')
-call submode#map('splitselect', 'n', '', 'h', '<C-w>h')
-call submode#map('splitselect', 'n', '', 'j', '<C-w>j')
-call submode#map('splitselect', 'n', '', 'k', '<C-w>k')
-call submode#map('splitselect', 'n', '', 'l', '<C-w>l')
 '''

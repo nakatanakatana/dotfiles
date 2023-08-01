@@ -1,4 +1,76 @@
 # ==========================================================
+# util
+# ==========================================================
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = '<Plug>(caw:'
+hook_add = '''
+nmap <Leader>c <Plug>(caw:hatpos:toggle)
+vmap <Leader>c <Plug>(caw:hatpos:toggle)
+'''
+
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+on_event = 'InsertEnter'
+hook_add = '''
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1
+'''
+
+[[plugins]]
+repo = 'rrethy/vim-hexokinase'
+build = 'make hexokinase'
+on_cmd = 'HexokinaseToggle'
+hook_add = '''
+" let g:Hexokinase_highlighters = ['sign_column']
+let g:Hexokinase_highlighters = ['backgroundfull']
+'''
+
+[[plugins]]
+repo = 'kana/vim-submode'
+on_func = 'submode#'
+hook_add = '''
+" undo/redo
+call submode#enter_with('undo/redo', 'n', '', 'g-', 'g-')
+call submode#enter_with('undo/redo', 'n', '', 'g+', 'g+')
+call submode#enter_with('undo/redo', 'n', '', 'g=', 'g+')
+call submode#leave_with('undo/redo', 'n', '', '<Esc>')
+call submode#map('undo/redo', 'n', '', '-', 'g-')
+call submode#map('undo/redo', 'n', '', '+', 'g+')
+call submode#map('undo/redo', 'n', '', '=', 'g+')
+" splitsize
+call submode#enter_with('bufmove', 'n', '', '<Leader>w>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w.', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w,', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w=', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w-', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', '<Leader>w0', '<C-w>=')
+call submode#leave_with('bufmove', 'n', '', '<Esc>')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '.', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', ',', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '=', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '0', '<C-w>=')
+" splitselect
+call submode#enter_with('splitselect', 'n', '', '<Leader>wh', '<C-w>h')
+call submode#enter_with('splitselect', 'n', '', '<Leader>wj', '<C-w>j')
+call submode#enter_with('splitselect', 'n', '', '<Leader>wk', '<C-w>k')
+call submode#enter_with('splitselect', 'n', '', '<Leader>wl', '<C-w>l')
+call submode#leave_with('splitselect', 'n', '', '<Esc>')
+call submode#map('splitselect', 'n', '', 'h', '<C-w>h')
+call submode#map('splitselect', 'n', '', 'j', '<C-w>j')
+call submode#map('splitselect', 'n', '', 'k', '<C-w>k')
+call submode#map('splitselect', 'n', '', 'l', '<C-w>l')
+'''
+
+
+# ==========================================================
 # lang
 # ==========================================================
 [[plugins]]
