@@ -41,3 +41,4 @@ packages:
 - name: okteto/okteto@2.18.1
 - name: twpayne/chezmoi@v2.37.0
 - name: wagoodman/dive@v0.11.0
+- name: terraform-linters/tflint@v0.47.0
