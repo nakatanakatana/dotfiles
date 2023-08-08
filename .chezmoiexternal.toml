@@ -5,3 +5,13 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
+[".config/git-completion.bash"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+    refreshPeriod = "168h"
+
+[".config/git-prompt.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+    refreshPeriod = "168h"
+

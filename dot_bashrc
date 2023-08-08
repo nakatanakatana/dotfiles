@@ -165,10 +165,8 @@ bind -x '"\C-b": gcop'
 alias tmux="tmux new-session -A -s local"
 export EDITOR="vim"
 
-if [ -d "/usr/local/etc/bash_completion.d" ]; then
-  source /usr/local/etc/bash_completion.d/git-prompt.sh
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
+[ -f "${HOME}/.config/git-prompt.sh" ] && source "${HOME}/.config/git-prompt.sh"
+[ -f "${HOME}/.config/git-completion.bash" ] && source "${HOME}/.config/git-completion.bash"
 
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
@@ -178,12 +176,11 @@ eval "$(direnv hook bash)"
 KUBECONFIG="$HOME/.kube/config"
 [ -e "$HOME/.kube/k3s.yaml" ] && KUBECONFIG="$KUBECONFIG:$HOME/.kube/k3s.yaml"
 alias k3ctl="sudo k3s kubectl"
-
 export KUBECONFIG
 
 gcloud_path=$(aqua which gcloud)
-if [ -f "${gcloud_path%/bin/gcloud}/path.bash.inc" ]; then . "${gcloud_path%/bin/gcloud}/path.bash.inc"; fi
-if [ -f "${gcloud_path%/bin/gcloud}/completion.bash.inc" ]; then . "${gcloud_path%/bin/gcloud}/completion.bash.inc"; fi
+[ -f "${gcloud_path%/bin/gcloud}/path.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/path.bash.inc"
+[ -f "${gcloud_path%/bin/gcloud}/completion.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/completion.bash.inc"
 
 gcloud-switch() {
   local selected=$(
