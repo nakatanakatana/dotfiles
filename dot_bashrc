@@ -106,6 +106,8 @@ PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.istioctl/bin
 PATH=$PATH:$HOME/go/bin
+PATH=$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/
+PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
 PATH=$PATH:${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin
 export PATH
 
@@ -168,12 +170,6 @@ if [ -d "/usr/local/etc/bash_completion.d" ]; then
   source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
-if [ -d "$HOME/bin/google-cloud-sdk" ]; then
-  source $HOME/bin/google-cloud-sdk/completion.bash.inc
-  source $HOME/bin/google-cloud-sdk/path.bash.inc
-fi
-
-
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 
@@ -196,7 +192,7 @@ gcloud-switch() {
       | awk '{print $2}'
   )
   if [ -n "$selected" ]; then
-	rm $HOME/.kube/gke_gcloud_auth_plugin_cache
+    rm $HOME/.kube/gke_gcloud_auth_plugin_cache
     gcloud config configurations activate $selected
   fi
 }
