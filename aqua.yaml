@@ -32,7 +32,7 @@ packages:
 - name: kubernetes/kubectl@v1.28.0
 - name: mattn/efm-langserver@v0.0.48
 - name: mergestat/mergestat-lite@v0.6.1
-- name: okteto/okteto@2.18.3
+- name: okteto/okteto@2.19.0
 - name: peco/peco@v0.5.11
 - name: stedolan/jq@jq-1.6
 - name: terraform-linters/tflint@v0.47.0
