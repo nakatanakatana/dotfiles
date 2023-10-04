@@ -69,7 +69,9 @@ let g:lsp_text_edit_enabled = 1
 let g:lsp_inlay_hints_enabled = 1
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_diagnostics_float_cursor = 1
-" let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_virtual_text_align = "right"
+let g:lsp_diagnostics_virtual_text_wrap = "truncate"
 
 nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>da :LspCodeAction <CR>
