@@ -37,7 +37,7 @@ packages:
 - name: jqlang/jq@jq-1.7
 - name: terraform-linters/tflint@v0.48.0
 - name: tomnomnom/gron@v0.7.1
-- name: twistedpair/google-cloud-sdk@446.0.1
+- name: twistedpair/google-cloud-sdk@449.0.0
 - name: twpayne/chezmoi@v2.40.2
 - name: volta-cli/volta@v1.1.1
 - name: wagoodman/dive@v0.11.0
