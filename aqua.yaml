@@ -42,4 +42,4 @@ packages:
 - name: volta-cli/volta@v1.1.1
 - name: wagoodman/dive@v0.11.0
 - name: x-motemen/ghq@v1.4.2
-- name: oven-sh/bun@bun-v1.0.5
+- name: oven-sh/bun@bun-v1.0.6
