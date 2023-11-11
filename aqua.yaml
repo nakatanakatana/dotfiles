@@ -31,7 +31,7 @@ packages:
 - name: junegunn/fzf@0.43.0
 - name: k3d-io/k3d@v5.6.0
 - name: kubernetes/kubectl@v1.28.3
-- name: mattn/efm-langserver@v0.0.48
+- name: mattn/efm-langserver@v0.0.49
 - name: mergestat/mergestat-lite@v0.6.1
 - name: okteto/okteto@2.22.2
 - name: peco/peco@v0.5.11
