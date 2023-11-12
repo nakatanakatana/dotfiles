@@ -36,7 +36,7 @@ packages:
 - name: okteto/okteto@2.22.2
 - name: peco/peco@v0.5.11
 - name: jqlang/jq@jq-1.7
-- name: terraform-linters/tflint@v0.48.0
+- name: terraform-linters/tflint@v0.49.0
 - name: tomnomnom/gron@v0.7.1
 - name: twistedpair/google-cloud-sdk@450.0.0
 - name: twpayne/chezmoi@v2.40.4
