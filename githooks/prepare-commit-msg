@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ref="$(git rev-parse --abbrev-ref HEAD | cut -d '/' -f 2- | sed -e 's|/\([0-9]\+\)$|#\1|g')"
+sed -i "1s|^|refs $ref\n\n|g" $1

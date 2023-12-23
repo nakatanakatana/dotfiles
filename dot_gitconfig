@@ -7,6 +7,7 @@
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	pager = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
+	hooksPath = ~/repos/github.com/nakatanakatana/dotfiles/githooks/
 [interactive]
 	diffFilter = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
 [alias]
