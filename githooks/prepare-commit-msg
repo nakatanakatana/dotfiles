@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-ref="$(git rev-parse --abbrev-ref HEAD | cut -d '/' -f 2- | sed -e 's|/\([0-9]\+\)$|#\1|g')"
-sed -i "1s|^|refs $ref\n\n|g" $1
+readonly COMMIT_SOURCE=$2
+
+case "${COMMIT_SOURCE}" in
+  commit) # use -c/-C/--amend
+  ;;
+  *)
+    ref="$(git rev-parse --abbrev-ref HEAD | cut -d '/' -f 2- | sed -e 's|/\([0-9]\+\)$|#\1|g')"
+    sed -i "1s|^$|refs $ref\n\n|g" $1
+  ;;
+esac
