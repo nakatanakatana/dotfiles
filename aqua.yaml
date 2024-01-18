@@ -19,7 +19,7 @@ packages:
 - name: cue-lang/cue@v0.7.0
 - name: dagger/dagger@v0.9.6
 - name: dandavison/delta@0.16.5
-- name: derailed/k9s@v0.31.5
+- name: derailed/k9s@v0.31.6
 - name: direnv/direnv@v2.33.0
 - name: docker/compose@v2.24.0
 - name: fluxcd/flux2@v2.2.2
