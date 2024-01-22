@@ -21,7 +21,7 @@ packages:
 - name: dandavison/delta@0.16.5
 - name: derailed/k9s@v0.31.7
 - name: direnv/direnv@v2.33.0
-- name: docker/compose@v2.24.1
+- name: docker/compose@v2.24.2
 - name: fluxcd/flux2@v2.2.2
 - name: golang/go@go1.21.6
 - name: golangci/golangci-lint@v1.55.2
