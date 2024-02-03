@@ -36,7 +36,7 @@ packages:
 - name: mattn/efm-langserver@v0.0.50
 - name: mergestat/mergestat-lite@v0.6.1
 - name: okteto/okteto@2.25.1
-- name: oven-sh/bun@bun-v1.0.25
+- name: oven-sh/bun@bun-v1.0.26
 - name: peco/peco@v0.5.11
 - name: tellerops/teller@v1.5.6
 - name: terraform-linters/tflint@v0.50.2
