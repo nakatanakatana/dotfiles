@@ -39,7 +39,7 @@ packages:
 - name: oven-sh/bun@bun-v1.0.26
 - name: peco/peco@v0.5.11
 - name: tellerops/teller@v1.5.6
-- name: terraform-linters/tflint@v0.50.2
+- name: terraform-linters/tflint@v0.50.3
 - name: tomnomnom/gron@v0.7.1
 - name: twistedpair/google-cloud-sdk@458.0.1
 - name: twpayne/chezmoi@v2.46.0
