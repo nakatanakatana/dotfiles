@@ -2,6 +2,8 @@
 	email = nakatanakatana@gmail.com
 	name = tanaka
 	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPbVSFzP7Ie/Dk1+wtFlMG6HLq2srD/J257nnTwZgzkS
+[init]
+	defaultBranch = main
 [gpg]
 	format = ssh
 [core]
@@ -19,6 +21,8 @@
 	delete-merged-branch = !sh -c 'git merged-branch | xargs git branch -d'
 	st = status
 	br = branch
+[diff]
+	algorithm = histogram
 [push]
 	default = current
 [fetch]
@@ -27,6 +31,10 @@
 	prune = true
 [merge]
 	ff = true
+	conflictstyle = diff3
+[rebase]
+	autosquash = true
+	autostash = true
 [commit]
 	gpgsign = true
 [tag]
