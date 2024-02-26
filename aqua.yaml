@@ -32,7 +32,7 @@ packages:
 - name: junegunn/fzf@0.46.1
 - name: k3d-io/k3d@v5.6.0
 - name: kubernetes/kubectl@v1.29.2
-- name: loft-sh/devpod@v0.5.3
+- name: loft-sh/devpod@v0.5.4
 - name: mattn/efm-langserver@v0.0.50
 - name: mergestat/mergestat-lite@v0.6.1
 - name: okteto/okteto@2.25.2
