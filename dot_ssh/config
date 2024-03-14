@@ -1,0 +1,6 @@
+ForwardAgent yes
+GSSAPIAuthentication no
+
+Host *
+	IdentityAgent ~/.ssh/wsl2-ssh-agent.sock
+
