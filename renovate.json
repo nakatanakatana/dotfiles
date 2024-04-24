@@ -10,6 +10,11 @@
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "matchPackageNames": ["twistedpair/google-cloud-sdk"],
+      "automerge": true,
+      "platformAutomerge": true
     }
   ]
 }
