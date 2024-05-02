@@ -144,7 +144,22 @@ complete -F _git_completion git
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 
-eval "$(direnv hook bash)"
+# original from: https://github.com/j-szulc/evalcache/blob/02bc6de8fb9d2c707e9c3af57e674dd8a1a94cf0/evalcache.sh
+evalcache () {
+        cache_file="$HOME/.cache/$(cksum <<< "$*")"
+        cache_file="${cache_file%% *}"
+        if [ -f "$cache_file" ]
+        then
+                cat "$cache_file"
+                (
+                        "$@" > "$cache_file" &
+                )
+        else
+                "$@" > "$cache_file"
+                cat "$cache_file"
+        fi
+}
+eval "$(evalcache direnv hook bash)"
 
 KUBECONFIG="$HOME/.kube/config"
 [ -e "$HOME/.kube/k3s.yaml" ] && KUBECONFIG="$KUBECONFIG:$HOME/.kube/k3s.yaml"
