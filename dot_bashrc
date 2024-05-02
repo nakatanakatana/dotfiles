@@ -145,9 +145,20 @@ KUBECONFIG="$HOME/.kube/config"
 alias k3ctl="sudo k3s kubectl"
 export KUBECONFIG
 
-gcloud_path=$(aqua which gcloud)
-[ -f "${gcloud_path%/bin/gcloud}/path.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/path.bash.inc"
-[ -f "${gcloud_path%/bin/gcloud}/completion.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/completion.bash.inc"
+gcloud() {
+  unset -f gcloud
+  gcloud_path=$(aqua which gcloud)
+  [ -f "${gcloud_path%/bin/gcloud}/path.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/path.bash.inc"
+  gcloud  "$@"
+}
+
+_gcloud_completion() {
+  unset -f _gcloud_completion
+  gcloud_path=$(aqua which gcloud)
+  complete -r gcloud
+  [ -f "${gcloud_path%/bin/gcloud}/completion.bash.inc" ] && source "${gcloud_path%/bin/gcloud}/completion.bash.inc" && return 124
+}
+complete -F _gcloud_completion gcloud
 
 gcloud-switch() {
   local selected=$(
