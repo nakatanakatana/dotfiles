@@ -133,7 +133,13 @@ alias tmux="tmux new-session -A -s local"
 export EDITOR="vim"
 
 [ -f "${HOME}/.config/git-prompt.sh" ] && source "${HOME}/.config/git-prompt.sh"
-[ -f "${HOME}/.config/git-completion.bash" ] && source "${HOME}/.config/git-completion.bash"
+
+_git_completion() {
+  unset -f _git_completion
+  complete -r git
+  [ -f "${HOME}/.config/git-completion.bash" ] && source "${HOME}/.config/git-completion.bash" && return 124
+}
+complete -F _git_completion git
 
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
