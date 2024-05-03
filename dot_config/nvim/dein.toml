@@ -253,3 +253,18 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey25
 
 let g:indent_guides_color_change_percent = 1
 '''
+
+[[plugins]]
+repo = 'ojroques/vim-oscyank'
+hook_add = '''
+let s:VimOSCYankPostRegisters = ['', '+', '*']
+function! s:VimOSCYankPostCallback(event)
+    if (a:event.operator == 'y' || a:event.operator == 'd') && index(s:VimOSCYankPostRegisters, a:event.regname) != -1
+        call OSCYankRegister(a:event.regname)
+    endif
+endfunction
+augroup VimOSCYankPost
+    autocmd!
+    autocmd TextYankPost * call s:VimOSCYankPostCallback(v:event)
+augroup END
+'''

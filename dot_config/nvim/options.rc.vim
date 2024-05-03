@@ -41,13 +41,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-if IsWSL()
-  augroup Yank
-    au!
-    autocmd TextYankPost * :call system('wl-copy', @")
-  augroup END
-endif
-
 autocmd InsertEnter,InsertLeave * set cursorline!
 autocmd QuickFixCmdPost *grep* cwindow
 
