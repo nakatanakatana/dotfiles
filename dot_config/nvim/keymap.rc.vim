@@ -34,12 +34,12 @@ endif
 
 
 " tab
-nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>
-nnoremap <Leader>n :<C-u>tabnext<CR>
-nnoremap <Leader>wn :<C-u>tabnext<CR>
-nnoremap <Leader>p :<C-u>tabprevious<CR>
-nnoremap <Leader>wp :<C-u>tabprevious<CR>
-nnoremap <Leader><Leader>t :<C-u>tab terminal ++close<CR>
+" nnoremap <Leader><Leader><Leader> :<C-u>tabnew<CR>
+" nnoremap <Leader>n :<C-u>tabnext<CR>
+" nnoremap <Leader>wn :<C-u>tabnext<CR>
+" nnoremap <Leader>p :<C-u>tabprevious<CR>
+" nnoremap <Leader>wp :<C-u>tabprevious<CR>
+" nnoremap <Leader><Leader>t :<C-u>tab terminal ++close<CR>
 
 "hide hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>nohlsearch<CR>

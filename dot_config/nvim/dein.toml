@@ -36,6 +36,15 @@ nnoremap <Leader>gl :<C-u>Gina log<CR>
 '''
 
 [[plugins]]
+repo = 'ap/vim-buftabline'
+hook_add = '''
+nnoremap <Leader>n :<C-u>bnext<CR>
+nnoremap <Leader>wn :<C-u>bnext<CR>
+nnoremap <Leader>p :<C-u>bprevious<CR>
+nnoremap <Leader>wp :<C-u>bprevious<CR>
+'''
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 set laststatus=2
@@ -150,6 +159,7 @@ hook_add = '''
 let g:lsp_work_done_progress_enabled = 1
 let g:lightline = {
 \ 'colorscheme': 'solarized',
+\ 'enable': { 'tabline': 0 },
 \ 'active': {
 \   'left': [
 \     [ 'mode', 'paste' ],
