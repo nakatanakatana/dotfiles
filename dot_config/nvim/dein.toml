@@ -26,7 +26,7 @@ colorscheme solarized8
 # ==========================================================
 
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
+repo = 'lambdalisue/vim-gina'
 hook_add = '''
 nnoremap <Leader>gs :<C-u>Gina status<CR>
 nnoremap <Leader>gd :<C-u>Gina diff<CR>
@@ -204,7 +204,7 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
+repo = 'lambdalisue/vim-nerdfont'
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
