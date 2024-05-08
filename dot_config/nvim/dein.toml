@@ -246,6 +246,12 @@ nnoremap <C-p> :<C-u>GFiles<CR>
 '''
 
 [[plugins]]
+repo = 'Asheq/close-buffers.vim'
+hook_add = '''
+nnoremap <Leader>bq :Bdelete hidden<CR>
+'''
+
+[[plugins]]
 repo = 'thinca/vim-qfreplace'
 
 [[plugins]]
