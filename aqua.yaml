@@ -42,7 +42,7 @@ packages:
 - name: okteto/okteto@2.27.1
 - name: oven-sh/bun@bun-v1.1.8
 - name: peco/peco@v0.5.11
-- name: tellerops/teller@v2.0.3
+- name: tellerops/teller@v2.0.4
 - name: terraform-linters/tflint@v0.51.1
 - name: tomnomnom/gron@v0.7.1
 - name: twistedpair/google-cloud-sdk@475.0.0
