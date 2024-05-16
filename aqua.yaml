@@ -12,6 +12,7 @@ registries:
 packages:
 - name: 99designs/aws-vault@v7.2.0
 - name: BurntSushi/ripgrep@14.1.0
+- name: GoogleCloudPlatform/cloud-sql-proxy@v2.11.1
 - name: ahmetb/kubectx@v0.9.5
 - name: aquasecurity/trivy@v0.51.1
 - name: arl/gitmux@v0.10.4
