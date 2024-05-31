@@ -4,6 +4,7 @@ set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 set colorcolumn=80
 set number
 set incsearch
+set hlsearch
 set tabstop=4
 set shiftwidth=4
 set smartindent
