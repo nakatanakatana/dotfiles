@@ -38,7 +38,7 @@ packages:
 - name: kubernetes-sigs/cluster-api@v1.7.3
 - name: kubernetes-sigs/kustomize@kustomize/v5.4.2
 - name: kubernetes/kubectl@v1.30.2
-- name: loft-sh/devpod@v0.5.15
+- name: loft-sh/devpod@v0.5.16
 - name: mattn/efm-langserver@v0.0.53
 - name: mergestat/mergestat-lite@v0.6.2
 - name: neovim/neovim@v0.10.0
