@@ -34,7 +34,7 @@ packages:
 - name: itchyny/mmv@v0.1.6
 - name: jqlang/jq@jq-1.7.1
 - name: junegunn/fzf@v0.54.0
-- name: k3d-io/k3d@v5.7.1
+- name: k3d-io/k3d@v5.7.2
 - name: kubernetes-sigs/cluster-api@v1.7.4
 - name: kubernetes-sigs/kustomize@kustomize/v5.4.2
 - name: kubernetes/kubectl@v1.30.2
