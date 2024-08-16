@@ -21,7 +21,7 @@ packages:
 - name: cloudflare/cloudflared@2024.8.2
 - name: cue-lang/cue@v0.10.0
 - name: dagger/dagger@v0.12.5
-- name: dandavison/delta@0.17.0
+- name: dandavison/delta@0.18.0
 - name: derailed/k9s@v0.32.5
 - name: direnv/direnv@v2.34.0
 - name: docker/compose@v2.29.2
