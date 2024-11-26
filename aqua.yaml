@@ -46,7 +46,7 @@ packages:
 - name: mergestat/mergestat-lite@v0.6.2
 - name: neovim/neovim@v0.10.2
 - name: okteto/okteto@3.1.0
-- name: oven-sh/bun@bun-v1.1.36
+- name: oven-sh/bun@bun-v1.1.37
 - name: peco/peco@v0.5.11
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.54.0
