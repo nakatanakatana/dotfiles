@@ -14,7 +14,7 @@ packages:
 - name: BurntSushi/ripgrep@14.1.1
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.14.1
 - name: ahmetb/kubectx@v0.9.5
-- name: aquasecurity/trivy@v0.57.1
+- name: aquasecurity/trivy@v0.58.0
 - name: arl/gitmux@v0.11.2
 - name: astral-sh/uv@0.5.5
 - name: aws/aws-cli@2.22.9
