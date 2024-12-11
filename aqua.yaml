@@ -16,7 +16,7 @@ packages:
 - name: ahmetb/kubectx@v0.9.5
 - name: aquasecurity/trivy@v0.58.0
 - name: arl/gitmux@v0.11.2
-- name: astral-sh/uv@0.5.7
+- name: astral-sh/uv@0.5.8
 - name: aws/aws-cli@2.22.14
 - name: buildpacks/pack@v0.36.0
 - name: cli/cli@v2.63.2
