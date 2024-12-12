@@ -41,7 +41,7 @@ packages:
 - name: k3d-io/k3d@v5.7.5
 - name: kubernetes-sigs/cluster-api@v1.9.0
 - name: kubernetes-sigs/kustomize@kustomize/v5.5.0
-- name: kubernetes/kubectl@v1.31.4
+- name: kubernetes/kubectl@v1.32.0
 - name: loft-sh/devpod@v0.6.5
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
