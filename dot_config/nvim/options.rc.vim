@@ -12,6 +12,7 @@ set t_Co=256
 set ttimeoutlen=10
 set nocursorline
 set fileencodings=utf-8,cp932
+set noequalalways
 set splitbelow
 set splitright
 set autoread
