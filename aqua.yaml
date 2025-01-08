@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.292.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.293.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: 99designs/aws-vault@v7.2.0
 - name: BurntSushi/ripgrep@14.1.1
@@ -16,17 +16,17 @@ packages:
 - name: ahmetb/kubectx@v0.9.5
 - name: aquasecurity/trivy@v0.58.1
 - name: arl/gitmux@v0.11.2
-- name: astral-sh/uv@0.5.14
+- name: astral-sh/uv@0.5.15
 - name: aws/aws-cli@2.22.30
 - name: buildpacks/pack@v0.36.2
-- name: cli/cli@v2.64.0
+- name: cli/cli@v2.65.0
 - name: cloudflare/cloudflared@2024.12.2
 - name: cue-lang/cue@v0.11.1
 - name: dagger/dagger@v0.15.1
 - name: dandavison/delta@0.18.2
 - name: derailed/k9s@v0.32.7
 - name: direnv/direnv@v2.35.0
-- name: docker/compose@v2.32.1
+- name: docker/compose@v2.32.2
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.1.3
 - name: fluxcd/flux2@v2.4.0
@@ -34,7 +34,7 @@ packages:
 - name: gitlab.com/gitlab-org/cli@v1.51.0
 - name: golang/go@go1.23.4
 - name: golangci/golangci-lint@v1.63.4
-- name: hashicorp/terraform@v1.10.3
+- name: hashicorp/terraform@v1.10.4
 - name: helm/helm@v3.16.4
 - name: itchyny/mmv@v0.1.6
 - name: jqlang/jq@jq-1.7.1
@@ -43,7 +43,7 @@ packages:
 - name: kubernetes-sigs/cluster-api@v1.9.3
 - name: kubernetes-sigs/kustomize@kustomize/v5.5.0
 - name: kubernetes/kubectl@v1.32.0
-- name: loft-sh/devpod@v0.6.6
+- name: loft-sh/devpod@v0.6.7
 - name: mame/wsl2-ssh-agent@v0.9.5
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
@@ -54,7 +54,7 @@ packages:
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.54.0
 - name: tomnomnom/gron@v0.7.1
-- name: twistedpair/google-cloud-sdk@504.0.1
+- name: twistedpair/google-cloud-sdk@505.0.0
 - name: twpayne/chezmoi@v2.57.0
 - name: volta-cli/volta@v2.0.2
 - name: wagoodman/dive@v0.12.0
