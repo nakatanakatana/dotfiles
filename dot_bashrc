@@ -58,6 +58,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+source /etc/bash_completion
+
 # pathの追加
 PATH=$PATH:$HOME/usr/local/bin
 PATH=$PATH:/usr/local/sbin
@@ -142,10 +144,21 @@ _git_completion() {
 complete -F _git_completion git
 
 ## helm
-. <(helm completion bash)
+
+_helm_completion() {
+  unset -f _helm_completion
+  complete -r helm
+  [ -x "$(command -v helm)" ] && source <(helm completion bash)
+}
+complete -F _helm_completion helm
 
 ## flux
-. <(flux completion bash)
+_flux_completion() {
+  unset -f _flux_completion
+  complete -r flux
+  [ -x "$(command -v flux)" ] && source <(flux completion bash)
+}
+complete -F _flux_completion flux
 
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
