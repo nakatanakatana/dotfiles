@@ -43,7 +43,7 @@ packages:
 - name: kubernetes-sigs/cluster-api@v1.9.3
 - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
 - name: kubernetes/kubectl@v1.32.1
-- name: loft-sh/devpod@v0.6.9
+- name: loft-sh/devpod@v0.6.10
 - name: mame/wsl2-ssh-agent@v0.9.5
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
