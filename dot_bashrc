@@ -144,7 +144,6 @@ _git_completion() {
 complete -F _git_completion git
 
 ## helm
-
 _helm_completion() {
   unset -f _helm_completion
   complete -r helm
@@ -159,6 +158,14 @@ _flux_completion() {
   [ -x "$(command -v flux)" ] && source <(flux completion bash)
 }
 complete -F _flux_completion flux
+
+## devpod
+_devpod_completion() {
+  unset -f _devpod_completion
+  complete -r devpod
+  [ -x "$(command -v devpod)" ] && source <(devpod completion bash)
+}
+complete -F _devpod_completion devpod
 
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
