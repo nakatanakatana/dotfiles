@@ -1,2 +1,5 @@
-package.sh
-packages/*
+install.sh
+renovate.json
+packages.sh
+packages/
+packages/**
