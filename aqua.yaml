@@ -47,7 +47,7 @@ packages:
 - name: mame/wsl2-ssh-agent@v0.9.5
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
-- name: neovim/neovim@v0.10.3
+- name: neovim/neovim@v0.10.4
 - name: okteto/okteto@3.3.1
 - name: oven-sh/bun@bun-v1.2.1
 - name: peco/peco@v0.5.11
