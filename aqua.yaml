@@ -20,7 +20,7 @@ packages:
 - name: aws/aws-cli@2.23.9
 - name: buildpacks/pack@v0.36.4
 - name: cli/cli@v2.65.0
-- name: cloudflare/cloudflared@2025.1.0
+- name: cloudflare/cloudflared@2025.1.1
 - name: cue-lang/cue@v0.12.0
 - name: dagger/dagger@v0.15.3
 - name: dandavison/delta@0.18.2
