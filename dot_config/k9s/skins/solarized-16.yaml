@@ -70,7 +70,7 @@ k9s:
       fgColor: *selection
       focusColor: *foreground
     menu:
-      fgColor: *foreground
+      fgColor: *base2
       keyColor: *blue
       numKeyColor: *green
     crumbs:
@@ -78,13 +78,13 @@ k9s:
       bgColor: *base0
       activeColor: *blue
     status:
-      newColor: *cyan
-      modifyColor: *blue
+      newColor: *blue
+      modifyColor: *cyan
       addColor: *yellow
       errorColor: *red
       highlightColor: *orange
       killColor: *violet
-      completedColor: *base00
+      completedColor: *base01
     title:
       fgColor: *foreground
       bgColor: *background
