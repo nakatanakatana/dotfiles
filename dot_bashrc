@@ -193,6 +193,7 @@ alias k3ctl="sudo k3s kubectl"
 export KUBECONFIG
 
 alias k9s='k9s --context $(kubectl config get-contexts -o=name | peco --select-1)'
+alias kubectx='kubectl config use-context $(kubectl config get-contexts -o=name | peco --select-1)'
 
 gcloud() {
   unset -f gcloud
