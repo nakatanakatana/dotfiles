@@ -53,7 +53,7 @@ packages:
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.55.1
 - name: tomnomnom/gron@v0.7.1
-- name: twistedpair/google-cloud-sdk@509.0.0
+- name: twistedpair/google-cloud-sdk@510.0.0
 - name: twpayne/chezmoi@v2.59.1
 - name: volta-cli/volta@v2.0.2
 - name: wagoodman/dive@v0.12.0
