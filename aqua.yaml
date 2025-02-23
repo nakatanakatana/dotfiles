@@ -38,7 +38,7 @@ packages:
 - name: int128/kubelogin@v1.32.2
 - name: itchyny/mmv@v0.1.6
 - name: jqlang/jq@jq-1.7.1
-- name: junegunn/fzf@v0.60.1
+- name: junegunn/fzf@v0.60.2
 - name: k3d-io/k3d@v5.8.3
 - name: kubernetes-sigs/cluster-api@v1.9.5
 - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
