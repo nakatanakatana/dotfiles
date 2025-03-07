@@ -232,6 +232,9 @@ let g:gh_open_command = 'wsl-open '
 '''
 
 [[plugins]]
+repo = 'https://codeberg.org/scy/vim-simple-cov'
+
+[[plugins]]
 repo = 'junegunn/fzf'
 build = './install'
 merged = false
