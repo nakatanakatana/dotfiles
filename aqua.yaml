@@ -25,7 +25,7 @@ packages:
 - name: dagger/dagger@v0.18.2
 - name: dandavison/delta@0.18.2
 - name: derailed/k9s@v0.50.2
-- name: direnv/direnv@v2.35.0
+- name: direnv/direnv@v2.36.0
 - name: docker/compose@v2.35.0
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.2.2
