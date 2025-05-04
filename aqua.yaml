@@ -40,7 +40,7 @@ packages:
 - name: int128/kubelogin@v1.32.4
 - name: itchyny/mmv@v0.1.6
 - name: jqlang/jq@jq-1.7.1
-- name: junegunn/fzf@v0.61.3
+- name: junegunn/fzf@v0.62.0
 - name: k3d-io/k3d@v5.8.3
 - name: kubernetes-sigs/cluster-api@v1.10.1
 - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
