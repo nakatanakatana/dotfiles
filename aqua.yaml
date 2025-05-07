@@ -16,7 +16,7 @@ packages:
 - name: aquasecurity/trivy@v0.62.1
 - name: ariga/atlas@v0.32.0
 - name: arl/gitmux@v0.11.2
-- name: astral-sh/uv@0.7.2
+- name: astral-sh/uv@0.7.3
 - name: atuinsh/atuin@18.6.0
 - name: aws/aws-cli@2.27.10
 - name: buildpacks/pack@v0.37.0
