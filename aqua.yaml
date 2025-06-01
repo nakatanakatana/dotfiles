@@ -40,7 +40,7 @@ packages:
 - name: helm/helm@v3.18.1
 - name: int128/kubelogin@v1.32.4
 - name: itchyny/mmv@v0.1.6
-- name: jqlang/jq@jq-1.7.1
+- name: jqlang/jq@jq-1.8.0
 - name: junegunn/fzf@v0.62.0
 - name: k3d-io/k3d@v5.8.3
 - name: kubernetes-sigs/cluster-api@v1.10.2
