@@ -223,6 +223,3 @@ gcloud-switch() {
 }
 
 bind -x '"\C-g": gcloud-switch'
-
-alias ccusage_today="deno run -E -R=$HOME/.claude/projects/ -S=homedir -N='raw.githubusercontent.com:443' npm:ccusage@latest daily --json | jq -r --arg today $(date +%Y-%m-%d) '.daily[] | select(.date == \$today) // {\"totalCost\": 0} | .totalCost'"
-alias ccusage_month="deno run -E -R=$HOME/.claude/projects/ -S=homedir -N='raw.githubusercontent.com:443' npm:ccusage@latest monthly --json | jq -r --arg month $(date +%Y-%m) '.monthly[] | select(.month == \$month) // {\"totalCost\": 0} | .totalCost'"
