@@ -15,3 +15,7 @@
     url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
     refreshPeriod = "168h"
 
+[".claude/projects/prices.json"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+    refreshPeriod = "24h"
