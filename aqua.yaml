@@ -25,7 +25,7 @@ packages:
 - name: cue-lang/cue@v0.13.1
 - name: dagger/dagger@v0.18.10
 - name: dandavison/delta@0.18.2
-- name: denoland/deno@v2.3.6
+- name: denoland/deno@v2.3.7
 - name: derailed/k9s@v0.50.6
 - name: dimo414/bkt@0.8.2
 - name: direnv/direnv@v2.36.0
