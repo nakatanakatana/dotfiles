@@ -3,3 +3,4 @@ renovate.json
 packages.sh
 packages/
 packages/**
+README.md
