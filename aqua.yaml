@@ -30,7 +30,7 @@ packages:
 - name: devspace-sh/devspace@v6.3.15
 - name: dimo414/bkt@0.8.2
 - name: direnv/direnv@v2.36.0
-- name: docker/compose@v2.37.3
+- name: docker/compose@v2.38.1
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.3.1
 - name: evilmartians/lefthook@v1.11.14
