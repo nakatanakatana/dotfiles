@@ -34,7 +34,7 @@ packages:
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.3.1
 - name: evilmartians/lefthook@v1.11.16
-- name: fluxcd/flux2@v2.6.3
+- name: fluxcd/flux2@v2.6.4
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.61.0
 - name: golang/go@go1.24.4
