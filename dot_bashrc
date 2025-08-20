@@ -224,5 +224,5 @@ gcloud-switch() {
 
 bind -x '"\C-g": gcloud-switch'
 
-alias gemini='npx https://github.com/google-gemini/gemini-cli --model gemini-2.5-flash'
-alias gemini-pro='npx https://github.com/google-gemini/gemini-cli --model gemini-2.5-pro'
+alias gemini='npx @google/gemini-cli --model gemini-2.5-flash'
+alias gemini-pro='npx @google/gemini-cli --model gemini-2.5-pro'
