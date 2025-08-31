@@ -58,7 +58,7 @@ packages:
 - name: mergestat/mergestat-lite@v0.6.2
 - name: mr-karan/doggo@v1.0.5
 - name: nektos/act@v0.2.80
-- name: neovim/neovim@v0.11.3
+- name: neovim/neovim@v0.11.4
 - name: okteto/okteto@3.10.1
 - name: oven-sh/bun@bun-v1.2.21
 - name: peco/peco@v0.5.11
