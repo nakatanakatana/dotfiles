@@ -14,7 +14,7 @@ packages:
 - name: BurntSushi/ripgrep@14.1.1
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.18.2
 - name: aquasecurity/trivy@v0.66.0
-- name: ariga/atlas@v0.36.0
+- name: ariga/atlas@v0.37.0
 - name: arl/gitmux@v0.11.5
 - name: astral-sh/uv@0.8.17
 - name: atuinsh/atuin@v18.8.0
