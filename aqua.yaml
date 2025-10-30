@@ -56,7 +56,7 @@ packages:
 - name: mame/wsl2-ssh-agent@v0.9.6
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
-- name: mr-karan/doggo@v1.1.0
+- name: mr-karan/doggo@v1.1.1
 - name: nektos/act@v0.2.82
 - name: neovim/neovim@v0.11.4
 - name: okteto/okteto@3.12.1
