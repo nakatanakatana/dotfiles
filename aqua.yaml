@@ -66,7 +66,7 @@ packages:
 - name: terraform-linters/tflint@v0.59.1
 - name: tomnomnom/gron@v0.7.1
 - name: twistedpair/google-cloud-sdk@545.0.0
-- name: twpayne/chezmoi@v2.66.1
+- name: twpayne/chezmoi@v2.67.0
 - name: volta-cli/volta@v2.0.2
 - name: wagoodman/dive@v0.13.1
 - name: x-motemen/ghq@v1.8.0
