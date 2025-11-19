@@ -1,0 +1,19 @@
+{
+  "general": {
+    "preferredEditor": "vim",
+    "previewFeatures": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "ANSI"
+  },
+  "features": {
+    "checkpointing": {
+      "enabled": true
+    }
+  }
+}
