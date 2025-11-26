@@ -53,7 +53,7 @@ packages:
 - name: kubernetes/kubectl@v1.34.2
 - name: loft-sh/devpod@v0.6.15
 - name: loft-sh/vcluster@v0.30.2
-- name: mame/wsl2-ssh-agent@v0.9.6
+- name: mame/wsl2-ssh-agent@v0.9.7
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
 - name: mr-karan/doggo@v1.1.2
