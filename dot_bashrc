@@ -167,6 +167,8 @@ _devpod_completion() {
 }
 complete -F _devpod_completion devpod
 
+alias dpssh='ssh $(basename $(pwd)).devpod'
+
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 
@@ -225,5 +227,3 @@ gcloud-switch() {
 bind -x '"\C-g": gcloud-switch'
 
 alias gemini='npx @google/gemini-cli'
-alias gemini-flash='npx @google/gemini-cli --model gemini-2.5-flash'
-alias gemini-pro='npx @google/gemini-cli --model gemini-2.5-pro'
