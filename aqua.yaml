@@ -57,7 +57,7 @@ packages:
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
 - name: mr-karan/doggo@v1.1.2
-- name: nektos/act@v0.2.82
+- name: nektos/act@v0.2.83
 - name: neovim/neovim@v0.11.5
 - name: okteto/okteto@3.13.4
 - name: oven-sh/bun@bun-v1.3.3
