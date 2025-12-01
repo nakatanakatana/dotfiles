@@ -97,7 +97,8 @@ set_prompt_command () {
     echo -ne "$screen_hstatus_str"
 }
 if [ $(echo "$TERM" | grep -e 'xterm' -e 'screen' ) ]; then
-    export PS1='\$ '
+    prompt_mark='\$'
+    export PS1="\$(status="\$?"; [ \$status -ne 0 ] && echo -n \"\[\033[1;31m\]$prompt_mark \[\e[0m\]\" || echo -n \"\[\033[0m\]$prompt_mark \")"
     export PROMPT_COMMAND="set_prompt_command"
 else
     export PS1='\u@\h:\W\$ '
