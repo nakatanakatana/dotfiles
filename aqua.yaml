@@ -34,7 +34,7 @@ packages:
 - name: docker/compose@v5.0.0
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.4.3
-- name: evilmartians/lefthook@v2.0.11
+- name: evilmartians/lefthook@v2.0.12
 - name: fluxcd/flux2@v2.7.5
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.79.0
