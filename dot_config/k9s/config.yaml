@@ -1,5 +1,5 @@
 k9s:
-  liveViewAutoRefresh: false
+  liveViewAutoRefresh: true
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
@@ -8,7 +8,7 @@ k9s:
     skin: solarized-dark.yaml
     enableMouse: false
     headless: false
-    logoless: false
+    logoless: true
     crumbsless: false
     reactive: false
     noIcons: false
