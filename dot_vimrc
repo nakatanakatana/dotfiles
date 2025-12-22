@@ -37,8 +37,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-autocmd VimEnter * call dein#update()
-
 filetype plugin indent on
 syntax enable
 

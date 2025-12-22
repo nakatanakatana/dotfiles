@@ -21,6 +21,8 @@ set noswapfile
 set ambiwidth=single
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
 
+set signcolumn=yes
+
 au BufRead,BufNewFile *.cue set filetype=cue
 
 function! IsWSL()
@@ -43,15 +45,19 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+if empty($VIM_TERMINAL)
+  autocmd VimEnter * call dein#update()
+endif
+
 autocmd InsertEnter,InsertLeave * set cursorline!
 autocmd QuickFixCmdPost *grep* cwindow
 
-set signcolumn=yes
 " neovim-remote
 if has('nvim')
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 endif
 autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+
 " for tmux
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window 'vim: " . substitute(expand("%:p:h"), expand("~/"), "", "g") . "'")
 autocmd VimLeave * call system("tmux setw automatic-rename")
