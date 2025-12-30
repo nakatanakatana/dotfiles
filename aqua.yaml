@@ -23,7 +23,7 @@ packages:
 - name: buildpacks/pack@v0.39.1
 - name: cli/cli@v2.83.2
 - name: cloudflare/cloudflared@2025.11.1
-- name: cue-lang/cue@v0.15.1
+- name: cue-lang/cue@v0.15.3
 - name: dagger/dagger@v0.19.8
 - name: dandavison/delta@0.18.2
 - name: denoland/deno@v2.6.3
