@@ -61,7 +61,7 @@ packages:
 - name: nektos/act@v0.2.84
 - name: neovim/neovim@v0.11.5
 - name: nodejs/node@v25.2.1
-- name: okteto/okteto@3.14.0
+- name: okteto/okteto@3.15.0
 - name: oven-sh/bun@bun-v1.3.5
 - name: peco/peco@v0.5.11
 - name: tellerops/teller@v2.0.7
