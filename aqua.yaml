@@ -44,7 +44,7 @@ packages:
 - name: helm/helm@v4.0.4
 - name: int128/kubelogin@v1.35.0
 - name: itchyny/mmv@v0.1.6
-- name: jj-vcs/jj@v0.36.0
+- name: jj-vcs/jj@v0.37.0
 - name: jqlang/jq@jq-1.8.1
 - name: junegunn/fzf@v0.67.0
 - name: k3d-io/k3d@v5.8.3
