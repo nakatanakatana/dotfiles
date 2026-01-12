@@ -6,3 +6,4 @@ unzip
 socat
 unar
 pass
+ssh-agent-filter
