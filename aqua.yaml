@@ -17,7 +17,7 @@ packages:
 - name: ariga/atlas@v0.38.0
 - name: arl/gitmux@v0.11.5
 - name: astral-sh/uv@0.9.24
-- name: atuinsh/atuin@v18.10.0
+- name: atuinsh/atuin@v18.11.0
 - name: aws/aws-cli@2.32.33
 - name: bcicen/ctop@v0.7.7
 - name: buildpacks/pack@v0.39.1
