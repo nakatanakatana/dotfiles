@@ -6,6 +6,7 @@
     ]
   },
   "tools": {
+    "autoAccept": true,
     "allowed": [
       "glob",
       "google_web_search",
@@ -44,8 +45,7 @@
   },
   "general": {
     "preferredEditor": "vim",
-    "previewFeatures": true,
-    "vimMode": true
+    "previewFeatures": true
   },
   "security": {
     "auth": {
@@ -56,10 +56,16 @@
     "theme": "ANSI",
     "showStatusInTitle": true,
     "hideBanner": true,
-    "hideTips": false,
-    "hideFooter": true,
+    "hideTips": true,
     "showMemoryUsage": true,
-    "showCitations": false
+    "showCitations": false,
+    "footer": {
+      "hideContextPercentage": false
+    },
+    "showModelInfoInChat": true,
+    "accessibility": {
+      "disableLoadingPhrases": true
+    }
   },
   "features": {
     "checkpointing": {
