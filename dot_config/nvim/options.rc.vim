@@ -49,6 +49,14 @@ if empty($VIM_TERMINAL)
   autocmd VimEnter * call dein#update()
 endif
 
+autocmd TerminalOpen *
+\ autocmd WinLeave <buffer>
+\   if term_getstatus('') =~# '\<normal\>' |
+\     execute 'normal! GA'                 |
+\   endif
+
+autocmd ModeChanged t:nt set nonumber nolist signcolumn=no
+
 autocmd InsertEnter,InsertLeave * set cursorline!
 autocmd QuickFixCmdPost *grep* cwindow
 
