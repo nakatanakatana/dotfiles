@@ -130,8 +130,8 @@ endif
 
 " for languages
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
-let g:lsp_settings_filetype_typescript = ['efm-langserver', 'typescript-language-server']
-" let g:lsp_settings_filetype_typescript = ['eslint-language-server', 'typescript-language-server']
+let g:lsp_settings_filetype_typescript = ['efm-langserver', 'typescript-language-server', 'vtsls']
+let g:lsp_settings_filetype_vue = ['vtsls', 'volar-server']
 '''
 
 [[plugins]]
