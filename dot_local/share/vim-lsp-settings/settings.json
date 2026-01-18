@@ -1,0 +1,23 @@
+{
+  "efm-langserver": {
+    "disabled": false
+  },
+  "golangci-lint-langserver": {
+    "initialization_options": {
+      "command": [
+        "golangci-lint",
+        "run",
+        "--output.json.path",
+        "stdout",
+        "--show-stats=false",
+        "--issues-exit-code=1"
+      ]
+    },
+    "whitelist": [
+      "go"
+    ]
+  },
+  "kakehashi": {
+    "disabled": false
+  }
+}
