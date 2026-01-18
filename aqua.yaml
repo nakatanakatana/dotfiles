@@ -36,6 +36,7 @@ packages:
 - name: duckdb/duckdb@v1.4.3
 - name: evilmartians/lefthook@v2.0.15
 - name: fluxcd/flux2@v2.7.5
+- name: fullstorydev/grpcurl@v1.9.3
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.80.4
 - name: golang/go@go1.25.6
@@ -47,6 +48,7 @@ packages:
 - name: jj-vcs/jj@v0.37.0
 - name: jqlang/jq@jq-1.8.1
 - name: junegunn/fzf@v0.67.0
+- name: k1LoW/octocov@v0.74.1
 - name: k3d-io/k3d@v5.8.3
 - name: kubernetes-sigs/cluster-api@v1.12.1
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.0
