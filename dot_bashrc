@@ -170,6 +170,14 @@ complete -F _devpod_completion devpod
 
 alias dpssh='ssh $(basename $(pwd)).devpod'
 
+## agentfs
+_agentfs_completion() {
+  unset -f _agentfs_completion
+  complete -r agentfs
+  [ -x "$(command -v agentfs)" ] && source <(COMPLETE=bash agentfs)
+}
+complete -F _agentfs_completion agentfs
+
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 

@@ -20,6 +20,7 @@ set title
 set noswapfile
 set ambiwidth=single
 set wildignore=git/*,*/node_modules/*,*/dist/*,*/coverage/*
+set viminfo+=n~/.cache/viminfo
 
 set signcolumn=yes
 
