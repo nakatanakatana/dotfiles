@@ -4,7 +4,7 @@ readonly GIT_ROOT=$(git rev-parse --show-toplevel)
 readonly GIT_BRANCH=$(git branch --show-current)
 
 # agentfs: auto run
-if [ "$CHECKOUT_TYPE" -eq 1 ] && [ -d "$GIT_ROOT/.agentfs" ] ; then
+if [ "$CHECKOUT_TYPE" -eq 1 ] && [ -d "$GIT_ROOT/.agentfs" ] && [ -z "$AGENTFS_SESSION" ] ; then
 	KEY=$(echo $GIT_ROOT | rev | cut -d / -f 1-2 | rev | sed -e 's|/|-|')-$(echo $GIT_BRANCH | sed -e 's|/|-|')
 	echo "agentfs exists"
 	if [ -e "$GIT_ROOT/.agentfs/$KEY.db" ]; then
