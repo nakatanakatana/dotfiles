@@ -8,9 +8,9 @@ if [ "$CHECKOUT_TYPE" -eq 1 ] && [ -d "$GIT_ROOT/.agentfs" ] && [ -z "$AGENTFS_S
 	KEY=$(echo $GIT_ROOT | rev | cut -d / -f 1-2 | rev | sed -e 's|/|-|')-$(echo $GIT_BRANCH | sed -e 's|/|-|')
 	echo "agentfs exists"
 	if [ -e "$GIT_ROOT/.agentfs/$KEY.db" ]; then
-		agentfs run --allow '/tmp' --allow "$HOME/go" --session "$KEY" $SHELL
+		echo "run to activate agentfs session: agentfs run --allow '/tmp' --allow \"\$HOME/go\" --session \"$KEY\" \$SHELL"
 	else
 		agentfs init "$KEY"
-		agentfs run --allow '/tmp' --allow "$HOME/go" --session "$KEY" $SHELL
+		echo "run to activate agentfs session: agentfs run --allow '/tmp' --allow \"\$HOME/go\" --session \"$KEY\" \$SHELL"
 	fi
 fi
