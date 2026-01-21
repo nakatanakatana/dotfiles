@@ -90,6 +90,14 @@ set show-mode-in-prompt on
 set vi-ins-mode-string "+"
 set vi-cmd-mode-string ":"
 
+# tmux: pane-status
+_update_tmux_pane_status() {
+  if [ -n "$TMUX_PANE" ]; then
+    tmux set-option -p "@pane_git_status" "$(gitmux -cfg $HOME/.gitmux.conf)"
+  fi
+}
+_update_tmux_pane_status
+
 #screen用 PS1の設定
 set_prompt_command () {
     screen_hstatus="${PWD} [${USER}@${HOSTNAME}]"
@@ -99,7 +107,7 @@ set_prompt_command () {
 if [ $(echo "$TERM" | grep -e 'xterm' -e 'screen' ) ]; then
     prompt_mark='\$'
     export PS1="\$(status="\$?"; [ \$status -ne 0 ] && echo -n \"\[\033[1;31m\]$prompt_mark \[\e[0m\]\" || echo -n \"\[\033[0m\]$prompt_mark \")"
-    export PROMPT_COMMAND="set_prompt_command"
+    export PROMPT_COMMAND="_update_tmux_pane_status; set_prompt_command"
 else
     export PS1='\u@\h:\W\$ '
 fi
@@ -236,3 +244,7 @@ gcloud-switch() {
 bind -x '"\C-g": gcloud-switch'
 
 alias gemini='npx @google/gemini-cli'
+
+# qlty
+export QLTY_INSTALL="$HOME/.qlty"
+export PATH=$QLTY_INSTALL/bin:$PATH
