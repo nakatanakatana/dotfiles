@@ -186,6 +186,8 @@ _agentfs_completion() {
 }
 complete -F _agentfs_completion agentfs
 
+alias agentfs-run='agentfs run --allow /tmp --allow $HOME/go'
+
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 
