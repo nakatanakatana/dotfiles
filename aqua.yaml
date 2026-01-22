@@ -42,7 +42,7 @@ packages:
 - name: golang/go@go1.25.6
 - name: golangci/golangci-lint@v2.8.0
 - name: hashicorp/terraform@v1.14.3
-- name: helm/helm@v4.0.5
+- name: helm/helm@v4.1.0
 - name: int128/kubelogin@v1.35.2
 - name: itchyny/mmv@v0.1.6
 - name: jj-vcs/jj@v0.37.0
