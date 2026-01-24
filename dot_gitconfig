@@ -40,9 +40,11 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
-[ghq]
-	root = ~/repos
 [credential]
 	helper = cache --timeout=86400
 [web]
 	browser = open
+[ghq]
+	root = ~/repos
+[wt]
+	basedir = /home/tanaka/.wt/{gitroot}
