@@ -38,12 +38,24 @@
       "run_shell_command(mkdir)",
       "run_shell_command(npm ci)",
       "run_shell_command(npm run)",
+      "run_shell_command(npm test)",
       "run_shell_command(rm -rf conductor/tracks/)",
       "run_shell_command(sqlc)"
     ],
     "shell": {
       "showColor": true,
       "enableInteractiveShell": false
+    }
+  },
+  "mcp": {
+    "allowed": ["playwright"]
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     }
   },
   "experimental": {
