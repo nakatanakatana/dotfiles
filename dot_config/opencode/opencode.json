@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "solarized",
+  "permission": {
+    "*": "ask",
+    "bash": {
+      "*": "ask",
+      "buf": "allow",
+      "golangci-lint *": "allow",
+      "git add *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git notes *": "allow",
+      "git show *": "allow",
+      "git status *": "allow",
+      "go build *": "allow",
+      "go test *": "allow",
+      "go test": "allow",
+      "golangci-lint": "allow",
+      "grep *": "allow",
+      "grep": "allow",
+      "ls *": "allow",
+      "npm ci": "allow",
+      "npm run *": "allow",
+      "npm test": "allow",
+      "tree": "allow"
+    },
+    "codesearch": "allow",
+    "edit": "allow",
+    "external_directory": "deny",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "read": "allow",
+    "skill": "allow",
+    "task": "ask",
+    "todoread": "allow",
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "websearch": "allow"
+  }
+}
