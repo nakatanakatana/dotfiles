@@ -148,6 +148,7 @@ export EDITOR="vim"
 _git_completion() {
   unset -f _git_completion
   complete -r git
+  [ -x "$(command -v git-wt)" ] && source <(git wt --init bash)
   [ -f "${HOME}/.config/git-completion.bash" ] && source "${HOME}/.config/git-completion.bash" && return 124
 }
 complete -F _git_completion git
