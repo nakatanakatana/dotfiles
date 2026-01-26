@@ -76,3 +76,4 @@ packages:
 - name: twpayne/chezmoi@v2.69.3
 - name: wagoodman/dive@v0.13.1
 - name: x-motemen/ghq@v1.8.0
+- name: sqldef/sqldef/sqlite3def@v3.9.4
