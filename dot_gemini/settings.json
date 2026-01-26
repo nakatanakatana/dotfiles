@@ -16,6 +16,7 @@
       "search_file_content",
       "web_fetch",
       "write_file",
+      "activate_skill(gitlab-cli)",
       "run_shell_command(buf)",
       "run_shell_command(git add)",
       "run_shell_command(git diff)",
