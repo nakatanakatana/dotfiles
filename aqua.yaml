@@ -19,7 +19,7 @@ packages:
 - name: arl/gitmux@v0.11.5
 - name: astral-sh/uv@0.9.27
 - name: atuinsh/atuin@v18.11.0
-- name: aws/aws-cli@2.33.7
+- name: aws/aws-cli@2.33.8
 - name: bcicen/ctop@v0.7.7
 - name: buildpacks/pack@v0.39.1
 - name: cli/cli@v2.86.0
