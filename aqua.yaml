@@ -57,7 +57,7 @@ packages:
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.0
 - name: kubernetes/kubectl@v1.35.0
 - name: loft-sh/devpod@v0.6.15
-- name: loft-sh/vcluster@v0.30.4
+- name: loft-sh/vcluster@v0.31.0
 - name: mame/wsl2-ssh-agent@v0.9.7
 - name: mattn/efm-langserver@v0.0.54
 - name: mergestat/mergestat-lite@v0.6.2
