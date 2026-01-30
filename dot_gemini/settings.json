@@ -51,7 +51,9 @@
     }
   },
   "mcp": {
-    "allowed": ["playwright"]
+    "allowed": [
+      "playwright"
+    ]
   },
   "mcpServers": {
     "playwright": {
@@ -63,6 +65,7 @@
   },
   "experimental": {
     "skills": true,
+    "enableAgents": true,
     "useOSC52Paste": true,
     "cliHelpAgentSettings": {
       "enabled": true
@@ -92,7 +95,8 @@
     },
     "showModelInfoInChat": true,
     "accessibility": {
-      "disableLoadingPhrases": true
+      "disableLoadingPhrases": true,
+      "enableLoadingPhrases": false
     }
   },
   "features": {
