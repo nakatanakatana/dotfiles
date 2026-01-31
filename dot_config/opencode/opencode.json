@@ -6,7 +6,6 @@
     "bash": {
       "*": "ask",
       "buf": "allow",
-      "golangci-lint *": "allow",
       "git add *": "allow",
       "git diff *": "allow",
       "git log *": "allow",
@@ -16,6 +15,7 @@
       "go build *": "allow",
       "go test *": "allow",
       "go test": "allow",
+      "golangci-lint *": "allow",
       "golangci-lint": "allow",
       "grep *": "allow",
       "grep": "allow",
@@ -23,7 +23,14 @@
       "npm ci": "allow",
       "npm run *": "allow",
       "npm test": "allow",
+      "rg *": "allow",
       "tree": "allow"
+    },
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
     },
     "codesearch": "allow",
     "edit": "allow",
@@ -32,7 +39,7 @@
     "grep": "allow",
     "list": "allow",
     "lsp": "allow",
-    "read": "allow",
+    "question": "allow",
     "skill": "allow",
     "task": "ask",
     "todoread": "allow",
