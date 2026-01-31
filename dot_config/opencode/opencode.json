@@ -1,11 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "solarized",
+  "default_agent": "plan",
+  "model": "github-copilot/gpt-5.2-codex",
+  "small_model": "github-copilot/gpt-5.1-codex-mini",
   "permission": {
     "*": "ask",
     "bash": {
       "*": "ask",
-      "buf": "allow",
+      "buf *": "allow",
       "git add *": "allow",
       "git diff *": "allow",
       "git log *": "allow",
@@ -15,15 +18,18 @@
       "go build *": "allow",
       "go test *": "allow",
       "go test": "allow",
+      "gofmt *": "allow",
       "golangci-lint *": "allow",
       "golangci-lint": "allow",
       "grep *": "allow",
       "grep": "allow",
       "ls *": "allow",
+      "make *": "allow",
       "npm ci": "allow",
       "npm run *": "allow",
       "npm test": "allow",
       "rg *": "allow",
+      "sqlc *": "allow",
       "tree": "allow"
     },
     "read": {
