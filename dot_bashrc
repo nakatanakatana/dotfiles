@@ -256,6 +256,7 @@ gcloud-switch() {
 bind -x '"\C-g": gcloud-switch'
 
 alias gemini='npx @google/gemini-cli'
+alias gemini-newTrack='npx @google/gemini-cli -i /conductor:newTrack'
 
 # qlty
 export QLTY_INSTALL="$HOME/.qlty"
