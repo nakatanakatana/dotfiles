@@ -140,7 +140,7 @@ gcop() {
 }
 bind -x '"\C-b": gcop'
 
-alias tmux="tmux new-session -A -s local"
+alias tmux="tmux new-session -A -t local -s \"$(date '+%FT%T')\""
 export EDITOR="vim"
 
 [ -f "${HOME}/.config/git-prompt.sh" ] && source "${HOME}/.config/git-prompt.sh"
