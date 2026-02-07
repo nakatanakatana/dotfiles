@@ -255,6 +255,9 @@ gcloud-switch() {
 
 bind -x '"\C-g": gcloud-switch'
 
+export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-$HOME/.local/share}/npm-global
+export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
+
 alias gemini='npx @google/gemini-cli'
 alias gemini-newTrack='npx @google/gemini-cli -i /conductor:newTrack'
 
