@@ -84,7 +84,26 @@
     }
   },
   "ui": {
-    "theme": "ANSI",
+    "theme": "Solarized Dark",
+    "customThemes": {
+      "Solarized Dark": {
+        "name": "Solarized Dark",
+        "type": "custom",
+        "Background": "#93a1a1",
+        "Foreground": "#fdf6e3",
+        "AccentBlue": "#268bd2",
+        "AccentPurple": "#6c71c4",
+        "AccentCyan": "#2aa198",
+        "AccentGreen": "#859900",
+        "AccentYellow": "#b58900",
+        "AccentRed": "#dc322f",
+        "Comment": "#586e75",
+        "Gray": "#657b83",
+        "DarkGray": "#073642",
+        "DiffAdded": "#11431d",
+        "DiffRemoved": "#6e1818"
+      }
+    },
     "showStatusInTitle": true,
     "hideBanner": true,
     "hideTips": true,
@@ -102,6 +121,13 @@
   "features": {
     "checkpointing": {
       "enabled": true
+    }
+  },
+  "agents": {
+    "overrides": {
+      "cli_help": {
+        "enabled": true
+      }
     }
   }
 }
