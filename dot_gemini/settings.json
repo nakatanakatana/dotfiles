@@ -64,6 +64,7 @@
     }
   },
   "experimental": {
+    "plan": true,
     "skills": true,
     "enableAgents": true,
     "useOSC52Paste": true,
@@ -89,19 +90,28 @@
       "Solarized Dark": {
         "name": "Solarized Dark",
         "type": "custom",
-        "Background": "#93a1a1",
-        "Foreground": "#fdf6e3",
-        "AccentBlue": "#268bd2",
-        "AccentPurple": "#6c71c4",
-        "AccentCyan": "#2aa198",
-        "AccentGreen": "#859900",
-        "AccentYellow": "#b58900",
-        "AccentRed": "#dc322f",
-        "Comment": "#586e75",
-        "Gray": "#657b83",
-        "DarkGray": "#073642",
-        "DiffAdded": "#11431d",
-        "DiffRemoved": "#6e1818"
+        "text": {
+          "primary": "#fdf6e3",
+          "secondary": "#93a1a1",
+          "link": "#268bd2",
+          "accent": "#cb4b16"
+        },
+        "background": {
+          "primary": "#002b36",
+          "diff": {
+            "added": "#11431d",
+            "removed": "#6e1818"
+          }
+        },
+        "ui": {
+          "comment": "#586e75",
+          "symbol": "#2aa198"
+        },
+        "status": {
+          "error": "#dc322f",
+          "success": "#859900",
+          "warning": "#b58900"
+        }
       }
     },
     "showStatusInTitle": true,
