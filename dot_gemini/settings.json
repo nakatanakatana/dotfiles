@@ -18,6 +18,7 @@
       "write_file",
       "activate_skill(gitlab-cli)",
       "run_shell_command(buf)",
+      "run_shell_command(gh pr view)",
       "run_shell_command(git add)",
       "run_shell_command(git diff)",
       "run_shell_command(git log)",
