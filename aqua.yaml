@@ -73,7 +73,7 @@ packages:
 - name: terraform-linters/tflint@v0.61.0
 - name: tomnomnom/gron@v0.7.1
 - name: twistedpair/google-cloud-sdk@555.0.0
-- name: twpayne/chezmoi@v2.69.3
+- name: twpayne/chezmoi@v2.69.4
 - name: wagoodman/dive@v0.13.1
 - name: x-motemen/ghq@v1.8.1
 - name: sqldef/sqldef/sqlite3def@v3.9.7
