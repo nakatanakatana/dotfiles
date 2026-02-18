@@ -93,7 +93,7 @@
         "type": "custom",
         "text": {
           "primary": "#fdf6e3",
-          "secondary": "#93a1a1",
+          "secondary": "#586e75",
           "link": "#268bd2",
           "accent": "#cb4b16"
         },
@@ -127,7 +127,8 @@
     "accessibility": {
       "disableLoadingPhrases": true,
       "enableLoadingPhrases": false
-    }
+    },
+    "useBackgroundColor": true
   },
   "features": {
     "checkpointing": {
