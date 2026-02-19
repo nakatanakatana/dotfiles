@@ -8,11 +8,15 @@
   "tools": {
     "autoAccept": true,
     "allowed": [
+      "ask_user",
+      "enter_plan_mode",
       "glob",
       "google_web_search",
+      "grep_search",
       "list_directory",
       "read_file",
       "replace",
+      "save_memory",
       "search_file_content",
       "web_fetch",
       "write_file",
