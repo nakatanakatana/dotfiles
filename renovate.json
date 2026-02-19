@@ -8,6 +8,12 @@
   "prHourlyLimit": 10,
   "packageRules": [
     {
+      "matchPackageNames": [
+        "nodejs/node"
+      ],
+      "allowedVersions": "/^v2(2|4)./"
+    },
+    {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "platformAutomerge": true

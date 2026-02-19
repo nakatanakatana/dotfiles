@@ -65,7 +65,7 @@ packages:
 - name: mr-karan/doggo@v1.1.4
 - name: nektos/act@v0.2.84
 - name: neovim/neovim@v0.11.6
-- name: nodejs/node@v25.6.1
+- name: nodejs/node@v24.13.1
 - name: okteto/okteto@3.16.0
 - name: oven-sh/bun@bun-v1.3.9
 - name: peco/peco@v0.5.11
