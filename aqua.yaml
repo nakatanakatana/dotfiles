@@ -50,7 +50,7 @@ packages:
 - name: jdx/mise@v2026.2.17
 - name: jj-vcs/jj@v0.38.0
 - name: jqlang/jq@jq-1.8.1
-- name: junegunn/fzf@v0.67.0
+- name: junegunn/fzf@v0.68.0
 - name: k1LoW/git-wt@v0.25.0
 - name: k1LoW/octocov@v0.74.5
 - name: k3d-io/k3d@v5.8.3
