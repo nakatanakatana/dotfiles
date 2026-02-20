@@ -42,6 +42,7 @@ packages:
 - name: gitlab.com/gitlab-org/cli@v1.86.0
 - name: golang/go@go1.26.0
 - name: golangci/golangci-lint@v2.10.1
+- name: google/go-jsonnet@v0.21.0
 - name: hashicorp/terraform@v1.14.5
 - name: helm/helm@v4.1.1
 - name: int128/kubelogin@v1.35.2
@@ -69,6 +70,7 @@ packages:
 - name: okteto/okteto@3.16.0
 - name: oven-sh/bun@bun-v1.3.9
 - name: peco/peco@v0.5.11
+- name: sqldef/sqldef/sqlite3def@v3.9.8
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.61.0
 - name: tomnomnom/gron@v0.7.1
@@ -76,4 +78,3 @@ packages:
 - name: twpayne/chezmoi@v2.69.4
 - name: wagoodman/dive@v0.13.1
 - name: x-motemen/ghq@v1.9.4
-- name: sqldef/sqldef/sqlite3def@v3.9.8
