@@ -57,7 +57,10 @@
   },
   "mcp": {
     "allowed": [
-      "playwright"
+      "playwright",
+      "cloudlogging",
+      "cloudmonitoring",
+      "developerknowledge"
     ]
   },
   "mcpServers": {
@@ -66,6 +69,15 @@
       "args": [
         "@playwright/mcp@latest"
       ]
+    },
+    "cloudlogging": {
+      "httpUrl": "https://logging.googleapis.com/mcp"
+    },
+    "cloudmonitoring": {
+      "httpUrl": "https://monitoring.googleapis.com/mcp"
+    },
+    "developerknowledge": {
+      "httpUrl": "https://developerknowledge.googleapis.com/mcp"
     }
   },
   "experimental": {
