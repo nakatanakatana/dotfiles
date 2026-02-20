@@ -8,7 +8,6 @@
   "tools": {
     "autoAccept": true,
     "allowed": [
-      "ask_user",
       "enter_plan_mode",
       "glob",
       "google_web_search",
