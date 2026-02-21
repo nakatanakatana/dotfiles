@@ -47,6 +47,7 @@
       "run_shell_command(npm test)",
       "run_shell_command(CI=true npm test)",
       "run_shell_command(npx vitest)",
+      "run_shell_command(CI=true npx vitest)",
       "run_shell_command(rm -rf conductor/tracks/)",
       "run_shell_command(sqlc)"
     ],
