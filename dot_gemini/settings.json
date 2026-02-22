@@ -37,6 +37,7 @@
       "run_shell_command(glab mr view)",
       "run_shell_command(go build)",
       "run_shell_command(go test)",
+      "run_shell_command(go tool)",
       "run_shell_command(golangci-lint)",
       "run_shell_command(grep)",
       "run_shell_command(ls)",
