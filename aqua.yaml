@@ -47,7 +47,7 @@ packages:
 - name: helm/helm@v4.1.1
 - name: int128/kubelogin@v1.35.2
 - name: itchyny/mmv@v0.1.6
-- name: jdx/mise@v2026.2.18
+- name: jdx/mise@v2026.2.19
 - name: jj-vcs/jj@v0.38.0
 - name: jqlang/jq@jq-1.8.1
 - name: junegunn/fzf@v0.68.0
