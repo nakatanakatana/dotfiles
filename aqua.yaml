@@ -29,7 +29,7 @@ packages:
 - name: dandavison/delta@0.18.2
 - name: denoland/deno@v2.6.10
 - name: derailed/k9s@v0.50.18
-- name: devspace-sh/devspace@v6.3.18
+- name: devspace-sh/devspace@v6.3.20
 - name: dimo414/bkt@0.8.2
 - name: direnv/direnv@v2.37.1
 - name: docker/compose@v5.0.2
