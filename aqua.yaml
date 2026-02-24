@@ -69,7 +69,7 @@ packages:
 - name: nodejs/node@v24.13.1
 - name: okteto/okteto@3.16.0
 - name: oven-sh/bun@bun-v1.3.9
-- name: peco/peco@v0.5.11
+- name: peco/peco@v0.6.0
 - name: sqldef/sqldef/sqlite3def@v3.9.8
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.61.0
