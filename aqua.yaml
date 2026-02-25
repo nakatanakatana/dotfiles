@@ -13,7 +13,7 @@ packages:
 - name: 99designs/aws-vault@v7.2.0
 - name: BurntSushi/ripgrep@15.1.0
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.21.1
-- name: anomalyco/opencode@v1.2.13
+- name: anomalyco/opencode@v1.2.14
 - name: aquasecurity/trivy@v0.69.1
 - name: ariga/atlas@v1.1.0
 - name: arl/gitmux@v0.11.5
