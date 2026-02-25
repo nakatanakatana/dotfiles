@@ -43,7 +43,7 @@ packages:
 - name: golang/go@go1.26.0
 - name: golangci/golangci-lint@v2.10.1
 - name: google/go-jsonnet@v0.21.0
-- name: hashicorp/terraform@v1.14.5
+- name: hashicorp/terraform@v1.14.6
 - name: helm/helm@v4.1.1
 - name: int128/kubelogin@v1.35.2
 - name: itchyny/mmv@v0.1.6
