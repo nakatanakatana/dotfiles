@@ -68,7 +68,7 @@ packages:
 - name: neovim/neovim@v0.11.6
 - name: nodejs/node@v24.14.0
 - name: okteto/okteto@3.16.0
-- name: oven-sh/bun@bun-v1.3.9
+- name: oven-sh/bun@bun-v1.3.10
 - name: peco/peco@v0.6.0
 - name: sqldef/sqldef/sqlite3def@v3.9.8
 - name: tellerops/teller@v2.0.7
