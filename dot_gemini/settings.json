@@ -73,10 +73,26 @@
       ]
     },
     "cloudlogging": {
-      "httpUrl": "https://logging.googleapis.com/mcp"
+      "httpUrl": "https://logging.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      },
+      "timeout": 30000,
+      "headers": {}
     },
     "cloudmonitoring": {
-      "httpUrl": "https://monitoring.googleapis.com/mcp"
+      "httpUrl": "https://monitoring.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      },
+      "timeout": 30000,
+      "headers": {}
     },
     "developerknowledge": {
       "httpUrl": "https://developerknowledge.googleapis.com/mcp"
