@@ -18,186 +18,38 @@ priority = 100
 
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = "buf"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "gh pr view"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git add"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git diff"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git log"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git notes"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git show"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "git status"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab auth status"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab ci status"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab ci view"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab issue list"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab issue view"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab mr list"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "glab mr view"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "go build"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "go test"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "go tool"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "golangci-lint"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "grep"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "ls"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "make"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "mkdir"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "npm ci"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "npm run"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "npm test"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "CI=true npm test"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "npx vitest"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "CI=true npx vitest"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "rm -rf conductor/tracks/"
-decision = "allow"
-priority = 100
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = "sqlc"
+commandPrefix = [
+  "buf",
+  "gh pr view",
+  "git add",
+  "git diff",
+  "git log",
+  "git notes",
+  "git show",
+  "git status",
+  "glab auth status",
+  "glab ci status",
+  "glab ci view",
+  "glab issue list",
+  "glab issue view",
+  "glab mr list",
+  "glab mr view",
+  "go build",
+  "go test",
+  "go tool",
+  "golangci-lint",
+  "grep",
+  "ls",
+  "make",
+  "mkdir",
+  "npm ci",
+  "npm run",
+  "npm test",
+  "CI=true npm test",
+  "npx vitest",
+  "CI=true npx vitest",
+  "rm -rf conductor/tracks/",
+  "sqlc"
+]
 decision = "allow"
 priority = 100
