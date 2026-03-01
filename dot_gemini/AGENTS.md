@@ -1,0 +1,7 @@
+- User conversations: Japanese.
+- Tracks: English.
+- GitHub writes: English.
+- Git commit signing fail: confirm with user.
+- Use red/green TDD
+- After conductor newTrack & tracks: commit.
+- Use `npm ci` to install package.json dependencies.
