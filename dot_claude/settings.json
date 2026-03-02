@@ -1,0 +1,57 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(buf*)",
+      "Bash(gh pr view*)",
+      "Bash(git add*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git notes*)",
+      "Bash(git show*)",
+      "Bash(git status*)",
+      "Bash(glab auth status*)",
+      "Bash(glab ci status*)",
+      "Bash(glab ci view*)",
+      "Bash(glab issue list*)",
+      "Bash(glab issue view*)",
+      "Bash(glab mr list*)",
+      "Bash(glab mr view*)",
+      "Bash(go build*)",
+      "Bash(go test*)",
+      "Bash(go tool*)",
+      "Bash(golangci-lint*)",
+      "Bash(grep*)",
+      "Bash(ls*)",
+      "Bash(make*)",
+      "Bash(mkdir*)",
+      "Bash(npm ci*)",
+      "Bash(npm run*)",
+      "Bash(npm test*)",
+      "Bash(CI=true npm test*)",
+      "Bash(npx vitest*)",
+      "Bash(CI=true npx vitest*)",
+      "Bash(rm -rf conductor/tracks/)",
+      "Bash(sqlc*)"
+    ]
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "cloudlogging": {
+      "type": "http",
+      "url": "https://logging.googleapis.com/mcp"
+    },
+    "cloudmonitoring": {
+      "type": "http",
+      "url": "https://monitoring.googleapis.com/mcp"
+    },
+    "developerknowledge": {
+      "type": "http",
+      "url": "https://developerknowledge.googleapis.com/mcp"
+    }
+  }
+}
