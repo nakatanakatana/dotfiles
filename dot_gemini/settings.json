@@ -67,7 +67,12 @@
   },
   "general": {
     "preferredEditor": "vim",
-    "previewFeatures": true
+    "previewFeatures": true,
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
   },
   "security": {
     "auth": {
@@ -117,7 +122,8 @@
       "disableLoadingPhrases": true,
       "enableLoadingPhrases": false
     },
-    "useBackgroundColor": true
+    "useBackgroundColor": true,
+    "loadingPhrases": "off"
   },
   "features": {
     "checkpointing": {
@@ -126,7 +132,7 @@
   },
   "agents": {
     "overrides": {
-      "cli_help": {
+      "browser_agent": {
         "enabled": true
       }
     }
