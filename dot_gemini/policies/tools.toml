@@ -34,6 +34,8 @@ commandPrefix = [
   "glab issue view",
   "glab mr list",
   "glab mr view",
+  "glab run list",
+  "glab run view",
   "go build",
   "go test",
   "go tool",
