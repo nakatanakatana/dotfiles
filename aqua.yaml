@@ -41,7 +41,7 @@ packages:
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.89.0
 - name: golang/go@go1.26.1
-- name: golangci/golangci-lint@v2.10.1
+- name: golangci/golangci-lint@v2.11.1
 - name: google/go-jsonnet@v0.21.0
 - name: hashicorp/terraform@v1.14.6
 - name: helm/helm@v4.1.1
