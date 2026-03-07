@@ -46,12 +46,12 @@ Always use `--paginate` and `--method GET` with `-f sort=created -f direction=de
 
 **Global PR Comments:**
 ```bash
-gh api repos/OWNER/REPO/issues/NUMBER/comments --paginate --method GET -f sort=created -f direction=desc --jq '.[] | {id, user: .user.login, created_at, body}'
+gh api --method GET repos/OWNER/REPO/issues/NUMBER/comments --paginate -f sort=created -f direction=desc --jq '.[] | {id, user: .user.login, created_at, body}'
 ```
 
 **Inline Review Comments:**
 ```bash
-gh api repos/OWNER/REPO/pulls/NUMBER/comments --paginate --method GET -f sort=created -f direction=desc --jq '.[] | {id, user: .user.login, path, line, created_at, body, in_reply_to_id}'
+gh api --method GET repos/OWNER/REPO/pulls/NUMBER/comments --paginate -f sort=created -f direction=desc --jq '.[] | {id, user: .user.login, path, line, created_at, body, in_reply_to_id}'
 ```
 
 ### 4. General Comment

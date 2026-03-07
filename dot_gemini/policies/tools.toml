@@ -21,6 +21,7 @@ toolName = "run_shell_command"
 commandPrefix = [
   "buf",
   "gh pr view",
+  "gh api --method GET",
   "git add",
   "git diff",
   "git log",
@@ -48,8 +49,6 @@ commandPrefix = [
   "npm run",
   "npm test",
   "CI=true npm test",
-  "npx vitest",
-  "CI=true npx vitest",
   "rm -rf conductor/tracks/",
   "sqlc"
 ]
