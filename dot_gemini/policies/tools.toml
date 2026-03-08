@@ -20,8 +20,12 @@ priority = 100
 toolName = "run_shell_command"
 commandPrefix = [
   "buf",
-  "gh pr view",
+  "cat",
   "gh api --method GET",
+  "gh pr list",
+  "gh pr view",
+  "gh run list",
+  "gh run view",
   "git add",
   "git diff",
   "git log",
@@ -42,6 +46,7 @@ commandPrefix = [
   "go tool",
   "golangci-lint",
   "grep",
+  "head",
   "ls",
   "make",
   "mkdir",
@@ -50,7 +55,9 @@ commandPrefix = [
   "npm test",
   "CI=true npm test",
   "rm -rf conductor/tracks/",
-  "sqlc"
+  "sqlc",
+  "tail",
+  "wc",
 ]
 decision = "allow"
 priority = 100
