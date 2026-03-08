@@ -6,6 +6,9 @@
   "small_model": "openai/gpt-5.1-codex-mini",
   "permission": {
     "*": "ask",
+    "skill": {
+      "*": "allow"
+    },
     "bash": {
       "*": "ask",
       "buf *": "allow",
