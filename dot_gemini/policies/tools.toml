@@ -54,6 +54,7 @@ commandPrefix = [
   "npm run",
   "npm test",
   "CI=true npm test",
+  "openspec",
   "rm -rf conductor/tracks/",
   "sqlc",
   "tail",

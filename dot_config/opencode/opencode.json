@@ -55,6 +55,7 @@
       "npm run *": "allow",
       "npm test *": "allow",
       "npx *": "deny",
+      "openspec *": "allow",
       "rg *": "allow",
       "sqlc *": "allow",
       "tail *": "allow",
