@@ -134,6 +134,9 @@
     "overrides": {
       "browser_agent": {
         "enabled": true
+      },
+      "cli_help": {
+        "enabled": true
       }
     }
   }

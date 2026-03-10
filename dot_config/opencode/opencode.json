@@ -54,6 +54,7 @@
       "npm ci": "allow",
       "npm run *": "allow",
       "npm test *": "allow",
+      "CI=true npm test *": "allow",
       "npx *": "deny",
       "openspec *": "allow",
       "rg *": "allow",
