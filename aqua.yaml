@@ -71,7 +71,7 @@ packages:
 - name: okteto/okteto@3.17.1
 - name: oven-sh/bun@bun-v1.3.10
 - name: peco/peco@v0.6.0
-- name: sqldef/sqldef/sqlite3def@v3.10.0
+- name: sqldef/sqldef/sqlite3def@v3.10.1
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.61.0
 - name: tomnomnom/gron@v0.7.1
