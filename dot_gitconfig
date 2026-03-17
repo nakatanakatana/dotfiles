@@ -14,14 +14,12 @@
 [interactive]
 	diffFilter = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
 [alias]
-	noffmerge = merge --no-ff
-	logp = log -p --color
-	logc = log --pretty=format:\"[%h: %cd] (%an) %s\"
-	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
 	delete-merged-branch = !sh -c 'git merged-branch | xargs git branch -d'
+	logp = log -p --color
+	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
 	st = status
-	br = branch
+	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+	watch = !sh -c 'watch -n 1 "git add . -N && git diff --stat --color"'
 [diff]
 	algorithm = histogram
 [push]
