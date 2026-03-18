@@ -19,7 +19,8 @@
 	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
 	st = status
 	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-	watch = !sh -c 'watch -n 1 "git add . -N && git diff --stat --color"'
+	stat = !sh -c 'git add -N . && git diff --stat --color'
+	watch = !sh -c 'watch -d -n 1 git stat'
 [diff]
 	algorithm = histogram
 [push]
