@@ -25,3 +25,6 @@ if [ -x "$(command -v wsl2-ssh-agent)" ]; then
   eval "$(wsl2-ssh-agent)"
 fi
 
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

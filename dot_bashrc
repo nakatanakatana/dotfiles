@@ -264,3 +264,15 @@ alias gemini-newTrack='npx @google/gemini-cli -i /conductor:newTrack'
 # qlty
 export QLTY_INSTALL="$HOME/.qlty"
 export PATH=$QLTY_INSTALL/bin:$PATH
+
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+if [ -d "$HOME/.local/share/bash-completion/completions" ]; then
+  for f in "$HOME/.local/share/bash-completion/completions"/*; do
+    [ -f "$f" ] && . "$f"
+  done
+fi
+# OPENSPEC:END
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

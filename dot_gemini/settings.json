@@ -58,9 +58,6 @@
     "skills": true,
     "enableAgents": true,
     "useOSC52Paste": true,
-    "cliHelpAgentSettings": {
-      "enabled": true
-    },
     "introspectionAgentSettings": {
       "enabled": true
     }
@@ -115,11 +112,22 @@
     "showMemoryUsage": true,
     "showCitations": false,
     "footer": {
-      "hideContextPercentage": false
+      "hideContextPercentage": false,
+      "showLabels": false,
+      "items": [
+        "workspace",
+        "git-branch",
+        "sandbox",
+        "model-name",
+        "context-used",
+        "quota",
+        "memory-usage",
+        "code-changes",
+        "token-count"
+      ]
     },
     "showModelInfoInChat": true,
     "accessibility": {
-      "disableLoadingPhrases": true,
       "enableLoadingPhrases": false
     },
     "useBackgroundColor": true,
