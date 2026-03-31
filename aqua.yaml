@@ -56,7 +56,7 @@ packages:
 - name: k1LoW/mo@v0.18.4
 - name: k1LoW/octocov@v0.75.3
 - name: k3d-io/k3d@v5.8.3
-- name: kubernetes-sigs/cluster-api@v1.12.3
+- name: kubernetes-sigs/cluster-api@v1.12.4
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
 - name: kubernetes/kubectl@v1.35.2
 - name: loft-sh/devpod@v0.6.15
