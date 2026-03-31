@@ -43,7 +43,7 @@ packages:
 - name: gitlab.com/gitlab-org/cli@v1.90.0
 - name: golang/go@go1.26.1
 - name: golangci/golangci-lint@v2.11.4
-- name: google/go-jsonnet@v0.21.0
+- name: google/go-jsonnet@v0.22.0
 - name: hashicorp/terraform@v1.14.8
 - name: helm/helm@v4.1.3
 - name: int128/kubelogin@v1.36.0
