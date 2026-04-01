@@ -67,7 +67,7 @@ packages:
 - name: mfridman/tparse@v0.18.0
 - name: mr-karan/doggo@v1.1.5
 - name: nektos/act@v0.2.86
-- name: neovim/neovim@v0.11.6
+- name: neovim/neovim@v0.12.0
 - name: nodejs/node@v24.14.1
 - name: okteto/okteto@3.17.1
 - name: oven-sh/bun@bun-v1.3.11
