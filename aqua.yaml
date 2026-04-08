@@ -15,6 +15,7 @@ packages:
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.21.2
 - name: RasKrebs/sonar@v0.2.6
 - name: anomalyco/opencode@v1.4.0
+- name: anthropics/claude-code@v2.1.94
 - name: aquasecurity/trivy@v0.69.3
 - name: ariga/atlas@v1.1.0
 - name: arl/gitmux@v0.11.5
@@ -40,6 +41,7 @@ packages:
 - name: evilmartians/lefthook@v2.1.5
 - name: fluxcd/flux2@v2.8.5
 - name: fullstorydev/grpcurl@v1.9.3
+- name: github/copilot-cli@v1.0.21
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.91.0
 - name: golang/go@go1.26.2

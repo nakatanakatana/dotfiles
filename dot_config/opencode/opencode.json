@@ -4,11 +4,12 @@
   "default_agent": "plan",
   "model": "github-copilot/gpt-5.4",
   "small_model": "openai/gpt-5.1-codex-mini",
+  "plugin": [
+    "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
   "permission": {
     "*": "ask",
-    "skill": {
-      "*": "allow"
-    },
+    "skill": "allow",
     "bash": {
       "*": "ask",
       "buf *": "allow",
@@ -53,6 +54,7 @@
       "mkdir *": "allow",
       "npm ci": "allow",
       "npm run *": "allow",
+      "npm view *": "allow",
       "npm test *": "allow",
       "CI=true npm test *": "allow",
       "npx *": "deny",
@@ -77,7 +79,6 @@
     "list": "allow",
     "lsp": "allow",
     "question": "allow",
-    "skill": "allow",
     "task": "ask",
     "todoread": "allow",
     "todowrite": "allow",
