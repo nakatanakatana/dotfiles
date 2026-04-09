@@ -83,4 +83,4 @@ packages:
 - name: twistedpair/google-cloud-sdk@562.0.0
 - name: twpayne/chezmoi@v2.70.1
 - name: wagoodman/dive@v0.13.1
-- name: x-motemen/ghq@v1.9.4
+- name: x-motemen/ghq@v1.10.0
