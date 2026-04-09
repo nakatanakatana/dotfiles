@@ -30,7 +30,7 @@ packages:
 - name: cue-lang/cue@v0.16.1
 - name: dagger/dagger@v0.20.4
 - name: dandavison/delta@0.18.2
-- name: denoland/deno@v2.7.11
+- name: denoland/deno@v2.7.12
 - name: derailed/k9s@v0.50.18
 - name: devspace-sh/devspace@v6.3.20
 - name: dimo414/bkt@0.8.2
