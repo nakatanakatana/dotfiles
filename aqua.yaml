@@ -76,7 +76,7 @@ packages:
 - name: opentofu/opentofu@v1.11.6
 - name: oven-sh/bun@bun-v1.3.13
 - name: peco/peco@v0.6.0
-- name: pnpm/pnpm@v10.33.0
+- name: pnpm/pnpm@v10.33.1
 - name: sqldef/sqldef/sqlite3def@v3.11.1
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.62.0
