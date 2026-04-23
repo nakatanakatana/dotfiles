@@ -14,7 +14,7 @@ packages:
 - name: BurntSushi/ripgrep@15.1.0
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.21.3
 - name: RasKrebs/sonar@v0.2.9
-- name: anomalyco/opencode@v1.14.21
+- name: anomalyco/opencode@v1.14.22
 - name: anthropics/claude-code@v2.1.118
 - name: aquasecurity/trivy@v0.70.0
 - name: ariga/atlas@v1.2.0
