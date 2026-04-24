@@ -54,7 +54,6 @@
     }
   },
   "experimental": {
-    "plan": true,
     "skills": true,
     "enableAgents": true,
     "useOSC52Paste": true,
@@ -69,6 +68,9 @@
       "enabled": true,
       "maxAge": "30d",
       "warningAcknowledged": true
+    },
+    "plan": {
+      "enabled": true
     }
   },
   "security": {
