@@ -1,9 +1,11 @@
+clang
 git
-vim
-tmux
-ripgrep
-unzip
-socat
-unar
+libtool-bin
+make
 pass
+ripgrep
+socat
 ssh-agent-filter
+tmux
+unar
+unzip
