@@ -5,7 +5,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    skin: solarized-dark.yaml
+    skin: solarized-dark
     enableMouse: false
     headless: false
     logoless: true
