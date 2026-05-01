@@ -69,7 +69,7 @@ packages:
 - name: mergestat/mergestat-lite@v0.6.2
 - name: mfridman/tparse@v0.18.0
 - name: mr-karan/doggo@v1.1.5
-- name: nektos/act@v0.2.87
+- name: nektos/act@v0.2.88
 - name: neovim/neovim@v0.12.2
 - name: nodejs/node@v24.15.0
 - name: okteto/okteto@3.18.0
