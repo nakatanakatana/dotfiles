@@ -10,12 +10,13 @@ current_line: &current_line "#003440"
 selection: &selection "#003440"
 comment: &comment "#6272a4"
 yellow: &yellow "#b58900"
-cyan: &cyan "#2aa197"
-green: &green "#859901"
-orange: &orange "#cb4a16"
+cyan: &cyan "#2aa198"
+green: &green "#859900"
+orange: &orange "#cb4b16"
 magenta: &magenta "#d33582"
-blue: &blue "#2aa198"
-red: &red "#dc312e"
+blue: &blue "#268bd2"
+red: &red "#dc322f"
+violet: &violet "#6c71c4"
 
 # Skin...
 k9s:
@@ -53,7 +54,7 @@ k9s:
       activeColor: *current_line
     status:
       newColor: *foreground
-      modifyColor: *blue
+      modifyColor: *yellow
       addColor: *green
       errorColor: *red
       highlightColor: *orange
