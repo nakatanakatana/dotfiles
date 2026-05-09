@@ -37,14 +37,14 @@ gh search prs --owner <USERNAME> --app renovate --state open --json repository,t
 gh pr view <PR_URL> --json mergeable,statusCheckRollup
 ```
 
-### Merge (Squash & Delete Branch)
+### Merge (Merge commits & Delete Branch)
 ```bash
-gh pr merge <PR_URL> --squash --delete-branch
+gh pr merge <PR_URL> --merge --delete-branch
 ```
 
 ### Enable Auto-merge
 ```bash
-gh pr merge <PR_URL> --auto --squash --delete-branch
+gh pr merge <PR_URL> --auto --merge --delete-branch
 ```
 
 ## Manual Intervention
