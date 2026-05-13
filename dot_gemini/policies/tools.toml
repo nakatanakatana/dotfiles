@@ -38,6 +38,7 @@ commandPrefix = [
   "git status",
   "glab auth status",
   "glab ci status",
+  "glab ci trace",
   "glab ci view",
   "glab issue list",
   "glab issue view",
