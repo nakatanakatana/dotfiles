@@ -74,7 +74,7 @@ packages:
 - name: nodejs/node@v24.15.0
 - name: okteto/okteto@3.19.0
 - name: opentofu/opentofu@v1.11.7
-- name: oven-sh/bun@bun-v1.3.13
+- name: oven-sh/bun@bun-v1.3.14
 - name: peco/peco@v0.6.0
 - name: pnpm/pnpm@v11.1.1
 - name: sqldef/sqldef/sqlite3def@v3.11.1
