@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# 1. Parse target command and args
+if [ "$#" -lt 1 ]; then
+  echo "Usage: $0 <command> [args...]" >&2
+  exit 1
+fi
+
+TARGET_CMD="$1"
+CMD_ARGS=("${@:2}")
+
+# 2. Identify the real binary in the PATH (excluding this script's directory)
+REAL_CMD=""
+SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+for cmd in $(which -a "$TARGET_CMD"); do
+  cmd_dir="$(cd "$(dirname "$cmd")" && pwd)"
+  if [ "$cmd_dir" != "$SELF_DIR" ]; then
+    REAL_CMD="$cmd"
+    break
+  fi
+done
+
+if [ -z "$REAL_CMD" ]; then
+  echo "Error: real $TARGET_CMD not found in PATH" >&2
+  exit 1
+fi
+
+# 3. Conditions to skip peco and run the command transparently:
+# - If stdin or stdout is not a TTY (pipes, redirections, non-interactive env)
+# - If KUBE_NO_PECO env var is set to "1"
+# - If --kubeconfig option is explicitly passed in arguments
+# - If it's a shell completion command (contains __complete or similar)
+SKIP_PECO=0
+if [ ! -t 0 ] || [ ! -t 1 ]; then
+  SKIP_PECO=1
+fi
+
+if [ "${KUBE_NO_PECO:-}" = "1" ]; then
+  SKIP_PECO=1
+fi
+
+for arg in "${CMD_ARGS[@]}"; do
+  if [ "$arg" = "__complete" ]; then
+    SKIP_PECO=1
+    break
+  elif [[ "$arg" =~ ^--kubeconfig ]]; then
+    SKIP_PECO=1
+    break
+  fi
+done
+
+if [ "$SKIP_PECO" -eq 1 ]; then
+  exec "$REAL_CMD" "${CMD_ARGS[@]}"
+fi
+
+# 4. Retrieve vault name and file list from 1Password item
+if which bkt >/dev/null 2>&1; then
+  ITEM_INFO=$(bkt --ttl 1h -- op item get kubeconfigs --format=json 2>/dev/null)
+else
+  ITEM_INFO=$(op item get kubeconfigs --format=json 2>/dev/null)
+fi
+if [ -z "$ITEM_INFO" ]; then
+  echo "Error: Failed to retrieve 'kubeconfigs' item from 1Password." >&2
+  echo "Please make sure you are signed in ('op signin')." >&2
+  exit 1
+fi
+
+VAULT_NAME=$(echo "$ITEM_INFO" | jq -r '.vault.name')
+if [ -z "$VAULT_NAME" ] || [ "$VAULT_NAME" = "null" ]; then
+  VAULT_NAME="Personal"
+fi
+
+FILES=$(echo "$ITEM_INFO" | jq -r '.files[].name')
+if [ -z "$FILES" ]; then
+  echo "Error: No files found attached to 'kubeconfigs' item in 1Password." >&2
+  exit 1
+fi
+
+# 5. Prompt the user to select config file using peco
+SELECTED_NAME=$(echo "$FILES" | peco --prompt="Select Kubeconfig >")
+
+if [ -z "$SELECTED_NAME" ]; then
+  echo "Cancelled." >&2
+  exit 1
+fi
+
+# 6. Execute real command with the selected config via inline process substitution
+# (streams configuration in-memory directly to the command)
+KUBECONFIG=<(op read "op://${VAULT_NAME}/kubeconfigs/${SELECTED_NAME}" 2>/dev/null) "$REAL_CMD" "${CMD_ARGS[@]}"

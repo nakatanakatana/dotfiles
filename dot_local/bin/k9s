@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Thin wrapper for k9s executing via kube-select-run
+exec "$(dirname "$0")/kube-select-run" k9s "$@"

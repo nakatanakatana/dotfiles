@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Thin wrapper for kubectl executing via kube-select-run
+exec "$(dirname "$0")/kube-select-run" kubectl "$@"
