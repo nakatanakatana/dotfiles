@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# 1. Identify the real gh binary in the PATH (excluding this script itself)
+REAL_GH=""
+SELF_PATH="$(readlink -f "$0" 2>/dev/null || realpath "$0" 2>/dev/null)"
+for cmd in $(which -a gh); do
+  cmd_path="$(readlink -f "$cmd" 2>/dev/null || realpath "$cmd" 2>/dev/null)"
+  if [ "$cmd_path" != "$SELF_PATH" ]; then
+    REAL_GH="$cmd"
+    break
+  fi
+done
+
+if [ -z "$REAL_GH" ]; then
+  echo "Error: real gh not found in PATH" >&2
+  exit 1
+fi
+
+# 2. 1Password reference to the GitHub Token (overridable via environment variable)
+TOKEN_REF="${OP_GH_TOKEN_REF:-op://Personal/GitHub CLI/token}"
+
+# 3. Retrieve the token from 1Password (cached with bkt for 15m if available)
+if which bkt >/dev/null 2>&1; then
+  TOKEN=$(bkt --ttl 15m -- op read "$TOKEN_REF" 2>/dev/null)
+else
+  TOKEN=$(op read "$TOKEN_REF" 2>/dev/null)
+fi
+
+if [ -z "$TOKEN" ]; then
+  echo "Error: Failed to retrieve GitHub token from 1Password Reference: ${TOKEN_REF}" >&2
+  echo "Please check your 1Password configuration or reference path." >&2
+  exit 1
+fi
+
+# 4. Execute the real gh command with the token passed inline
+GH_TOKEN="$TOKEN" exec "$REAL_GH" "$@"
