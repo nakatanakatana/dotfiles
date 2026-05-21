@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Wrapper to invoke Windows 1Password CLI (op.exe) from WSL.
+# Relies on op.exe being resolvable via the Windows PATH inherited by WSL interop.
+# Strips CR from op.exe's CRLF output so downstream shell tools see plain LF.
+
+set -o pipefail
+
+if ! command -v op.exe >/dev/null 2>&1; then
+  echo "op: op.exe not found in PATH (install 1Password CLI on Windows)" >&2
+  exit 127
+fi
+
+if [ -t 1 ]; then
+  exec op.exe "$@"
+fi
+
+op.exe "$@" | tr -d '\r'
