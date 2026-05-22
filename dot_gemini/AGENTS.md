@@ -5,3 +5,4 @@
 - Use red/green TDD
 - After conductor newTrack & tracks: commit.
 - Use `npm ci` to install package.json dependencies.
+- Avoid excessive modifiers like "completely" or "perfectly".
