@@ -59,7 +59,6 @@ for arg in "${CMD_ARGS[@]}"; do
 done
 
 if [ "$SKIP_PECO" -eq 1 ]; then
-  echo "DEBUG: SKIP_PECO=1 (TTY_IN=$([ -t 0 ] && echo 1 || echo 0), TTY_OUT=$([ -t 1 ] && echo 1 || echo 0), KUBE_NO_PECO=${KUBE_NO_PECO:-}, KUBECONFIG=${KUBECONFIG:-})" >&2
   exec "$REAL_CMD" "${CMD_ARGS[@]}"
 fi
 
@@ -86,11 +85,21 @@ if [ -z "$FILES" ]; then
   exit 1
 fi
 
-# 5. Prompt the user to select config file using peco
-SELECTED_NAME=$(echo "$FILES" | peco --prompt="Select Kubeconfig >")
+# 5. Prompt the user to select config file or use default
+SELECTED_NAME=""
+if [ "${KUBE_SELECT_INTERACTIVE:-0}" = "1" ]; then
+  SELECTED_NAME=$(echo "$FILES" | peco --prompt="Select Kubeconfig >")
+else
+  # Prefer k3s.yaml if it exists in the list, otherwise use the first one
+  if echo "$FILES" | grep -Fqx "k3s.yaml"; then
+    SELECTED_NAME="k3s.yaml"
+  else
+    SELECTED_NAME=$(echo "$FILES" | head -n 1)
+  fi
+fi
 
 if [ -z "$SELECTED_NAME" ]; then
-  echo "Cancelled." >&2
+  echo "Cancelled or no config found." >&2
   exit 1
 fi
 
