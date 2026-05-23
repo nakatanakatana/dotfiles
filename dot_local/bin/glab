@@ -2,11 +2,11 @@
 
 set -euo pipefail
 
-# 1. Locate gh.exe
-GH_EXE="$(command -v gh.exe 2>/dev/null || true)"
+# 1. Locate glab.exe
+GLAB_EXE="$(command -v glab.exe 2>/dev/null || true)"
 
-if [ -z "$GH_EXE" ]; then
-  echo "Error: gh.exe not found in PATH" >&2
+if [ -z "$GLAB_EXE" ]; then
+  echo "Error: glab.exe not found in PATH" >&2
   exit 1
 fi
 
@@ -21,6 +21,5 @@ for arg in "$@"; do
   fi
 done
 
-# 3. Execute gh.exe
-exec "$GH_EXE" "${args[@]}"
-
+# 3. Execute glab.exe
+exec "$GLAB_EXE" "${args[@]}"

@@ -61,6 +61,7 @@ alias l='ls -CF'
 source /etc/bash_completion
 
 # pathの追加
+PATH=$HOME/.local/bin:$PATH
 PATH=$PATH:$HOME/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/bin
@@ -74,7 +75,6 @@ PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:/snap/bin
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.cargo/bin
-PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.istioctl/bin
 PATH=$PATH:$HOME/go/bin
 PATH=$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/
@@ -218,7 +218,7 @@ evalcache () {
 }
 eval "$(evalcache direnv hook bash)"
 
-alias k9s='k9s --context $(kubectl config get-contexts -o=name | peco --select-1)'
+
 alias kubectx='kubectl config use-context $(kubectl config get-contexts -o=name | peco --select-1)'
 
 gcloud() {

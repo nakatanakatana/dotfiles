@@ -3,4 +3,6 @@ renovate.json
 packages.sh
 packages/
 packages/**
+windows/
+windows/**
 README.md
