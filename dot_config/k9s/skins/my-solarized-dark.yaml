@@ -9,6 +9,7 @@ background: &background "#002833"
 current_line: &current_line "#003440"
 selection: &selection "#003440"
 comment: &comment "#6272a4"
+muted: &muted "#586e75" # base01 (darker than foreground)
 yellow: &yellow "#b58900"
 cyan: &cyan "#2aa198"
 green: &green "#859900"
@@ -58,8 +59,9 @@ k9s:
       addColor: *green
       errorColor: *red
       highlightColor: *orange
-      killColor: *comment
-      completedColor: *comment
+      killColor: *violet
+      completedColor: *muted
+      pendingColor: *blue
     title:
       fgColor: *foreground
       bgColor: *current_line
