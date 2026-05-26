@@ -28,37 +28,29 @@ if [ -z "$REAL_CMD" ]; then
   exit 1
 fi
 
-# 3. Conditions to skip peco and run the command transparently:
-# - If stdin or stdout is not a TTY (pipes, redirections, non-interactive env)
-# - If KUBE_NO_PECO env var is set to "1"
-# - If --kubeconfig option is explicitly passed in arguments
-# - If it's a shell completion command (contains __complete or similar)
-SKIP_PECO=0
-if [ ! -t 0 ] || [ ! -t 1 ]; then
-  SKIP_PECO=1
-fi
-
-if [ "${KUBE_NO_PECO:-}" = "1" ]; then
-  SKIP_PECO=1
-fi
+# 3. Conditions to bypass kube-select-run entirely (run the command transparently):
+# - If --kubeconfig option is explicitly passed in arguments (user specified config)
+# - If KUBECONFIG env var points to /dev/fd/* or /proc/* (process substitution)
+# - If it's a shell completion command (contains __complete)
+BYPASS=0
 
 case "${KUBECONFIG:-}" in
   /dev/fd/*|/proc/*)
-    SKIP_PECO=1
+    BYPASS=1
     ;;
 esac
 
 for arg in "${CMD_ARGS[@]}"; do
   if [ "$arg" = "__complete" ]; then
-    SKIP_PECO=1
+    BYPASS=1
     break
   elif [[ "$arg" =~ ^--kubeconfig ]]; then
-    SKIP_PECO=1
+    BYPASS=1
     break
   fi
 done
 
-if [ "$SKIP_PECO" -eq 1 ]; then
+if [ "$BYPASS" -eq 1 ]; then
   exec "$REAL_CMD" "${CMD_ARGS[@]}"
 fi
 
@@ -87,7 +79,25 @@ fi
 
 # 5. Prompt the user to select config file or use default
 SELECTED_NAME=""
-if [ "${KUBE_SELECT_INTERACTIVE:-0}" = "1" ]; then
+FORCE_DEFAULT=0
+
+# If stdin/stdout is not a TTY (pipe, redirection), or KUBE_NO_PECO=1, force using default config instead of interactive peco
+if [ ! -t 0 ] || [ ! -t 1 ]; then
+  FORCE_DEFAULT=1
+fi
+if [ "${KUBE_NO_PECO:-}" = "1" ]; then
+  FORCE_DEFAULT=1
+fi
+
+if [ -n "${KUBECONFIG_NAME:-}" ]; then
+  # Check if the specified config name exists in the 1Password item files
+  if echo "$FILES" | grep -Fqx "$KUBECONFIG_NAME"; then
+    SELECTED_NAME="$KUBECONFIG_NAME"
+  else
+    echo "Error: Specified config '$KUBECONFIG_NAME' not found in 1Password 'kubeconfigs' item." >&2
+    exit 1
+  fi
+elif [ "$FORCE_DEFAULT" -eq 0 ] && [ "${KUBE_SELECT_INTERACTIVE:-0}" = "1" ]; then
   SELECTED_NAME=$(echo "$FILES" | peco --prompt="Select Kubeconfig >")
 else
   # Prefer k3s.yaml if it exists in the list, otherwise use the first one
