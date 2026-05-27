@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Thin wrapper for helm executing via kube-select-run
+exec "$(dirname "$0")/kube-select-run" helm "$@"
