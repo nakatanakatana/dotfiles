@@ -12,5 +12,5 @@ registries:
 packages:
 - name: ByteNess/aws-vault@v7.10.8
 - name: cli/cli@v2.92.0
-- name: gitlab.com/gitlab-org/cli@v1.99.0
+- name: gitlab.com/gitlab-org/cli@v1.100.0
 - name: int128/kubelogin@v1.36.1
