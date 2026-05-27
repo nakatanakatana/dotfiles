@@ -56,9 +56,9 @@ fi
 
 # 4. Retrieve vault name and file list from 1Password item
 if which bkt >/dev/null 2>&1; then
-  ITEM_INFO=$(bkt --ttl 1h -- op item get kubeconfigs --format=json 2>/dev/null)
+  ITEM_INFO=$(bkt --ttl 1h --discard-failures -- op item get kubeconfigs --format=json 2>/dev/null) || true
 else
-  ITEM_INFO=$(op item get kubeconfigs --format=json 2>/dev/null)
+  ITEM_INFO=$(op item get kubeconfigs --format=json 2>/dev/null) || true
 fi
 if [ -z "$ITEM_INFO" ]; then
   echo "Error: Failed to retrieve 'kubeconfigs' item from 1Password." >&2
@@ -117,6 +117,9 @@ fi
 TEMP_CONFIG=$(mktemp -p /dev/shm)
 trap 'rm -f "$TEMP_CONFIG"' EXIT
 
-op read "op://${VAULT_NAME}/kubeconfigs/${SELECTED_NAME}" > "$TEMP_CONFIG" 2>/dev/null
+if ! op read "op://${VAULT_NAME}/kubeconfigs/${SELECTED_NAME}" > "$TEMP_CONFIG" 2>/dev/null; then
+  echo "Error: Failed to read kubeconfig file '${SELECTED_NAME}' from 1Password." >&2
+  exit 1
+fi
 
 KUBE_NO_PECO=1 KUBECONFIG="$TEMP_CONFIG" "$REAL_CMD" "${CMD_ARGS[@]}"
