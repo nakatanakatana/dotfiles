@@ -53,8 +53,8 @@
   },
   "showFeedbackSurvey": false,
   "statusLine": {
-    "type": "",
-    "command": "",
+    "type": "command",
+    "command": "node ~/.gemini/antigravity-cli/statusline.ts",
     "enabled": true
   },
   "trustedWorkspaces": []
