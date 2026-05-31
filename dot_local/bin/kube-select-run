@@ -32,6 +32,7 @@ fi
 # - If --kubeconfig option is explicitly passed in arguments (user specified config)
 # - If KUBECONFIG env var points to /dev/fd/* or /proc/* (process substitution)
 # - If it's a shell completion command (contains __complete)
+# - If kubectl is being used only as the kubelogin plugin dispatcher
 BYPASS=0
 
 case "${KUBECONFIG:-}" in
@@ -39,6 +40,10 @@ case "${KUBECONFIG:-}" in
     BYPASS=1
     ;;
 esac
+
+if [ "$TARGET_CMD" = "kubectl" ] && [ "${CMD_ARGS[0]:-}" = "oidc-login" ]; then
+  BYPASS=1
+fi
 
 for arg in "${CMD_ARGS[@]}"; do
   if [ "$arg" = "__complete" ]; then
