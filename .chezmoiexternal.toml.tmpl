@@ -19,3 +19,20 @@
     type = "file"
     url = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
     refreshPeriod = "24h"
+
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{-   $arch := "" }}
+{{-   if eq .chezmoi.arch "amd64" }}
+{{-     $arch = "x86_64" }}
+{{-   else if eq .chezmoi.arch "arm64" }}
+{{-     $arch = "arm64" }}
+{{-   end }}
+{{-   if $arch }}
+
+[".local/bin/wsl-keyring"]
+    type = "file"
+    url = "https://github.com/nakatanakatana/mytools/releases/download/v0.2.0/wsl-keyring_Linux_{{ $arch }}"
+    executable = true
+{{-   end }}
+{{- end }}
+
