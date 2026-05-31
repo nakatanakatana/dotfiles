@@ -23,5 +23,16 @@
       "automerge": true,
       "platformAutomerge": true
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)\\.chezmoiexternal\\.toml\\.tmpl$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s+url\\s*=\\s*\"https://github.com/[^/]+/[^/]+/releases/download/(?<currentValue>[^/]+)/"
+      ]
+    }
   ]
 }
