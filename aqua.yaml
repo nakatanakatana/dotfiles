@@ -28,7 +28,7 @@ packages:
 - name: cli/cli@v2.93.0
 - name: cloudflare/cloudflared@2026.5.2
 - name: cue-lang/cue@v0.16.1
-- name: dagger/dagger@v0.21.3
+- name: dagger/dagger@v0.21.4
 - name: dandavison/delta@0.19.2
 - name: denoland/deno@v2.8.2
 - name: derailed/k9s@v0.50.18
