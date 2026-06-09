@@ -136,10 +136,22 @@ function ghq-status() {
     br=$(git -C {} branch --show-current)
     if [ -n "$br" ]; then
       if [ -n "$(git -C {} status -s)" ]; then
-        printf "%-30s : %-20s \033[31m[Dirty]\033[0m\n" "$(basename {})" "$br"
+        printf "%-30s : %-20s \033[31m[✗]\033[0m\n" "$(basename {})" "$br"
       else
-        printf "%-30s : %-20s \033[32m[Clean]\033[0m\n" "$(basename {})" "$br"
+        printf "%-30s : %-20s \033[32m[✔]\033[0m\n" "$(basename {})" "$br"
       fi
+    fi
+  '
+}
+
+function ghq-switch() {
+  ghq list -p | xargs -I {} sh -c '
+    default_branch=$(git -C {} rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed "s|^origin/||")
+    if [ -n "$default_branch" ]; then
+      echo "🔄 $(basename {}): switching to $default_branch..."
+      git -C {} switch "$default_branch"
+    else
+      echo "⚠️ $(basename {}): default branch not found"
     fi
   '
 }
