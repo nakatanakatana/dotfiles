@@ -131,6 +131,19 @@ function ghql() {
 bind -x '"\C-r": peco-select-history'
 bind -x '"\C-]": ghql'
 
+function ghq-status() {
+  ghq list -p | xargs -I {} sh -c '
+    br=$(git -C {} branch --show-current)
+    if [ -n "$br" ]; then
+      if [ -n "$(git -C {} status -s)" ]; then
+        printf "%-30s : %-20s \033[31m[Dirty]\033[0m\n" "$(basename {})" "$br"
+      else
+        printf "%-30s : %-20s \033[32m[Clean]\033[0m\n" "$(basename {})" "$br"
+      fi
+    fi
+  '
+}
+
 gcop() {
   git branch -v -a --sort=-authordate |
     grep -v -e '->' -e '*' |
@@ -271,3 +284,4 @@ fi
 
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.vite-plus/env"
+

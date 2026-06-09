@@ -2,25 +2,38 @@
   "permissions": {
     "allow": [
       "Bash(buf*)",
+      "Bash(cat*)",
+      "Bash(gh api --method GET*)",
+      "Bash(gh auth status*)",
+      "Bash(gh pr list*)",
       "Bash(gh pr view*)",
+      "Bash(gh run list*)",
+      "Bash(gh run view*)",
+      "Bash(gh search prs*)",
       "Bash(git add*)",
+      "Bash(git branch*)",
       "Bash(git diff*)",
       "Bash(git log*)",
       "Bash(git notes*)",
+      "Bash(git remote -v*)",
       "Bash(git show*)",
       "Bash(git status*)",
       "Bash(glab auth status*)",
       "Bash(glab ci status*)",
+      "Bash(glab ci trace*)",
       "Bash(glab ci view*)",
       "Bash(glab issue list*)",
       "Bash(glab issue view*)",
       "Bash(glab mr list*)",
       "Bash(glab mr view*)",
+      "Bash(glab run list*)",
+      "Bash(glab run view*)",
       "Bash(go build*)",
       "Bash(go test*)",
       "Bash(go tool*)",
       "Bash(golangci-lint*)",
       "Bash(grep*)",
+      "Bash(head*)",
       "Bash(ls*)",
       "Bash(make*)",
       "Bash(mkdir*)",
@@ -28,30 +41,19 @@
       "Bash(npm run*)",
       "Bash(npm test*)",
       "Bash(CI=true npm test*)",
-      "Bash(npx vitest*)",
-      "Bash(CI=true npx vitest*)",
+      "Bash(openspec*)",
       "Bash(rm -rf conductor/tracks/)",
-      "Bash(sqlc*)"
+      "Bash(sqlc*)",
+      "Bash(tail*)",
+      "Bash(wc*)"
+    ],
+    "deny": [
+      "Bash(npx*)"
     ]
   },
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
-    },
-    "cloudlogging": {
-      "type": "http",
-      "url": "https://logging.googleapis.com/mcp"
-    },
-    "cloudmonitoring": {
-      "type": "http",
-      "url": "https://monitoring.googleapis.com/mcp"
-    },
-    "developerknowledge": {
-      "type": "http",
-      "url": "https://developerknowledge.googleapis.com/mcp"
-    }
-  }
+  "statusLine": {
+    "type": "command",
+    "command": "node ~/.claude/statusline.ts"
+  },
+  "tui": "fullscreen"
 }
