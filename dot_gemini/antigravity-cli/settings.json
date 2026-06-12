@@ -1,5 +1,6 @@
 {
   "colorScheme": "solarized dark",
+  "enableTerminalSandbox": true,
   "model": "Gemini 3.5 Flash (High)",
   "notifications": true,
   "permissions": {
@@ -61,5 +62,9 @@
     "type": "command",
     "command": "node ~/.gemini/antigravity-cli/title.ts"
   },
-  "trustedWorkspaces": []
+  "trustedWorkspaces": [
+    "/home/tanaka/repos/gitlab.com/eseikatsu/sandbox/yu-nakamura/dotfiles",
+    "/home/tanaka/.wt/feed-reader/ex-tanstackdb",
+    "/home/tanaka/.wt/feed-reader/improve-test"
+  ]
 }
