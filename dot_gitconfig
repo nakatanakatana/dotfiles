@@ -47,3 +47,4 @@
 	root = ~/repos
 [wt]
 	basedir = /home/tanaka/.wt/{gitroot}
+	copy = docs/
