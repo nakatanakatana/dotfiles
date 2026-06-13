@@ -20,6 +20,13 @@
     url = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
     refreshPeriod = "24h"
 
+[".cursor/plugins/local/superpowers"]
+    type = "git-repo"
+    url = "https://github.com/obra/superpowers.git"
+    refreshPeriod = "12h"
+    [".cursor/plugins/local/superpowers".pull]
+        args = ["--ff-only"]
+
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 {{-   $arch := "" }}
 {{-   if eq .chezmoi.arch "amd64" }}
