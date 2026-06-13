@@ -123,6 +123,21 @@ async function main(): Promise<void> {
     const modelPart = `${CYAN_BOLD}[${modelName}]${R}`;
     const modelLen = modelName.length + 2; // Includes brackets [ and ]
 
+    // Workspace extraction (basename of project_dir or current_dir)
+    const workspacePath = data?.workspace?.project_dir ?? data?.workspace?.current_dir;
+    const workspaceName = workspacePath ? workspacePath.split('/').pop() : '';
+    const workspacePart = workspaceName ? `${workspaceName} ` : '';
+
+    // Version extraction (with 'v' prefix, styled with DIM)
+    const versionRaw = data?.version;
+    const versionText = versionRaw ? `v${versionRaw}` : '';
+    const versionPart = versionText ? ` ${DIM}${versionText}${R}` : '';
+
+    const rightPart = `${workspacePart}${modelPart}${versionPart}`;
+    const rightLen = (workspaceName ? workspaceName.length + 1 : 0) +
+                     modelLen +
+                     (versionText ? versionText.length + 1 : 0);
+
     const state: string = data?.agent_state ?? 'unknown';
     const statePart = formatAgentState(state);
 
@@ -150,9 +165,9 @@ async function main(): Promise<void> {
     const line1Left = `${statePart}${delimiter}${contextPart}`;
     const line1LeftLen = getLength(line1Left);
     const termWidth: number = data?.terminal_width ?? 80;
-    const padding = termWidth - (line1LeftLen + modelLen);
+    const padding = termWidth - (line1LeftLen + rightLen);
     const spaces = padding > 0 ? ' '.repeat(padding) : '';
-    const line1 = `${line1Left}${spaces}${modelPart}`;
+    const line1 = `${line1Left}${spaces}${rightPart}`;
 
     // Build line 2 (metrics)
     const line2Parts = [];
