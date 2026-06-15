@@ -29,6 +29,8 @@
 	prune = true
 [pull]
 	prune = true
+[log]
+	showSignature = true
 [merge]
 	ff = true
 	conflictstyle = zdiff3
