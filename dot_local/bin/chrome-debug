@@ -1,0 +1,11 @@
+#!/bin/bash
+
+WIN_USER=$(powershell.exe -Command "[System.Environment]::UserName" | tr -d '\r')
+USER_DATA_DIR="C:\\Users\\${WIN_USER}\\ChromeDebugProfile"
+
+echo "Launching Chrome with remote debugging on port 9222..."
+echo "Profile path: ${USER_DATA_DIR}"
+
+powershell.exe -NoProfile -Command "
+Start-Process 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' -ArgumentList '--remote-debugging-port=9222', '--user-data-dir=${USER_DATA_DIR}'
+"
