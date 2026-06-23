@@ -68,7 +68,7 @@ packages:
 - name: mattn/efm-langserver@v0.0.56
 - name: mergestat/mergestat-lite@v0.6.2
 - name: mfridman/tparse@v0.18.0
-- name: mr-karan/doggo@v1.1.7
+- name: mr-karan/doggo@v1.2.0
 - name: nektos/act@v0.2.89
 - name: neovim/neovim@v0.12.3
 - name: nodejs/node@v24.17.0
