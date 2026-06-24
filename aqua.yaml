@@ -56,7 +56,7 @@ packages:
 - name: jqlang/jq@jq-1.8.2
 - name: junegunn/fzf@v0.73.1
 - name: k1LoW/git-wt@v0.29.0
-- name: k1LoW/mo@v1.6.1
+- name: k1LoW/mo@v1.6.2
 - name: k1LoW/octocov@v0.75.8
 - name: k3d-io/k3d@v5.9.0
 - name: kubernetes-sigs/cluster-api@v1.13.3
