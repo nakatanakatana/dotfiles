@@ -1,0 +1,30 @@
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+cli_auth_credentials_store = "keyring"
+
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "five-hour-limit", "weekly-limit", "branch-changes", "run-state", "approval-mode", "task-progress", "project-name", "pull-request-number", "permissions"]
+status_line_use_colors = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[features]
+hooks = true
+
+[hooks.state]
+
+[[hooks.PermissionRequest]]
+matcher = ""
+
+[[hooks.PermissionRequest.hooks]]
+type    = "command"
+command = "ccgate codex"
+statusMessage = "ccgate evaluating request"
