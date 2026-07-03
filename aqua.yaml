@@ -78,7 +78,7 @@ packages:
 - name: oven-sh/bun@bun-v1.3.14
 - name: peco/peco@v0.6.0
 - name: pnpm/pnpm@v11.9.0
-- name: sqldef/sqldef/sqlite3def@v3.11.12
+- name: sqldef/sqldef/sqlite3def@v3.11.13
 - name: suzuki-shunsuke/pinact@v4.1.0
 - name: tak848/ccgate@v0.9.5
 - name: tellerops/teller@v2.0.7
