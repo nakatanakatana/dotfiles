@@ -70,7 +70,7 @@ packages:
 - name: mfridman/tparse@v0.18.0
 - name: mr-karan/doggo@v1.2.0
 - name: nektos/act@v0.2.89
-- name: neovim/neovim@v0.12.3
+- name: neovim/neovim@v0.12.4
 - name: nodejs/node@v24.18.0
 - name: okteto/okteto@3.21.0
 - name: openai/codex@rust-v0.142.5
