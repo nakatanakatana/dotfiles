@@ -13,6 +13,9 @@ delivery = "herdr"
 [theme]
 name = "terminal"
 
+[worktrees]
+directory = "~/.wt"
+
 [keys]
 settings = ""
 reload_config = "prefix+ctrl+r"
@@ -32,6 +35,8 @@ previous_tab = ["prefix+p", "alt+h"]
 next_tab = ["prefix+n", "alt+l"]
 close_tab = ["prefix+shift+x", "prefix+k"]
 
+new_worktree = ["prefix+shift+g", "alt+c"]
+open_worktree = ["prefix+shift+o", "alt+o"]
 new_workspace = ["prefix+shift+n", "alt+shift+c"]
 previous_workspace = ["prefix+shift+left", "alt+k"]
 next_workspace = ["prefix+shift+right", "alt+j"]
