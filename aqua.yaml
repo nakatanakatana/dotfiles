@@ -38,7 +38,7 @@ packages:
 - name: docker/compose@v5.3.1
 - name: doitintl/kube-no-trouble@0.7.3
 - name: duckdb/duckdb@v1.5.4
-- name: evilmartians/lefthook@v2.1.9
+- name: evilmartians/lefthook@v2.1.10
 - name: fluxcd/flux2@v2.9.1
 - name: fullstorydev/grpcurl@v1.9.3
 - name: github/copilot-cli@v1.0.69
