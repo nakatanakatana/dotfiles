@@ -65,6 +65,39 @@ function formatContext(pct: number): string {
   return `${DIM}ctx${R} ${gradient(pct)}${brailleBar(pct)}${R} ${p}%`;
 }
 
+function formatQuota(label: string, remainingFraction: number, resetInSeconds: number, resetTime: string): string {
+  const usedPct = (1 - remainingFraction) * 100;
+  const pct = Math.round(usedPct);
+  const remainingMs = resetInSeconds !== undefined && resetInSeconds !== null
+    ? resetInSeconds * 1000
+    : (new Date(resetTime).getTime() - Date.now());
+  
+  let resetStr = '';
+  if (remainingMs < 24 * 60 * 60 * 1000) {
+    const totalMins = Math.round(remainingMs / (60 * 1000));
+    const remainingHours = Math.floor(totalMins / 60);
+    const remainingMins = totalMins % 60;
+    if (remainingHours > 0) {
+      if (remainingMins > 0) {
+        resetStr = `in ${remainingHours}h ${remainingMins}m`;
+      } else {
+        resetStr = `in ${remainingHours}h`;
+      }
+    } else {
+      resetStr = `in ${remainingMins}m`;
+    }
+  } else {
+    const resetsDate = new Date(Date.now() + remainingMs);
+    const month = String(resetsDate.getMonth() + 1).padStart(2, '0');
+    const date = String(resetsDate.getDate()).padStart(2, '0');
+    const hours = String(resetsDate.getHours()).padStart(2, '0');
+    const minutes = String(resetsDate.getMinutes()).padStart(2, '0');
+    resetStr = `@ ${month}-${date} ${hours}:${minutes}`;
+  }
+
+  return `${DIM}${label}${R} ${gradient(usedPct)}${brailleBar(usedPct)}${R} ${pct}% (${resetStr})`;
+}
+
 function getLength(str: string): number {
   return str.replace(/\x1b\[[0-9;]*[a-zA-Z]/g, '').length;
 }
@@ -162,7 +195,21 @@ async function main(): Promise<void> {
 
     // Build line 1 (ctx, state, right-aligned model)
     const delimiter = ` ${DIM}│${R} `;
-    const line1Left = `${statePart}${delimiter}${contextPart}`;
+    const quotaParts: string[] = [];
+    const q5h = data?.quota?.['gemini-5h'] ?? data?.quota?.['3p-5h'];
+    const qWeekly = data?.quota?.['gemini-weekly'] ?? data?.quota?.['3p-weekly'];
+
+    if (q5h) {
+      quotaParts.push(formatQuota('5h', q5h.remaining_fraction, q5h.reset_in_seconds, q5h.reset_time));
+    }
+    if (qWeekly) {
+      quotaParts.push(formatQuota('7d', qWeekly.remaining_fraction, qWeekly.reset_in_seconds, qWeekly.reset_time));
+    }
+
+    let line1Left = `${statePart}${delimiter}${contextPart}`;
+    if (quotaParts.length > 0) {
+      line1Left += `${delimiter}${quotaParts.join(delimiter)}`;
+    }
     const line1LeftLen = getLength(line1Left);
     const termWidth: number = data?.terminal_width ?? 80;
     const padding = termWidth - (line1LeftLen + rightLen);
