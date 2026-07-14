@@ -17,27 +17,10 @@ enabled = true
 [plugins."github@openai-curated"]
 enabled = true
 
-[[sandbox.prefix_rules]]
-pattern = ["gh"]
-decision = "prompt"
-match = [
-  "gh auth status",
-  "gh pr list *",
-  "gh pr create *",
-  "gh repo view *",
-  "gh issue *"
-]
-
 [features]
 hooks = true
 
 [hooks.state]
-
-[hooks.state."/home/tanaka/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:13987eccd7b71ae428b42583dedff26bec67aac9bce6cdc11fabf3a1258fb523"
-
-[hooks.state."/home/tanaka/.codex/config.toml:permission_request:0:0"]
-trusted_hash = "sha256:8dc151da52267d3d71565b578be07cff7a133967c34c40dd9308b9d5eaee29f6"
 
 [[hooks.PermissionRequest]]
 matcher = ""
