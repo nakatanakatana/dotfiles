@@ -11,7 +11,7 @@ registries:
   ref: v4.538.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: BurntSushi/ripgrep@15.1.0
-- name: ByteNess/aws-vault@v7.12.6
+- name: ByteNess/aws-vault@v7.12.7
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.23.0
 - name: RasKrebs/sonar@v0.4.0
 - name: anomalyco/opencode@v1.18.2
