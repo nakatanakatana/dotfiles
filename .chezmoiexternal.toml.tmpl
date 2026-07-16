@@ -27,6 +27,25 @@
     [".cursor/plugins/local/superpowers".pull]
         args = ["--ff-only"]
 
+[".agents/skills/modern-web-guidance"]
+    type = "archive"
+    url = "https://github.com/GoogleChrome/modern-web-guidance/archive/refs/heads/main.tar.gz"
+    exact = true
+    include = ["*/skills/modern-web-guidance/**"]
+    stripComponents = 3
+    refreshPeriod = "168h"
+
+[".agents/skills/japanese-tech-writing/SKILL.md"]
+    type = "file"
+    url = "https://gist.githubusercontent.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d/raw/SKILL.md"
+    refreshPeriod = "168h"
+
+[".agents/skills/cognitive-rhythm-writing/SKILL.md"]
+    type = "file"
+    url = "https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md"
+    refreshPeriod = "168h"
+
+
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 {{-   $arch := "" }}
 {{-   if eq .chezmoi.arch "amd64" }}
