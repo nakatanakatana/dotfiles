@@ -1,19 +1,18 @@
 display:
   active:
-    tab_number: true
-    process: true
-    process_full: false
-    directory: true
-    git: true
+    items:
+     - tab_number
+     - process
+     - directory
+     - environment
+     - git
     environment:
       - icon: '󱇶'
         variable: CLOUDSDK_ACTIVE_CONFIG_NAME
       - icon: '⎈'
         variable: KUBECONFIG_NAME
   inactive:
-    tab_number: true
-    process: true
-    process_full: false
-    directory: false
-    git: false
+    items:
+     - tab_number
+     - process
     environment: []
