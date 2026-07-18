@@ -73,7 +73,7 @@ packages:
 - name: neovim/neovim@v0.12.4
 - name: nodejs/node@v24.18.0
 - name: okteto/okteto@3.21.0
-- name: openai/codex@rust-v0.144.5
+- name: openai/codex@rust-v0.144.6
 - name: opentofu/opentofu@v1.12.4
 - name: oven-sh/bun@bun-v1.3.14
 - name: peco/peco@v0.6.0
