@@ -11,6 +11,7 @@
       "unsandboxed(git push)"
     ],
     "allow": [
+      "read_file(/home/tanaka/.local/share/aquaproj-aqua)",
       "command(CI=true npm test)",
       "command(buf)",
       "command(cat)",
