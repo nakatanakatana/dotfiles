@@ -60,6 +60,41 @@ function formatAgentState(state: string): string {
   return `${color}${icon} ${state}${R}`;
 }
 
+function formatAgentMode(mode: string): string {
+  const m = mode.toLowerCase();
+  let color = '\x1b[33m';
+  let icon = '';
+
+  if (m === 'accept-edits') {
+    color = '\x1b[1;32m'; // Bold Green
+    icon = '⚡ ';
+  } else if (m === 'plan') {
+    color = '\x1b[1;34m'; // Bold Blue
+    icon = '📋 ';
+  } else if (m === 'default' || m === 'request-review') {
+    color = '\x1b[37m';   // White
+    icon = '🛡️ ';
+  }
+
+  return `${color}${icon}${mode}${R}`;
+}
+
+function resolveAgentMode(data: any): string {
+  if (typeof data?.cycle_mode === 'string' && data.cycle_mode.trim()) {
+    return data.cycle_mode;
+  }
+  if (typeof data?.execution_mode === 'string' && data.execution_mode.trim()) {
+    return data.execution_mode;
+  }
+  if (typeof data?.agent_mode === 'string' && data.agent_mode.trim()) {
+    return data.agent_mode;
+  }
+  if (typeof data?.agentMode === 'string' && data.agentMode.trim()) {
+    return data.agentMode;
+  }
+  return 'default';
+}
+
 function formatContext(pct: number): string {
   const p = Math.round(pct);
   return `${DIM}ctx${R} ${gradient(pct)}${brailleBar(pct)}${R} ${p}%`;
@@ -174,6 +209,9 @@ async function main(): Promise<void> {
     const state: string = data?.agent_state ?? 'unknown';
     const statePart = formatAgentState(state);
 
+    const agentMode = resolveAgentMode(data);
+    const modePart = agentMode ? formatAgentMode(agentMode) : '';
+
     // Context Percentage
     let pct = data?.context_window?.used_percentage ?? data?.context?.used_percentage;
     if (pct === undefined || pct === null) {
@@ -206,7 +244,7 @@ async function main(): Promise<void> {
       quotaParts.push(formatQuota('7d', qWeekly.remaining_fraction, qWeekly.reset_in_seconds, qWeekly.reset_time));
     }
 
-    let line1Left = `${statePart}${delimiter}${contextPart}`;
+    let line1Left = modePart ? `${statePart}${delimiter}${modePart}${delimiter}${contextPart}` : `${statePart}${delimiter}${contextPart}`;
     if (quotaParts.length > 0) {
       line1Left += `${delimiter}${quotaParts.join(delimiter)}`;
     }
