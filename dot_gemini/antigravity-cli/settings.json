@@ -1,4 +1,5 @@
 {
+  "agentMode": "accept-edits",
   "colorScheme": "solarized dark",
   "enableTerminalSandbox": true,
   "model": "Gemini 3.6 Flash (High)",
@@ -49,6 +50,7 @@
     ]
   },
   "showFeedbackSurvey": false,
+  "toolPermission": "proceed-in-sandbox",
   "statusLine": {
     "type": "command",
     "command": "node ~/.gemini/antigravity-cli/statusline.ts",
