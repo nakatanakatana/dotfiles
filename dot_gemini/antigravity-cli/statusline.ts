@@ -164,12 +164,81 @@ function getCountByStatus(items: any): Record<string, number> {
   return counts;
 }
 
+interface StatusInfo {
+  order: number;
+  category: 'pending' | 'running' | 'stopped' | 'other';
+}
+
+const STATUS_MAP: Record<string, StatusInfo> = {
+  // 開始待ち
+  pending: { order: 10, category: 'pending' },
+  queued: { order: 11, category: 'pending' },
+  waiting: { order: 12, category: 'pending' },
+  starting: { order: 13, category: 'pending' },
+  initializing: { order: 14, category: 'pending' },
+
+  // 実行中
+  running: { order: 20, category: 'running' },
+  working: { order: 21, category: 'running' },
+  active: { order: 22, category: 'running' },
+  in_progress: { order: 23, category: 'running' },
+  processing: { order: 24, category: 'running' },
+  thinking: { order: 25, category: 'running' },
+
+  // 停止 (完了・失敗等)
+  completed: { order: 30, category: 'stopped' },
+  done: { order: 31, category: 'stopped' },
+  success: { order: 32, category: 'stopped' },
+  succeeded: { order: 33, category: 'stopped' },
+  finished: { order: 34, category: 'stopped' },
+  failed: { order: 35, category: 'stopped' },
+  error: { order: 36, category: 'stopped' },
+  cancelled: { order: 37, category: 'stopped' },
+  canceled: { order: 38, category: 'stopped' },
+  stopped: { order: 39, category: 'stopped' },
+  idle: { order: 40, category: 'stopped' },
+};
+
+const CATEGORY_ICONS: Record<string, string> = {
+  pending: '\u{f04a0}', // 󰥔 (Timer)
+  running: '\u{f120}',  //  (Terminal)
+  stopped: '\u{f00c}',  //  (Check)
+  other: '\u{f059}',    //  (Question)
+};
+
+function getStatusInfo(status: string): StatusInfo {
+  const s = status.toLowerCase();
+  return STATUS_MAP[s] ?? { order: 100, category: 'other' };
+}
+
+function compareStatuses(a: string, b: string): number {
+  const infoA = getStatusInfo(a);
+  const infoB = getStatusInfo(b);
+  if (infoA.order !== infoB.order) {
+    return infoA.order - infoB.order;
+  }
+  return a.toLowerCase().localeCompare(b.toLowerCase());
+}
+
 function formatMetric(label: string, items: any): string {
   const counts = getCountByStatus(items);
-  const keys = Object.keys(counts);
+  const keys = Object.keys(counts).sort(compareStatuses);
   if (keys.length === 0) return '';
   
-  const parts = keys.map(k => `${k}:${counts[k]}`);
+  let lastCategory: string | null = null;
+  const parts: string[] = [];
+
+  for (const k of keys) {
+    const info = getStatusInfo(k);
+    if (info.category !== lastCategory) {
+      const icon = CATEGORY_ICONS[info.category] || CATEGORY_ICONS.other;
+      parts.push(`${icon} ${k}:${counts[k]}`);
+      lastCategory = info.category;
+    } else {
+      parts.push(`${k}:${counts[k]}`);
+    }
+  }
+
   return `${DIM}${label}${R} [${parts.join(', ')}]`;
 }
 
