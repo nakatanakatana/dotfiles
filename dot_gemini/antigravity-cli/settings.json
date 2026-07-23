@@ -41,6 +41,7 @@
       "command(tflint)",
       "command(wc)",
       "unsandboxed(gh api --method GET)",
+      "unsandboxed(gh api -X GET)",
       "unsandboxed(gh auth status)",
       "unsandboxed(gh issue list)",
       "unsandboxed(gh issue view)",

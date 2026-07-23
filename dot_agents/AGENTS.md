@@ -10,3 +10,4 @@
 - When using Superpowers, do not commit spec or plan files.
 - Use `npm ci` to install dependencies from `package.json`.
 - After creating or updating a pull request, report that CI monitoring has started and monitor it to completion in the background when possible; fix in-scope failures, or report blockers and failing checks.
+- When using `gh api`, specify the method option (e.g., `-X` / `--method`) at the beginning of options if applicable.
