@@ -20,6 +20,44 @@
           }
         }
       }
+    },
+    "local-proxy": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Bifrost Gateway",
+      "options": {
+        "baseURL": "http://localhost:11234/v1",
+        "apiKey": "dummy-key"
+      },
+      "models": {
+        "openai/qwen3.8-max-preview": {
+          "name": "Qwen3.8 Max Preview",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
+        },
+        "openai/qwen3.7-plus": {
+          "name": "Qwen3.7 Plus",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
+        },
+        "openai/qwen3.7-max": {
+          "name": "Qwen3.7 Max",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
+        },
+        "openai/qwen3.6-flash": {
+          "name": "Qwen3.6 Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
+        }
+      }
     }
   },
   "plugin": [

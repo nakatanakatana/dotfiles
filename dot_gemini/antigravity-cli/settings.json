@@ -61,7 +61,16 @@
       "unsandboxed(glab mr list)",
       "unsandboxed(glab mr view)",
       "unsandboxed(glab run list)",
-      "unsandboxed(glab run view)"
+      "unsandboxed(glab run view)",
+      "unsandboxed(kubectl api-resources)",
+      "unsandboxed(kubectl api-versions)",
+      "unsandboxed(kubectl cluster-info)",
+      "unsandboxed(kubectl describe)",
+      "unsandboxed(kubectl explain)",
+      "unsandboxed(kubectl get)",
+      "unsandboxed(kubectl logs)",
+      "unsandboxed(kubectl wait)",
+      "unsandboxed(sleep)"
     ]
   },
   "showFeedbackSurvey": false,
