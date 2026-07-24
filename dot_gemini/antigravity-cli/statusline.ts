@@ -5,9 +5,15 @@ const R = '\x1b[0m';
 const DIM = '\x1b[2m';
 const CYAN_BOLD = '\x1b[1;36m';
 
-const ICON_BG = '\u{f0ae}';       //  (Tasks)
-const ICON_AGENTS = '\u{f06a9}';  // 󰚩 (Robot)
-const ICON_ART = '\u{f03d6}';     // 󰏖 (Package)
+const ICON_BG = String.fromCodePoint(0xf0168);     // 󰅨 (nf-md-format_list_checks)
+const ICON_AGENTS = String.fromCodePoint(0xf06a9);  // 󰚩 (nf-md-robot)
+const ICON_ART = String.fromCodePoint(0xf03d6);     // 󰏖 (nf-md-package_variant)
+const ICON_QUOTA_5H = String.fromCodePoint(0xf0150);// 󰅐 (nf-md-clock_outline)
+const ICON_QUOTA_7D = String.fromCodePoint(0xf00ed);// 󰌭 (nf-md-calendar)
+const ICON_MODE_ACCEPT = String.fromCodePoint(0xf140b); // 󱐋 (nf-md-lightning_bolt)
+const ICON_MODE_PLAN = String.fromCodePoint(0xf0bc2);   // 󰯂 (nf-md-script_text)
+const ICON_MODE_DEFAULT = String.fromCodePoint(0xf0498); // 󰒘 (nf-md-shield_check)
+const ICON_CTX = String.fromCodePoint(0xf035b);     // 󰍛 (nf-md-chip)
 
 function gradient(pct: number): string {
   if (pct < 50) {
@@ -41,20 +47,20 @@ function brailleBar(pct: number, width = 8): string {
 function formatAgentState(state: string): string {
   const s = state.toLowerCase();
   let color = '\x1b[37m';
-  let icon = '\u{f059}'; // 
+  let icon = String.fromCodePoint(0xf02d7); // 󰋗 (nf-md-help_circle)
 
   if (s === 'idle') {
-    color = '\x1b[32m';    // Green
-    icon = '\u{f0f4}';     //  (Coffee)
+    color = '\x1b[38;5;245m'; // Medium Gray (stopped)
+    icon = String.fromCodePoint(0xf0176);  // 󰅖 (nf-md-coffee)
   } else if (s === 'thinking') {
-    color = '\x1b[1;33m';  // Bold Yellow
-    icon = '\u{f400}';     //  (Lightbulb)
+    color = '\x1b[33m';    // Yellow (thinking)
+    icon = String.fromCodePoint(0xf0335);  // 󰌵 (nf-md-lightbulb)
   } else if (s === 'working') {
-    color = '\x1b[1;33m';  // Bold Yellow
-    icon = '\u{f120}';     //  (Terminal)
+    color = '\x1b[36m';    // Cyan (running)
+    icon = String.fromCodePoint(0xf018d);  // 󰅴 (nf-md-console)
   } else if (s === 'tool_use') {
-    color = '\x1b[1;35m';  // Bold Magenta
-    icon = '\u{f0ad}';     //  (Wrench)
+    color = '\x1b[1;36m';  // Bold Cyan (running - tool use)
+    icon = String.fromCodePoint(0xf05b7);  // 󰖷 (nf-md-wrench)
   }
 
   return `${color}${icon} ${state}${R}`;
@@ -67,13 +73,13 @@ function formatAgentMode(mode: string): string {
 
   if (m === 'accept-edits') {
     color = '\x1b[1;32m'; // Bold Green
-    icon = '⚡ ';
+    icon = `${ICON_MODE_ACCEPT} `;
   } else if (m === 'plan') {
     color = '\x1b[1;34m'; // Bold Blue
-    icon = '📋 ';
+    icon = `${ICON_MODE_PLAN} `;
   } else if (m === 'default' || m === 'request-review') {
     color = '\x1b[37m';   // White
-    icon = '🛡️ ';
+    icon = `${ICON_MODE_DEFAULT} `;
   }
 
   return `${color}${icon}${mode}${R}`;
@@ -95,10 +101,16 @@ function resolveAgentMode(data: any): string {
   return 'default';
 }
 
+const WHITE = '\x1b[37m';
+
 function formatContext(pct: number): string {
   const p = Math.round(pct);
-  return `${DIM}ctx${R} ${gradient(pct)}${brailleBar(pct)}${R} ${p}%`;
+  return `${WHITE}${ICON_CTX}${R} ${gradient(pct)}${brailleBar(pct)}${R} ${p}%`;
 }
+
+const ICON_RESET = String.fromCodePoint(0xf0453);   // 󰑓 (nf-md-autorenew / 0xf0453)
+const DARK_GRAY = '\x1b[38;5;245m';
+const LIGHT_GRAY = '\x1b[37m';
 
 function formatQuota(label: string, remainingFraction: number, resetInSeconds: number, resetTime: string): string {
   const usedPct = (1 - remainingFraction) * 100;
@@ -123,14 +135,16 @@ function formatQuota(label: string, remainingFraction: number, resetInSeconds: n
     }
   } else {
     const resetsDate = new Date(Date.now() + remainingMs);
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayName = days[resetsDate.getDay()];
     const month = String(resetsDate.getMonth() + 1).padStart(2, '0');
     const date = String(resetsDate.getDate()).padStart(2, '0');
     const hours = String(resetsDate.getHours()).padStart(2, '0');
     const minutes = String(resetsDate.getMinutes()).padStart(2, '0');
-    resetStr = `@ ${month}-${date} ${hours}:${minutes}`;
+    resetStr = `@ ${month}-${date} (${dayName}) ${hours}:${minutes}`;
   }
 
-  return `${DIM}${label}${R} ${gradient(usedPct)}${brailleBar(usedPct)}${R} ${pct}% (${resetStr})`;
+  return `${LIGHT_GRAY}${label}${R} ${gradient(usedPct)}${brailleBar(usedPct)}${R} ${DARK_GRAY}${pct}% (${ICON_RESET} ${resetStr})${R}`;
 }
 
 function getLength(str: string): number {
@@ -200,10 +214,17 @@ const STATUS_MAP: Record<string, StatusInfo> = {
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
-  pending: '\u{f04a0}', // 󰥔 (Timer)
-  running: '\u{f120}',  //  (Terminal)
-  stopped: '\u{f00c}',  //  (Check)
-  other: '\u{f059}',    //  (Question)
+  pending: String.fromCodePoint(0xf04a0), // 󰥔 (nf-md-timer_outline)
+  running: String.fromCodePoint(0xf018d), // 󰅴 (nf-md-console)
+  stopped: String.fromCodePoint(0xf012c), // 󰄬 (nf-md-check)
+  other: String.fromCodePoint(0xf02d7),   // 󰋗 (nf-md-help_circle)
+};
+
+const CATEGORY_COLORS: Record<string, string> = {
+  pending: '\x1b[33m',   // Yellow
+  running: '\x1b[36m',   // Cyan
+  stopped: '\x1b[38;5;245m', // Medium Gray
+  other: '\x1b[37m',     // White
 };
 
 function getStatusInfo(status: string): StatusInfo {
@@ -230,16 +251,17 @@ function formatMetric(label: string, items: any): string {
 
   for (const k of keys) {
     const info = getStatusInfo(k);
+    const color = CATEGORY_COLORS[info.category] || CATEGORY_COLORS.other;
     if (info.category !== lastCategory) {
       const icon = CATEGORY_ICONS[info.category] || CATEGORY_ICONS.other;
-      parts.push(`${icon} ${k}:${counts[k]}`);
+      parts.push(`${color}${icon} ${k}:${counts[k]}${R}`);
       lastCategory = info.category;
     } else {
-      parts.push(`${k}:${counts[k]}`);
+      parts.push(`${color}${k}:${counts[k]}${R}`);
     }
   }
 
-  return `${DIM}${label}${R} [${parts.join(', ')}]`;
+  return `${WHITE}${label}${R} [${parts.join(', ')}]`;
 }
 
 async function main(): Promise<void> {
@@ -307,10 +329,10 @@ async function main(): Promise<void> {
     const qWeekly = data?.quota?.['gemini-weekly'] ?? data?.quota?.['3p-weekly'];
 
     if (q5h) {
-      quotaParts.push(formatQuota('5h', q5h.remaining_fraction, q5h.reset_in_seconds, q5h.reset_time));
+      quotaParts.push(formatQuota(ICON_QUOTA_5H, q5h.remaining_fraction, q5h.reset_in_seconds, q5h.reset_time));
     }
     if (qWeekly) {
-      quotaParts.push(formatQuota('7d', qWeekly.remaining_fraction, qWeekly.reset_in_seconds, qWeekly.reset_time));
+      quotaParts.push(formatQuota(ICON_QUOTA_7D, qWeekly.remaining_fraction, qWeekly.reset_in_seconds, qWeekly.reset_time));
     }
 
     let line1Left = modePart ? `${statePart}${delimiter}${modePart}${delimiter}${contextPart}` : `${statePart}${delimiter}${contextPart}`;
