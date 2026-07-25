@@ -1,10 +1,79 @@
 {
+  "version": 1,
   "permissions": {
     "allow": [
-      "Shell(ls)",
-      "Shell(rg)",
+      "Shell(CI=true npm test)",
+      "Shell(buf)",
+      "Shell(cat)",
       "Shell(echo)",
-      "Shell(test)"
+      "Shell(find)",
+      "Shell(gh api --method GET)",
+      "Shell(gh api -X GET)",
+      "Shell(gh auth status)",
+      "Shell(gh issue list)",
+      "Shell(gh issue view)",
+      "Shell(gh pr list)",
+      "Shell(gh pr view)",
+      "Shell(gh repo view)",
+      "Shell(gh run list)",
+      "Shell(gh run view)",
+      "Shell(gh search prs)",
+      "Shell(git add)",
+      "Shell(git branch)",
+      "Shell(git diff)",
+      "Shell(git log)",
+      "Shell(git merge-base)",
+      "Shell(git notes)",
+      "Shell(git remote)",
+      "Shell(git rev-parse)",
+      "Shell(git show)",
+      "Shell(git status)",
+      "Shell(glab auth status)",
+      "Shell(glab ci status)",
+      "Shell(glab ci trace)",
+      "Shell(glab ci view)",
+      "Shell(glab issue list)",
+      "Shell(glab issue view)",
+      "Shell(glab mr list)",
+      "Shell(glab mr view)",
+      "Shell(glab run list)",
+      "Shell(glab run view)",
+      "Shell(go build)",
+      "Shell(go fmt)",
+      "Shell(go generate)",
+      "Shell(go mod)",
+      "Shell(go test)",
+      "Shell(go tool)",
+      "Shell(go vet)",
+      "Shell(golangci-lint)",
+      "Shell(grep)",
+      "Shell(head)",
+      "Shell(jq)",
+      "Shell(kubectl api-resources)",
+      "Shell(kubectl api-versions)",
+      "Shell(kubectl cluster-info)",
+      "Shell(kubectl describe)",
+      "Shell(kubectl explain)",
+      "Shell(kubectl get)",
+      "Shell(kubectl logs)",
+      "Shell(kubectl wait)",
+      "Shell(ls)",
+      "Shell(make)",
+      "Shell(mkdir)",
+      "Shell(npm ci)",
+      "Shell(npm run)",
+      "Shell(npm test)",
+      "Shell(rg)",
+      "Shell(sleep)",
+      "Shell(sqlc)",
+      "Shell(tail)",
+      "Shell(terraform fmt)",
+      "Shell(terraform validate)",
+      "Shell(test)",
+      "Shell(tflint)",
+      "Shell(wc)",
+      "Shell(xargs)",
+      "WebFetch(www.vcluster.com)"
     ],
     "deny": []
   },
@@ -15,26 +84,50 @@
     "showLineNumbers": false,
     "showThinkingBlocks": false,
     "showStatusIndicators": true,
-    "showStatusLineRunningTime": true
+    "showStatusLineRunningTime": true,
+    "zenMode": true
   },
   "notifications": true,
   "hints": false,
+  "modelSlashCommands": true,
   "rewind": false,
-  "suggestNextPrompt": false,
   "statusLine": {
     "type": "command",
     "command": "~/.cursor/statusline.ts",
     "padding": 2
   },
+  "model": {
+    "modelId": "default",
+    "displayModelId": "auto",
+    "displayName": "Auto",
+    "displayNameShort": "Auto",
+    "aliases": [
+      "auto"
+    ],
+    "maxMode": false
+  },
+  "hasChangedDefaultModel": false,
   "maxMode": false,
+  "modelParameters": {
+    "default": []
+  },
+  "selectedModel": {
+    "modelId": "default",
+    "parameters": []
+  },
+  "modelSelectionHistory": [
+    "default"
+  ],
   "network": {
     "useHttp1ForAgent": false
   },
   "approvalMode": "allowlist",
+  "autoAcceptWebSearch": false,
   "sandbox": {
     "mode": "disabled",
     "networkAccess": "user_config_with_defaults"
   },
+  "runEverythingSettingsPromptStreak": 0,
   "attribution": {
     "attributeCommitsToAgent": true,
     "attributePRsToAgent": true
