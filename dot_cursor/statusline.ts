@@ -5,9 +5,9 @@ const R = '\x1b[0m';
 const DIM = '\x1b[2m';
 const WHITE = '\x1b[37m';
 const GRAY = '\x1b[38;5;245m'; // medium-dark gray
-const ICON_CTX = String.fromCodePoint(0xf035b); // 󰍛 (nf-md-chip)
-const ICON_MODE_ACCEPT = String.fromCodePoint(0xf140b); // 󱐋 (nf-md-lightning_bolt)
-const ICON_MODE_DEFAULT = String.fromCodePoint(0xf0498); // 󰒘 (nf-md-shield_check)
+const ICON_CTX = '󰍛'; // (nf-md-chip)
+const ICON_MODE_ACCEPT = '󱐋'; // (nf-md-lightning_bolt)
+const ICON_MODE_DEFAULT = '󰒘'; // (nf-md-shield_check)
 
 function gradient(pct: number): string {
   if (pct < 50) {

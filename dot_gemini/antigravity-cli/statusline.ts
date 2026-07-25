@@ -5,15 +5,15 @@ const R = '\x1b[0m';
 const DIM = '\x1b[2m';
 const CYAN_BOLD = '\x1b[1;36m';
 
-const ICON_BG = String.fromCodePoint(0xf0168);     // 󰅨 (nf-md-format_list_checks)
-const ICON_AGENTS = String.fromCodePoint(0xf06a9);  // 󰚩 (nf-md-robot)
-const ICON_ART = String.fromCodePoint(0xf03d6);     // 󰏖 (nf-md-package_variant)
-const ICON_QUOTA_5H = String.fromCodePoint(0xf0150);// 󰅐 (nf-md-clock_outline)
-const ICON_QUOTA_7D = String.fromCodePoint(0xf00ed);// 󰌭 (nf-md-calendar)
-const ICON_MODE_ACCEPT = String.fromCodePoint(0xf140b); // 󱐋 (nf-md-lightning_bolt)
-const ICON_MODE_PLAN = String.fromCodePoint(0xf0bc2);   // 󰯂 (nf-md-script_text)
-const ICON_MODE_DEFAULT = String.fromCodePoint(0xf0498); // 󰒘 (nf-md-shield_check)
-const ICON_CTX = String.fromCodePoint(0xf035b);     // 󰍛 (nf-md-chip)
+const ICON_BG = '󰝖';     // (nf-md-format_list_checks)
+const ICON_AGENTS = '󰚩';  // (nf-md-robot)
+const ICON_ART = '󰏖';     // (nf-md-package_variant)
+const ICON_QUOTA_5H = '󰅐';// (nf-md-clock_outline)
+const ICON_QUOTA_7D = '󰃭';// (nf-md-calendar)
+const ICON_MODE_ACCEPT = '󱐋'; // (nf-md-lightning_bolt)
+const ICON_MODE_PLAN = '󰯂';   // (nf-md-script_text)
+const ICON_MODE_DEFAULT = '󰒘'; // (nf-md-shield_check)
+const ICON_CTX = '󰍛';     // (nf-md-chip)
 
 function gradient(pct: number): string {
   if (pct < 50) {
@@ -47,20 +47,20 @@ function brailleBar(pct: number, width = 8): string {
 function formatAgentState(state: string): string {
   const s = state.toLowerCase();
   let color = '\x1b[37m';
-  let icon = String.fromCodePoint(0xf02d7); // 󰋗 (nf-md-help_circle)
+  let icon = '󰋗'; // (nf-md-help_circle)
 
   if (s === 'idle') {
     color = '\x1b[38;5;245m'; // Medium Gray (stopped)
-    icon = String.fromCodePoint(0xf0176);  // 󰅖 (nf-md-coffee)
+    icon = '󰅶';  // (nf-md-coffee)
   } else if (s === 'thinking') {
     color = '\x1b[33m';    // Yellow (thinking)
-    icon = String.fromCodePoint(0xf0335);  // 󰌵 (nf-md-lightbulb)
+    icon = '󰌵';  // (nf-md-lightbulb)
   } else if (s === 'working') {
     color = '\x1b[36m';    // Cyan (running)
-    icon = String.fromCodePoint(0xf018d);  // 󰅴 (nf-md-console)
+    icon = '󰅴';  // (nf-md-console)
   } else if (s === 'tool_use') {
     color = '\x1b[1;36m';  // Bold Cyan (running - tool use)
-    icon = String.fromCodePoint(0xf05b7);  // 󰖷 (nf-md-wrench)
+    icon = '󰖷';  // (nf-md-wrench)
   }
 
   return `${color}${icon} ${state}${R}`;
@@ -108,7 +108,7 @@ function formatContext(pct: number): string {
   return `${WHITE}${ICON_CTX}${R} ${gradient(pct)}${brailleBar(pct)}${R} ${p}%`;
 }
 
-const ICON_RESET = String.fromCodePoint(0xf0453);   // 󰑓 (nf-md-autorenew / 0xf0453)
+const ICON_RESET = '󰑓';   // (nf-md-reload / 0xf0453)
 const DARK_GRAY = '\x1b[38;5;245m';
 const LIGHT_GRAY = '\x1b[37m';
 
@@ -214,10 +214,10 @@ const STATUS_MAP: Record<string, StatusInfo> = {
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
-  pending: String.fromCodePoint(0xf04a0), // 󰥔 (nf-md-timer_outline)
-  running: String.fromCodePoint(0xf018d), // 󰅴 (nf-md-console)
-  stopped: String.fromCodePoint(0xf012c), // 󰄬 (nf-md-check)
-  other: String.fromCodePoint(0xf02d7),   // 󰋗 (nf-md-help_circle)
+  pending: '󰥔', // (nf-md-timer_outline)
+  running: '󰅴', // (nf-md-console)
+  stopped: '󰄬', // (nf-md-check)
+  other: '󰋗',   // (nf-md-help_circle)
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -271,7 +271,7 @@ async function main(): Promise<void> {
   }
   const inputStr = Buffer.concat(chunks).toString('utf-8').trim();
   if (!inputStr) {
-    process.stdout.write(`\x1b[32m\u{f0f4} idle${R} ${DIM}│${R} ${DIM}ctx${R} ${gradient(0)}${brailleBar(0)}${R} 0% ${CYAN_BOLD}[Unknown Model]${R}\n`);
+    process.stdout.write(`\x1b[32m󰅶 idle${R} ${DIM}│${R} ${DIM}ctx${R} ${gradient(0)}${brailleBar(0)}${R} 0% ${CYAN_BOLD}[Unknown Model]${R}\n`);
     return;
   }
 
