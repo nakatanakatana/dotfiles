@@ -204,25 +204,6 @@ complete -F _devpod_completion devpod
 
 alias dpssh='ssh $(basename $(pwd)).devpod'
 
-## agentfs
-_agentfs_completion() {
-  unset -f _agentfs_completion
-  complete -r agentfs
-  [ -x "$(command -v agentfs)" ] && source <(COMPLETE=bash agentfs)
-}
-complete -F _agentfs_completion agentfs
-
-# alias agentfs-run='agentfs run --allow /tmp --allow $HOME/go'
-agentfs-run() {
-  readonly SESSION_KEY=$1
-  readonly PROJECT_PATH_KEY="$(git rev-parse --show-toplevel | rev | cut -d '/' -f 1-2 | rev | sed -e 's|/|-|')"
-  if [ -z $SESSION_KEY ]; then
-    agentfs run --allow '/tmp' --allow "$HOME/go" --session "${PROJECT_PATH_KEY}-$(uuidgen | cut -d '-' -f 1)"
-  else
-    agentfs run --allow '/tmp' --allow "$HOME/go" --session "$PROJECT_PATH_KEY-$SESSION_KEY"
-  fi
-}
-
 ## aws-vault
 export AWS_VAULT_BACKEND="pass"
 
@@ -242,9 +223,6 @@ evalcache () {
         fi
 }
 eval "$(evalcache direnv hook bash)"
-
-
-alias kubectx='kubectl config use-context $(kubectl config get-contexts -o=name | peco --select-1)'
 
 gcloud() {
   unset -f gcloud
@@ -278,21 +256,9 @@ bind -x '"\C-g": gcloud-switch'
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-$HOME/.local/share}/npm-global
 export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 
-alias gemini='npx @google/gemini-cli'
-alias gemini-newTrack='npx @google/gemini-cli -i /conductor:newTrack'
-
 # qlty
 export QLTY_INSTALL="$HOME/.qlty"
 export PATH=$QLTY_INSTALL/bin:$PATH
-
-# OPENSPEC:START
-# OpenSpec shell completions configuration
-if [ -d "$HOME/.local/share/bash-completion/completions" ]; then
-  for f in "$HOME/.local/share/bash-completion/completions"/*; do
-    [ -f "$f" ] && . "$f"
-  done
-fi
-# OPENSPEC:END
 
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.vite-plus/env"
