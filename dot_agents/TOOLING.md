@@ -9,10 +9,11 @@ Use this registry to choose the most suitable coding agent or minimum set of age
    - Small: one or two files, clear behavior, or read-only investigation. Work in the caller pane.
    - Medium: a bounded implementation, test, or review with a clear handoff. Use one delegated agent when delegation provides value, through Herdr when available and appropriate.
    - Large: multiple independently testable areas. Use multiple agents for disjoint work and run them in parallel, through Herdr when available and appropriate.
-3. Do not parallelize coupled edits, shared generated files, dependency changes, or operations that must observe an earlier result. Assign ownership before starting parallel work and integrate in the caller pane.
-4. Every delegated task must state its scope, files or surfaces it owns, expected deliverable, verification command, and reporting format.
-5. Prefer reversible, observable operations. Preserve the caller's focus and working directory, parse IDs from tool responses, and inspect results before integration.
-6. Update this registry when a coding agent is added or removed, or when its model-selection or operating constraints change.
+3. When delegating, prefer a coding agent or tool different from the caller's whenever practical. Reuse the same one only when task fit, availability, or operating constraints make it the better choice.
+4. Do not parallelize coupled edits, shared generated files, dependency changes, or operations that must observe an earlier result. Assign ownership before starting parallel work and integrate in the caller pane.
+5. Every delegated task must state its scope, files or surfaces it owns, expected deliverable, verification command, and reporting format.
+6. Prefer reversible, observable operations. Preserve the caller's focus and working directory, parse IDs from tool responses, and inspect results before integration.
+7. Update this registry when a coding agent is added or removed, or when its model-selection or operating constraints change.
 
 ## Coding agent registry
 
