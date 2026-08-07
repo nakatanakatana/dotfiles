@@ -10,10 +10,12 @@ Use this registry to choose the most suitable coding agent or minimum set of age
    - Medium: a bounded implementation, test, or review with a clear handoff. Use one delegated agent when delegation provides value, through Herdr when available and appropriate.
    - Large: multiple independently testable areas. Use multiple agents for disjoint work and run them in parallel, through Herdr when available and appropriate.
 3. When delegating, prefer a coding agent or tool different from the caller's whenever practical. Reuse the same one only when task fit, availability, or operating constraints make it the better choice.
-4. Do not parallelize coupled edits, shared generated files, dependency changes, or operations that must observe an earlier result. Assign ownership before starting parallel work and integrate in the caller pane.
-5. Every delegated task must state its scope, files or surfaces it owns, expected deliverable, verification command, and reporting format.
-6. Prefer reversible, observable operations. Preserve the caller's focus and working directory, parse IDs from tool responses, and inspect results before integration.
-7. Update this registry when a coding agent is added or removed, or when its model-selection or operating constraints change.
+4. When using two or more agents simultaneously, arrange the additional panes with `split_horizontal` so the panes are side by side.
+5. Remove the pane created for a delegated task when that task is complete.
+6. Do not parallelize coupled edits, shared generated files, dependency changes, or operations that must observe an earlier result. Assign ownership before starting parallel work and integrate in the caller pane.
+7. Every delegated task must state its scope, files or surfaces it owns, expected deliverable, verification command, and reporting format.
+8. Prefer reversible, observable operations. Preserve the caller's focus and working directory, parse IDs from tool responses, and inspect results before integration.
+9. Update this registry when a coding agent is added or removed, or when its model-selection or operating constraints change.
 
 ## Coding agent registry
 
