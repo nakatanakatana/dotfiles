@@ -21,10 +21,10 @@ Use this registry to choose the most suitable coding agent or minimum set of age
 
 | Coding agent | Best use | Task size / complexity | Model selection and constraints |
 | --- | --- | --- | --- |
-| Codex | Planning, multi-file implementation, integration, and final review | Small to large; useful for coupled changes | When the caller is Codex, continue in the current session or use built-in Codex sub-agents; start another Codex through Herdr only when a separate pane or terminal lifecycle is needed. Use the model selected by the runtime and verify delegated changes independently. |
-| Cursor Agent (`agent`) | Focused implementation, test creation, code review, or repository investigation | Small to medium; useful for a bounded handoff | Inspect available models with `agent models` when model choice matters, then pass `--model <model>`. Use `--workspace` or the current working directory deliberately. |
 | agy | Independent implementation, analysis, or review using the agy coding agent | Medium to large; useful for a second implementation or review perspective | Inspect available models with `agy models` when model choice matters, then pass `--model <model>`. Keep permissions and sandbox mode explicit. |
+| Cursor Agent (`agent`) | Focused implementation, test creation, code review, or repository investigation | Small to medium; useful for a bounded handoff | Prefer Cursor's Auto model selection: omit `--model` and let Auto choose the model. Specify a model only when a task-specific constraint requires it. Use `--workspace` or the current working directory deliberately. |
 | OpenCode | Multi-step implementation, repository exploration, or review across configurable providers | Medium to large; useful when provider/model choice is important | Follow the OpenCode model-selection procedure below. Never rely on a stale hard-coded model list. |
+| Codex | Planning, multi-file implementation, integration, and final review | Small to large; useful for coupled changes | When the caller is Codex, continue in the current session or use built-in Codex sub-agents; start another Codex through Herdr only when a separate pane or terminal lifecycle is needed. Use the model selected by the runtime and verify delegated changes independently. |
 
 ## OpenCode model selection
 
