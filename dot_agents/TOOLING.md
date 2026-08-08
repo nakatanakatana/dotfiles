@@ -18,17 +18,17 @@ Use this registry to choose the smallest set of coding agents that can complete 
 
 ## Coding agent registry
 
-| Coding agent | Best use | Task size / complexity | Model selection and constraints |
-| --- | --- | --- | --- |
-| agy | Independent implementation, analysis, or review | Medium to large | Run `agy models`, pass a suitable `--model`, and set permissions and sandbox mode explicitly. |
-| Cursor Agent (`agent`) | Focused implementation, tests, review, or investigation | Small to medium | Use Auto by omitting `--model` unless the task requires a specific model. Set the workspace deliberately. |
-| OpenCode | Multi-step implementation, exploration, or review | Medium to large | Follow the model-selection procedure below. |
-| Codex | Planning, coupled or multi-file work, integration, and final review | Small to large | If the caller is Codex, use the current session or a built-in sub-agent; otherwise delegate to Codex through Herdr. Create a separate pane only when needed. Use the runtime model and verify delegated work. |
+| Coding agent | Model selection and constraints |
+| --- | --- |
+| agy | Omit `--model` by default. If a specific model is required, run `agy models` to select one and pass `--model`. Set permissions and sandbox mode explicitly. |
+| Cursor Agent (`agent`) | Omit `--model` by default (Auto mode) unless the task requires a specific model. Set the workspace deliberately. |
+| OpenCode | Omit `--model` by default. If a specific model is required, follow the model selection procedure below. |
+| Codex | If the caller is Codex, use the current session or a built-in sub-agent; otherwise delegate to Codex through Herdr. Create a separate pane only when needed. Use the runtime model by default. |
 
-## OpenCode model selection
+## Model selection procedure (when required)
 
-Before every OpenCode session or delegation:
+When a task requires specific speed, reasoning, or context length capabilities:
 
-1. Run `opencode models` before each session and choose an available `provider/model` for the task's speed, reasoning, and context needs.
-2. If its capabilities are unclear, check current provider documentation or metadata; do not infer them from the name.
+1. Run the agent's model listing command (e.g., `opencode models`, `agy models`) to check available models.
+2. If capabilities are unclear, check current provider documentation or metadata; do not infer them from the name.
 3. Pass the exact model with `--model` and record it in the handoff. If it is unavailable or unverified, choose a known alternative or report the limitation.
