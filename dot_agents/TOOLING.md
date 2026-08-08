@@ -11,7 +11,7 @@ Use this registry to choose the smallest set of coding agents that can complete 
 2. Do not parallelize coupled edits, shared generated files, dependency changes, or sequential operations. Integrate results in the caller pane.
 3. Prefer a different agent or tool from the caller. Before reusing the same tool, compare it with a simple sub-agent; reuse it only when task fit, availability, or constraints justify it.
 4. Spread usage across tools and, for OpenCode, providers. Do not use a rate-limited option until its limit resets.
-5. For two or more simultaneous agents, arrange added panes with `split_horizontal`. Remove each pane when its task finishes.
+5. When running agents in parallel, split the pane of the currently delegating agent using `split_horizontal` for each new agent. Remove each pane when its task finishes.
 6. Each delegated task must define its scope, owned files or surfaces, deliverable, verification command, and report format.
 7. Prefer reversible, observable operations. Preserve the caller's working context, parse IDs from tool responses, and inspect delegated results before integration.
 8. Update this registry when agents or their model and operating constraints change.
