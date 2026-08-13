@@ -11,10 +11,14 @@ Use this registry to choose the smallest set of coding agents that can complete 
 2. Do not parallelize coupled edits, shared generated files, dependency changes, or sequential operations. Integrate results in the caller pane.
 3. Prefer a different agent or tool from the caller. Before reusing the same tool, compare it with a simple sub-agent; reuse it only when task fit, availability, or constraints justify it.
 4. Spread usage across tools and, for OpenCode, providers. Do not use a rate-limited option until its limit resets.
-5. When running agents in parallel, split the pane of the currently delegating agent using `split_horizontal` for each new agent. Remove each pane when its task finishes.
+5. When using Herdr for delegation, keep the caller pane on the left. Create the first delegation pane by splitting the caller pane to the right. For each additional delegation, split an existing right-column delegation pane downward, so delegated panes stack vertically on the right. Preserve the caller's working directory and focus unless the user requests otherwise.
 6. Each delegated task must define its scope, owned files or surfaces, deliverable, verification command, and report format.
 7. Prefer reversible, observable operations. Preserve the caller's working context, parse IDs from tool responses, and inspect delegated results before integration.
 8. Update this registry when agents or their model and operating constraints change.
+
+## Default model policy
+
+Use each agent's runtime default model unless the task has a specific model requirement. Do not run model discovery or pass `--model` for ordinary work. When an explicit model is necessary, follow the agent-specific guidance and the conditional procedure below.
 
 ## Coding agent registry
 
@@ -25,7 +29,7 @@ Use this registry to choose the smallest set of coding agents that can complete 
 | OpenCode | Omit `--model` by default. If a specific model is required, follow the model selection procedure below. |
 | Codex | If the caller is Codex, use the current session or a built-in sub-agent; otherwise delegate to Codex through Herdr. Create a separate pane only when needed. Use the runtime model by default. |
 
-## Model selection procedure (when required)
+## Explicit model selection (only when required)
 
 When a task requires specific speed, reasoning, or context length capabilities:
 
