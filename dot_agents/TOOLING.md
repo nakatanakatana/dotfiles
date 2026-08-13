@@ -27,7 +27,6 @@ Use each agent's runtime default model unless the task has a specific model requ
 | agy | Omit `--model` by default. If a specific model is required, run `agy models` to select one and pass `--model`. Set permissions and sandbox mode explicitly. |
 | Cursor Agent (`agent`) | Omit `--model` by default (Auto mode) unless the task requires a specific model. Set the workspace deliberately. |
 | OpenCode | Omit `--model` by default. If a specific model is required, follow the model selection procedure below. |
-| Codex | If the caller is Codex, use the current session or a built-in sub-agent; otherwise delegate to Codex through Herdr. Create a separate pane only when needed. Use the runtime model by default. |
 
 ## Explicit model selection (only when required)
 
