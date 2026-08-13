@@ -44,7 +44,7 @@ packages:
 - name: github/copilot-cli@v1.0.79
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.113.0
-- name: golang/go@go1.26.5
+- name: golang/go@go1.26.6
 - name: golangci/golangci-lint@v2.12.2
 - name: google/go-jsonnet@v0.22.0
 - name: hashicorp/terraform@v1.15.8
