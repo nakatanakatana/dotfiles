@@ -2,7 +2,7 @@
   "agentMode": "accept-edits",
   "colorScheme": "solarized dark",
   "enableTerminalSandbox": true,
-  "model": "Gemini 3.6 Flash (High)",
+  "model": "Gemini 3.7 Flash (High)",
   "notifications": true,
   "permissions": {
     "ask": [
