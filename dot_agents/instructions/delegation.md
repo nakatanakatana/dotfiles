@@ -26,3 +26,13 @@ Read this file when delegating work, using Herdr, starting coding agents, or par
 
 - Run `herdr agent wait` in the background for parallel agents. Poll returned session IDs non-blockingly so the caller remains free to inspect panes and handle approvals.
 - Do not infer completion from `agent_status` alone. Inspect `herdr agent read <target> --source visible` before treating an idle agent as done, as `idle` (e.g. in agy) may indicate waiting for input, approval, or a scheduled task.
+
+## Parallel branch-wide code review
+
+When running a branch-wide code review with parallel agents:
+
+1. **Scope and prompt**: Define the review range (normally `origin/main..HEAD` with base/head SHAs). Dispatch a read-only prompt per `$superpowers:requesting-code-review` requesting findings categorized by severity (Critical / Important / Minor), exact locations, and a merge-readiness verdict.
+2. **Launch reviewers**: Select distinct coding agents from `$HOME/.agents/TOOLING.md` using runtime default models. Stack review panes on the right with `--no-focus` and record target IDs.
+3. **Monitor and handle approvals**: Run `herdr agent wait` in the background per reviewer. Inspect progress with `herdr agent read <target> --source visible` to handle prompts; approve safe, read-only checks, but never destructive or unexplained actions.
+4. **Collect and clean up**: Capture full reports and verdicts before closing completed reviewer panes. Never close the caller pane.
+5. **Integrate findings**: Wait for all reviewers to finish, then invoke `$superpowers:receiving-code-review`. Classify findings (required / deferred / rejected), implement required fixes sequentially with focused verification, and run final checks.
