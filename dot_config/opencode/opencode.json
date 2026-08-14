@@ -67,9 +67,9 @@
     "*": "ask",
     "skill": "allow",
     "bash": {
-      "*": "ask",
       "buf *": "allow",
       "cat *": "allow",
+      "echo *": "allow",
       "gh api --method GET *": "allow",
       "gh pr list *": "allow",
       "gh pr view *": "allow",
@@ -114,12 +114,12 @@
       "npm test *": "allow",
       "CI=true npm test *": "allow",
       "npx *": "deny",
-      "openspec *": "allow",
       "rg *": "allow",
       "sqlc *": "allow",
       "tail *": "allow",
       "tree": "allow",
-      "wc *": "allow"
+      "wc *": "allow",
+      "which *": "allow"
     },
     "read": {
       "*": "allow",
