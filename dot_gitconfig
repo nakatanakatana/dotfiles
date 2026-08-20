@@ -14,9 +14,11 @@
 [interactive]
 	diffFilter = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
 [alias]
-	delete-merged-branch = !sh -c 'git merged-branch | xargs git branch -d'
+	delete-merged-branch = !sh -c 'git merged-branch | grep -v '+' | xargs git branch -d'
+	delete-merged-worktree = "!sh -c 'git merged-worktree | while read -r b w; do if git worktree remove \"$w\"; then git branch -D \"$b\"; else echo \"skip: $b ($w)\" >&2; fi; done'"
 	logp = log -p --color
 	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
+	merged-worktree = "!sh -c 'git for-each-ref --format=\"%(refname:short)\" refs/heads | while read -r b; do r=$(git for-each-ref --format=\"%(upstream:track)|%(worktreepath)\" \"refs/heads/$b\"); case \"$r\" in \"[gone]|\"?*) echo \"$b ${r#*|}\";; esac; done'"
 	st = status
 	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
 	stat = !sh -c 'git add -N . && git diff --stat --color'
