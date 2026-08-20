@@ -14,7 +14,8 @@
 [interactive]
 	diffFilter = delta --24-bit-color="always" --color-only --syntax-theme 'Solarized (dark)'
 [alias]
-	delete-merged-branch = !sh -c 'git merged-branch | grep -v '+' | xargs git branch -d'
+	delete-merged = "!sh -c 'git delete-merged-worktree; git delete-merged-branch'"
+	delete-merged-branch = !sh -c 'git merged-branch | grep -v '+' | xargs -r git branch -d'
 	delete-merged-worktree = "!sh -c 'git merged-worktree | while read -r b w; do if git worktree remove \"$w\"; then git branch -D \"$b\"; else echo \"skip: $b ($w)\" >&2; fi; done'"
 	logp = log -p --color
 	merged-branch = !sh -c 'git branch -vv | grep \"origin/.*: gone]\" | awk \"{print \\$1}\"'
