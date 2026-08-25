@@ -79,7 +79,7 @@ packages:
 - name: opentofu/opentofu@v1.12.6
 - name: oven-sh/bun@bun-v1.4.0
 - name: peco/peco@v0.6.0
-- name: pnpm/pnpm@v11.23.0
+- name: pnpm/pnpm@v11.24.0
 - name: sqldef/sqldef/sqlite3def@v3.11.20
 - name: suzuki-shunsuke/pinact@v4.1.1
 - name: tak848/ccgate@v0.10.0
