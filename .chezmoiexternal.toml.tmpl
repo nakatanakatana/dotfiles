@@ -50,6 +50,14 @@
     url = "https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md"
     refreshPeriod = "168h"
 
+[".agents/skills/use-modern-go"]
+    type = "archive"
+    url = "https://github.com/JetBrains/go-modern-guidelines/archive/refs/heads/main.tar.gz"
+    exact = true
+    include = ["*/plugin/skills/use-modern-go/**"]
+    stripComponents = 4
+    refreshPeriod = "168h"
+
 
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 {{-   $arch := "" }}
