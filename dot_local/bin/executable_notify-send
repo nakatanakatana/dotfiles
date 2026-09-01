@@ -1,0 +1,249 @@
+#!/usr/bin/env bash
+# Send a Windows toast notification from WSL, with a notify-send compatible CLI.
+# Nothing is written to the Windows side: no files, no modules, no registry keys.
+# The AppUserModelID is not hardcoded; it is resolved at runtime from the terminal
+# hosting this shell and cached on the WSL side.
+set -euo pipefail
+
+VERSION='0.0.1'
+# The resolved AppUserModelID depends on which terminal hosts this shell, so the
+# cache is keyed by a cheap env hint rather than shared across hosts.
+if   [ -n "${TERM_PROGRAM-}" ]; then host_key="${TERM_PROGRAM//[^a-zA-Z0-9]/_}"
+elif [ -n "${WT_SESSION-}" ];   then host_key=windows-terminal
+else                                 host_key=default
+fi
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/win-toast/app-id.$host_key"
+
+usage() {
+  cat >&2 <<'U'
+usage: toast [OPTION...] <SUMMARY> [BODY]
+
+notify-send compatible options:
+  -u, --urgency=LEVEL       low | normal | critical
+                            low      -> silent audio
+                            critical -> scenario="urgent"
+  -t, --expire-time=MS      >=10000 or 0 -> duration="long", otherwise "short"
+  -a, --app-name=NAME       shown as the toast attribution line
+  -i, --icon=PATH           appLogoOverride image; a WSL path is converted with
+                            wslpath, a stock icon name is ignored
+  -r, --replace-id=ID       used as the toast Tag, so a later call replaces it
+  -p, --print-id            print the Tag used
+  -c, --category=TYPE       accepted, no Windows equivalent
+  -h, --hint=TYPE:NAME:VAL  accepted, no Windows equivalent
+  -e, --transient           accepted, no Windows equivalent
+  -w, --wait                accepted, no Windows equivalent
+  -A, --action=[NAME=]TEXT  accepted, not rendered (activation cannot reach WSL)
+  -v, -V, --version         print version
+  -?, -h is taken by --hint; use --help
+
+toast specific options:
+      --refresh             discard the cache and resolve the AppUserModelID again
+      --show-app-id         print the resolved AppUserModelID and exit
+      --help                this message
+
+  The notification is attributed to the terminal hosting this shell (Windows
+  Terminal, for example), falling back to Windows PowerShell when that terminal
+  cannot be identified. The resolved ID is cached per terminal host; use
+  --refresh after switching terminals.
+
+  Set WIN_TOAST_APP_ID to skip resolution and use that ID instead.
+U
+  exit 2
+}
+
+urgency=normal expire= app_name= icon= replace_id= print_id=0
+refresh=0 show_only=0
+positional=()
+end_of_opts=0
+
+# GLib style: options and positionals may be interleaved, and "--" ends options.
+while [ $# -gt 0 ]; do
+  if [ "$end_of_opts" -eq 1 ]; then positional+=("$1"); shift; continue; fi
+  case "$1" in
+    --)                 end_of_opts=1; shift ;;
+    -u|--urgency)       urgency="${2-}"; shift 2 ;;
+    --urgency=*)        urgency="${1#*=}"; shift ;;
+    -u*)                urgency="${1#-u}"; shift ;;
+    -t|--expire-time)   expire="${2-}"; shift 2 ;;
+    --expire-time=*)    expire="${1#*=}"; shift ;;
+    -t*)                expire="${1#-t}"; shift ;;
+    -a|--app-name)      app_name="${2-}"; shift 2 ;;
+    --app-name=*)       app_name="${1#*=}"; shift ;;
+    -a*)                app_name="${1#-a}"; shift ;;
+    -i|--icon)          icon="${2-}"; shift 2 ;;
+    --icon=*)           icon="${1#*=}"; shift ;;
+    -i*)                icon="${1#-i}"; shift ;;
+    -r|--replace-id)    replace_id="${2-}"; shift 2 ;;
+    --replace-id=*)     replace_id="${1#*=}"; shift ;;
+    -r*)                replace_id="${1#-r}"; shift ;;
+    -p|--print-id)      print_id=1; shift ;;
+    # Accepted for compatibility, with no Windows equivalent.
+    -c|--category|-h|--hint|-A|--action) shift 2 ;;
+    --category=*|--hint=*|--action=*)    shift ;;
+    -c*|-h*|-A*)                         shift ;;
+    -e|--transient|-w|--wait)            shift ;;
+    -v|-V|--version)    echo "$VERSION"; exit 0 ;;
+    --refresh)          refresh=1; shift ;;
+    --show-app-id)      show_only=1; shift ;;
+    -\?|--help)         usage ;;
+    -*)                 echo "unknown option: $1" >&2; usage ;;
+    *)                  positional+=("$1"); shift ;;
+  esac
+done
+
+# Feed PowerShell from stdin as UTF-16LE + base64: no file, no BOM, no quoting headaches.
+pwsh_run() {
+  # Without silencing progress, first-time module loading leaks CLIXML records to stderr.
+  local b64
+  b64=$( { printf '%s\n' "\$ProgressPreference = 'SilentlyContinue'"; cat; } \
+         | iconv -f UTF-8 -t UTF-16LE | base64 -w0 )
+  powershell.exe -NoProfile -NonInteractive -EncodedCommand "$b64"
+}
+
+# Strip C0 control characters (tab and newline survive); they make LoadXml throw.
+xml_escape() {
+  tr -d '\000-\010\013\014\016-\037' \
+    | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
+}
+ps_quote()   { printf "'%s'" "${1//\'/\'\'}"; }
+
+# Resolve the AppUserModelID that decides which app the toast is attributed to.
+# Preference order: the terminal hosting this shell, then powershell.exe itself.
+resolve_snippet='
+$relay = @("wsl.exe","wslhost.exe","wslservice.exe","conhost.exe","OpenConsole.exe",
+           "cmd.exe","powershell.exe","pwsh.exe","explorer.exe")
+
+# One bulk WMI query beats one per pid: ~0.9s against ~3.3s.
+$procs = @{}
+Get-CimInstance Win32_Process -Property ProcessId,ParentProcessId,Name,ExecutablePath |
+  ForEach-Object { $procs[[int]$_.ProcessId] = $_ }
+
+$id = $PID; $hostExe = $null
+for ($i = 0; $i -lt 12 -and $procs.ContainsKey($id); $i++) {
+  $p = $procs[$id]
+  if ($i -gt 0 -and $relay -notcontains $p.Name) { $hostExe = $p.ExecutablePath; break }
+  $id = [int]$p.ParentProcessId
+}
+
+$startApps = $null
+function Find-StartAppId([string]$path) {
+  if (-not $path) { return $null }
+  if ($null -eq $script:startApps) { $script:startApps = @(Get-StartApps) }
+  $script:startApps | Where-Object {
+      $_.AppID -match "^\{[0-9A-Fa-f-]+\}\\(.+)$" -and
+      $path.EndsWith("\" + $Matches[1], [StringComparison]::OrdinalIgnoreCase)
+    } | Select-Object -First 1 -ExpandProperty AppID
+}
+
+# A packaged host such as Windows Terminal: build the AUMID from its own manifest,
+# so neither the package family name nor the app id is hardcoded here.
+function Get-PackagedAppId([string]$exe) {
+  if (-not $exe) { return $null }
+  $dir = Split-Path $exe -Parent
+  while ($dir -and -not (Test-Path (Join-Path $dir "AppxManifest.xml"))) { $dir = Split-Path $dir -Parent }
+  if (-not $dir) { return $null }
+  $parts = (Split-Path $dir -Leaf) -split "_"          # <Name>_<Version>_<Arch>__<PublisherId>
+  if ($parts.Count -lt 2) { return $null }
+  $manifest = [xml](Get-Content (Join-Path $dir "AppxManifest.xml") -Raw)
+  $app = $manifest.Package.Applications.Application | Select-Object -First 1
+  if (-not $app) { return $null }
+  "{0}_{1}!{2}" -f $parts[0], $parts[-1], $app.Id
+}
+
+$appId = Get-PackagedAppId $hostExe
+if (-not $appId) { $appId = Find-StartAppId $hostExe }
+if (-not $appId) { $appId = Find-StartAppId ([Diagnostics.Process]::GetCurrentProcess().MainModule.FileName) }
+if (-not $appId) { [Console]::Error.WriteLine("could not resolve an AppUserModelID"); exit 1 }
+'
+
+app_id="${WIN_TOAST_APP_ID-}"
+if [ -z "$app_id" ] && [ "$refresh" -eq 0 ] && [ -s "$CACHE" ]; then
+  app_id=$(cat "$CACHE")
+fi
+
+cache_write() { mkdir -p "$(dirname "$CACHE")" && printf '%s\n' "$1" > "$CACHE"; }
+
+if [ "$show_only" -eq 1 ]; then
+  if [ -z "$app_id" ]; then
+    app_id=$(printf '%s\n%s\n' "$resolve_snippet" '[Console]::Out.WriteLine($appId)' | pwsh_run | tr -d '\r')
+    cache_write "$app_id"
+  fi
+  printf '%s\n' "$app_id"
+  exit 0
+fi
+
+[ "${#positional[@]}" -ge 1 ] || usage
+summary=$(printf '%s' "${positional[0]}" | xml_escape)
+body=$(printf '%s' "${positional[1]-}" | xml_escape)
+
+# --- map notify-send options onto toast XML -------------------------------
+toast_attrs=''
+audio=''
+case "$urgency" in
+  critical)     toast_attrs+=' scenario="urgent"' ;;
+  low)          audio='<audio silent="true"/>' ;;
+  normal|'')    ;;
+  *)            echo "unknown urgency: $urgency" >&2; exit 2 ;;
+esac
+
+if [ -n "$expire" ]; then
+  case "$expire" in
+    *[!0-9-]*) echo "expire-time must be a number: $expire" >&2; exit 2 ;;
+  esac
+  # notify-send: 0 means "never expire"; Windows only offers short (~7s) / long (~25s).
+  if [ "$expire" -eq 0 ] || [ "$expire" -ge 10000 ]; then toast_attrs+=' duration="long"'; fi
+fi
+
+image=''
+if [ -n "$icon" ]; then
+  # Only a real file can be shown; stock icon names such as dialog-information are skipped.
+  if [ -e "$icon" ]; then
+    win_icon=$(wslpath -w "$icon" | sed 's#\\#/#g')
+    image="<image placement=\"appLogoOverride\" src=\"file:///$(printf '%s' "$win_icon" | xml_escape)\"/>"
+  fi
+fi
+
+attribution=''
+if [ -n "$app_name" ]; then
+  attribution="<text placement=\"attribution\">$(printf '%s' "$app_name" | xml_escape)</text>"
+fi
+
+# Tag lets a later call replace this toast. Windows allows at most 64 characters.
+tag="$replace_id"
+if [ -z "$tag" ] && [ "$print_id" -eq 1 ]; then tag=$(date +%s%N); fi
+tag=$(printf '%s' "$tag" | tr -c '[:alnum:]._-' '_' | cut -c1-64)
+
+send_snippet=$(cat <<PS
+\$null = [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]
+\$null = [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom, ContentType = WindowsRuntime]
+\$doc = New-Object Windows.Data.Xml.Dom.XmlDocument
+\$doc.LoadXml(@'
+<toast${toast_attrs}>
+  <visual><binding template="ToastGeneric">
+    ${image}
+    <text>${summary}</text>
+    <text>${body}</text>
+    ${attribution}
+  </binding></visual>
+  ${audio}
+</toast>
+'@)
+\$toast = [Windows.UI.Notifications.ToastNotification]::new(\$doc)
+\$tag = $(ps_quote "$tag")
+if (\$tag) { \$toast.Tag = \$tag }
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(\$appId).Show(\$toast)
+PS
+)
+
+if [ -n "$app_id" ]; then
+  # Cached: send straight away, skipping resolution.
+  printf '%s\n%s\n' "\$appId = $(ps_quote "$app_id")" "$send_snippet" | pwsh_run >/dev/null
+else
+  # Cold: resolve, send, and print the ID in a single PowerShell invocation.
+  app_id=$(printf '%s\n%s\n%s\n' "$resolve_snippet" "$send_snippet" '[Console]::Out.WriteLine($appId)' \
+    | pwsh_run | tr -d '\r' | tail -n1)
+  cache_write "$app_id"
+fi
+
+[ "$print_id" -eq 1 ] && printf '%s\n' "$tag"
+exit 0
