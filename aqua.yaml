@@ -13,7 +13,7 @@ packages:
 - name: BurntSushi/ripgrep@15.2.0
 - name: ByteNess/aws-vault@v7.13.6
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.25.4
-- name: RasKrebs/sonar@v0.6.5
+- name: RasKrebs/sonar@v0.6.6
 - name: anomalyco/opencode@v1.18.30
 - name: anthropics/claude-code@v2.1.267
 - name: aquasecurity/trivy@v0.74.0
