@@ -25,7 +25,7 @@ Only the following tool and model combinations are allowed:
 | --- | --- | --- |
 | agy | No model specified (runtime default) | Omit `--model`. Set permissions and sandbox mode explicitly. |
 | Cursor Agent (`agent`) | No model specified (auto) | Omit `--model` (Auto mode). Set the workspace deliberately. |
-| OpenCode | `opencode-go/deepseek-v4-flash` | Pass `--model opencode-go/deepseek-v4-flash` explicitly. |
+| OpenCode | `opencode-go/deepseek-v4.1-flash` | Pass `--model opencode-go/deepseek-v4.1-flash` explicitly. |
 | OpenCode | `opencode-go/muse-spark-1.3-contributor` | Pass `--model opencode-go/muse-spark-1.3-contributor` explicitly. |
 
 ## Model policy and invocation rules
