@@ -81,7 +81,7 @@ packages:
 - name: peco/peco@v0.6.0
 - name: pnpm/pnpm@v12.4.1
 - name: sqldef/sqldef/sqlite3def@v3.11.20
-- name: suzuki-shunsuke/pinact@v4.1.1
+- name: suzuki-shunsuke/pinact@v5.0.0
 - name: tak848/ccgate@v0.10.1
 - name: tellerops/teller@v2.0.7
 - name: terraform-linters/tflint@v0.64.0
