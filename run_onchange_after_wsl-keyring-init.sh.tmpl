@@ -1,0 +1,16 @@
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+#!/bin/sh
+# Regenerate the D-Bus activation file for wsl-keyring whenever the binary
+# version or the op.exe location changes.
+# wsl-keyring: {{ include ".chezmoiexternal.toml.tmpl" | regexFind "mytools/releases/download/[^/]+" }}
+# op.exe: {{ lookPath "op.exe" }}
+set -eu
+
+wsl_keyring="$HOME/.local/bin/wsl-keyring"
+[ -x "$wsl_keyring" ] || exit 0
+command -v op.exe >/dev/null 2>&1 || exit 0
+
+# OP_BINARY is resolved to an absolute path at INIT time because the D-Bus
+# activated daemon does not inherit the Windows PATH.
+OP_BINARY=op.exe INIT=true "$wsl_keyring"
+{{- end }}
