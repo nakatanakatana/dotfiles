@@ -1,5 +1,5 @@
-model = "gpt-5.6-luna"
-model_reasoning_effort = "xhigh"
+model = "gpt-6-luna"
+model_reasoning_effort = "high"
 cli_auth_credentials_store = "keyring"
 
 [tui]
@@ -9,9 +9,10 @@ status_line_use_colors = true
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 3
+gpt-6-astra = 4
 
 [agents]
-default_subagent_model = "gpt-5.6-luna"
+default_subagent_model = "gpt-6-luna"
 default_subagent_reasoning_effort = "medium"
 
 [plugins."superpowers@openai-curated"]
@@ -22,4 +23,3 @@ enabled = true
 
 [features]
 hooks = true
-
