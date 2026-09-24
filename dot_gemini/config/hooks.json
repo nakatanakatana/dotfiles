@@ -1,0 +1,16 @@
+{
+  "ccgate": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ~/.gemini/antigravity-cli/ccgate-adapter.ts",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
