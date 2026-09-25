@@ -23,3 +23,11 @@ enabled = true
 
 [features]
 hooks = true
+
+[[hooks.PermissionRequest]]
+matcher = ""
+
+[[hooks.PermissionRequest.hooks]]
+type = "command"
+command = "ccgate codex"
+statusMessage = "ccgate evaluating request"
