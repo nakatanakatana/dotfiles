@@ -79,6 +79,7 @@
       "command(npm ci)",
       "command(npm run)",
       "command(npm test)",
+      "command(opencode)",
       "command(npm view)",
       "command(npx -y modern-web-guidance@latest)",
       "command(npx playwright install)",
