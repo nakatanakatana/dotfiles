@@ -37,7 +37,7 @@ packages:
 - name: direnv/direnv@v2.37.1
 - name: docker/compose@v5.5.1
 - name: doitintl/kube-no-trouble@0.7.3
-- name: duckdb/duckdb@v1.5.5
+- name: duckdb/duckdb@v1.5.6
 - name: evilmartians/lefthook@v2.1.14
 - name: fluxcd/flux2@v2.9.5
 - name: fullstorydev/grpcurl@v1.9.4
