@@ -26,7 +26,7 @@ packages:
 - name: benbjohnson/litestream@v0.5.17
 - name: buildpacks/pack@v0.40.9
 - name: cli/cli@v2.102.0
-- name: cloudflare/cloudflared@2026.9.3
+- name: cloudflare/cloudflared@2026.10.0
 - name: cue-lang/cue@v0.17.1
 - name: dagger/dagger@v0.21.10
 - name: dandavison/delta@0.20.1
