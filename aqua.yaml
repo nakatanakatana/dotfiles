@@ -41,7 +41,7 @@ packages:
 - name: evilmartians/lefthook@v2.1.17
 - name: fluxcd/flux2@v2.9.6
 - name: fullstorydev/grpcurl@v1.9.4
-- name: github/copilot-cli@v1.0.91
+- name: github/copilot-cli@v1.0.92
 - name: github/git-sizer@v1.5.0
 - name: gitlab.com/gitlab-org/cli@v1.120.0
 - name: golang/go@go1.27.1
