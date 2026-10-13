@@ -1,0 +1,30 @@
+views:
+  v1/pods:
+    sortColumn: NAME:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - VS
+      - PF
+      - READY
+      - STATUS
+      - RESTARTS
+      - LAST RESTART
+      - CPU
+      - CPU/RL
+      - "%CPU/R"
+      - "%CPU/L"
+      - MEM
+      - MEM/RL
+      - "%MEM/R"
+      - "%MEM/L"
+      - GPU/RL
+      - SERVICE-ACCOUNT
+      - NOMINATED NODE
+      - READINESS GATES
+      - QOS
+      - LABELS
+      - VALID
+      - AGE
+      - IP
+      - NODE
