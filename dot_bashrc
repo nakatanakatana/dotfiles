@@ -259,3 +259,7 @@ export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 # qlty
 export QLTY_INSTALL="$HOME/.qlty"
 export PATH=$QLTY_INSTALL/bin:$PATH
+
+# Vite+ bin (https://viteplus.dev)
+source "$HOME/.config/vite-plus/env"
+
