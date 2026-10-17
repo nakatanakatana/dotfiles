@@ -30,5 +30,5 @@ Only the following tool and model combinations are allowed:
 ## Model policy and invocation rules
 
 - **agy**: Omit `--model` to use the runtime default model. Do not pass an explicit model.
-- **OpenCode**: Always explicitly specify one of the two permitted models (`opencode-go/deepseek-v4-flash` or `opencode-go/muse-spark-1.2-contributor`) via `--model <model>`. Do not omit `--model` and do not select any unlisted model.
+- **OpenCode**: Always explicitly specify one of the permitted models ia `--model <model>`. Do not omit `--model` and do not select any unlisted model.
 - **Strict enforcement**: Only use the combinations listed above. Do not run model discovery or switch to unlisted models unless explicitly instructed by the user.
