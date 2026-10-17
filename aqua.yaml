@@ -15,7 +15,7 @@ packages:
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.26.2
 - name: RasKrebs/sonar@v0.10.0
 - name: anomalyco/opencode@v1.19.3
-- name: anthropics/claude-code@v2.1.301
+- name: anthropics/claude-code@v2.1.302
 - name: aquasecurity/trivy@v0.76.0
 - name: ariga/atlas@v1.3.0
 - name: arl/gitmux@v0.11.5
