@@ -77,7 +77,7 @@ packages:
 - name: okteto/okteto@3.24.1
 - name: openai/codex@rust-v0.163.0
 - name: opentofu/opentofu@v1.13.2
-- name: oven-sh/bun@bun-v1.4.3
+- name: oven-sh/bun@bun-v1.4.4
 - name: peco/peco@v0.6.0
 - name: pnpm/pnpm@v12.15.0
 - name: sqldef/sqldef/sqlite3def@v3.11.26
