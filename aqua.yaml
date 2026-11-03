@@ -23,7 +23,7 @@ packages:
 - name: atuinsh/atuin@v18.24.4
 - name: aws/aws-cli@2.39.3
 - name: bcicen/ctop@v0.7.7
-- name: benbjohnson/litestream@v0.5.17
+- name: benbjohnson/litestream@v0.5.18
 - name: buildpacks/pack@v0.40.10
 - name: cli/cli@v2.103.3
 - name: cloudflare/cloudflared@2026.10.7
