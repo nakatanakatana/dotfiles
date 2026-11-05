@@ -75,7 +75,7 @@ packages:
 - name: nektos/act@v0.2.97
 - name: neovim/neovim@v0.12.6
 - name: nodejs/node@v24.22.2
-- name: okteto/okteto@3.24.1
+- name: okteto/okteto@3.25.0
 - name: openai/codex@rust-v0.166.0
 - name: opentofu/opentofu@v1.13.8
 - name: oven-sh/bun@bun-v1.4.4
