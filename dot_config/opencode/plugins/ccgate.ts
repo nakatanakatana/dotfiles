@@ -32,6 +32,17 @@ export function executeCcgate(payload: Record<string, any>): CcgateDecisionResul
   }
 }
 
+function resolveCcgateDecision(result: CcgateDecisionResult) {
+  return {
+    decision:
+      result.hookSpecificOutput?.decision?.behavior ?? result.decision,
+    message:
+      result.hookSpecificOutput?.decision?.message ??
+      result.deny_message ??
+      result.reason,
+  };
+}
+
 export async function replyPermission(
   client: any,
   sessionID: string,
@@ -88,9 +99,7 @@ export async function handlePermissionAsked(
   };
 
   const result = executor(payload);
-  const decision = result.hookSpecificOutput?.decision?.behavior ?? result.decision;
-  const message =
-    result.hookSpecificOutput?.decision?.message ?? result.deny_message ?? result.reason;
+  const { decision, message } = resolveCcgateDecision(result);
 
   if (decision === 'allow') {
     await replyPermission(client, info.sessionID, info.id, 'once');
@@ -109,13 +118,53 @@ export const ccgateServerPlugin = async (input: any) => {
   };
 };
 
+export const ccgateSetup = async (
+  ctx: any,
+  executor: (payload: any) => CcgateDecisionResult = executeCcgate
+) => {
+  const registration = await ctx.permission.hook('evaluate', async (event: any) => {
+    if (!event || event.action !== 'bash') {
+      return;
+    }
+
+    const command =
+      Array.isArray(event.resources) && event.resources.length > 0
+        ? event.resources[0]
+        : undefined;
+
+    if (!command || typeof command !== 'string') {
+      return;
+    }
+
+    const { decision, message } = resolveCcgateDecision(
+      executor({
+        tool_name: 'Bash',
+        tool_input: { command },
+        cwd: ctx.location?.directory ?? process.cwd(),
+      })
+    );
+
+    if (decision === 'allow') {
+      event.effect = 'allow';
+    } else if (decision === 'deny') {
+      event.effect = 'deny';
+      if (message) {
+        event.message = message;
+      }
+    }
+    // If 'fallthrough', leave event.effect unchanged so the default prompt is used.
+  });
+
+  return () => registration?.dispose?.();
+};
+
 // V1 (1.18.29+) calls server(). V2 calls setup().
 // Exporting a plain record ensures readV1Plugin correctly detects it and avoids
 // legacy export scanning that would mistakenly execute other exported helper functions.
 const plugin = {
   id: 'ccgate',
   server: ccgateServerPlugin,
-  setup() {},
+  setup: ccgateSetup,
 };
 
 export default plugin;
