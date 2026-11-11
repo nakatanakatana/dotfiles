@@ -10,6 +10,7 @@ const ICON_AGENTS = '󰚩';  // (nf-md-robot)
 const ICON_ART = '󰏖';     // (nf-md-package_variant)
 const ICON_QUOTA_5H = '󰅐';// (nf-md-clock_outline)
 const ICON_QUOTA_7D = '󰃭';// (nf-md-calendar)
+const ICON_QUOTA_ARGON = '󰠱'; // (nf-md-atom)
 const ICON_MODE_ACCEPT = '󱐋'; // (nf-md-lightning_bolt)
 const ICON_MODE_PLAN = '󰯂';   // (nf-md-script_text)
 const ICON_MODE_DEFAULT = '󰒘'; // (nf-md-shield_check)
@@ -327,6 +328,8 @@ async function main(): Promise<void> {
     const quotaParts: string[] = [];
     const q5h = data?.quota?.['gemini-5h'] ?? data?.quota?.['3p-5h'];
     const qWeekly = data?.quota?.['gemini-weekly'] ?? data?.quota?.['3p-weekly'];
+    const argonKey = Object.keys(data?.quota ?? {}).find((k) => k.toLowerCase().includes('argon'));
+    const qArgon = argonKey ? data?.quota?.[argonKey] : undefined;
 
     if (q5h) {
       quotaParts.push(formatQuota(ICON_QUOTA_5H, q5h.remaining_fraction, q5h.reset_in_seconds, q5h.reset_time));
@@ -334,19 +337,19 @@ async function main(): Promise<void> {
     if (qWeekly) {
       quotaParts.push(formatQuota(ICON_QUOTA_7D, qWeekly.remaining_fraction, qWeekly.reset_in_seconds, qWeekly.reset_time));
     }
-
-    let line1Left = modePart ? `${statePart}${delimiter}${modePart}${delimiter}${contextPart}` : `${statePart}${delimiter}${contextPart}`;
-    if (quotaParts.length > 0) {
-      line1Left += `${delimiter}${quotaParts.join(delimiter)}`;
+    if (qArgon) {
+      quotaParts.push(formatQuota(ICON_QUOTA_ARGON, qArgon.remaining_fraction, qArgon.reset_in_seconds, qArgon.reset_time));
     }
+
+    const line1Left = modePart ? `${statePart}${delimiter}${modePart}${delimiter}${contextPart}` : `${statePart}${delimiter}${contextPart}`;
     const line1LeftLen = getLength(line1Left);
     const termWidth: number = data?.terminal_width ?? 80;
     const padding = termWidth - (line1LeftLen + rightLen);
     const spaces = padding > 0 ? ' '.repeat(padding) : '';
     const line1 = `${line1Left}${spaces}${rightPart}`;
 
-    // Build line 2 (metrics)
-    const line2Parts = [];
+    // Build line 2 (quota, metrics)
+    const line2Parts: string[] = [...quotaParts];
     if (bgPart) line2Parts.push(bgPart);
     if (agentsPart) line2Parts.push(agentsPart);
     if (artifactsPart) line2Parts.push(artifactsPart);
