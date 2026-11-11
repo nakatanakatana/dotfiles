@@ -1,3 +1,4 @@
+{{- $domain := ".mora-egret.ts.net" -}}
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "build",
@@ -25,7 +26,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "Local LLM",
       "options": {
-        "baseURL": "http://llama-cpp:8000/v1",
+        "baseURL": "http://llama-cpp{{ $domain }}:8000/v1",
         "apiKey": "dummy-key"
       },
       "models": {
@@ -42,7 +43,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "Bifrost Gateway",
       "options": {
-        "baseURL": "http://localhost:11234/v1",
+        "baseURL": "https://llm-proxy{{ $domain }}/v1",
         "apiKey": "dummy-key"
       },
       "models": {
@@ -161,13 +162,18 @@
     "websearch": "allow"
   },
   "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
-      "enabled": true
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx",
+          "@playwright/mcp@latest"
+        ]
+      },
+      "grafana": {
+        "type": "remote",
+        "url": "https://grafana-mcp{{ $domain }}/"
+      }
     }
   }
 }
