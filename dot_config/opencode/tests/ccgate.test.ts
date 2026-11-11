@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import plugin, {
   ccgateServerPlugin,
   handlePermissionAsked,
-} from './ccgate.ts';
+} from '../plugins/ccgate.ts';
 
 test('plugin export has id, server, and setup properties for V1/V2 compatibility', () => {
   assert.equal(typeof plugin, 'object');
