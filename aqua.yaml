@@ -49,7 +49,7 @@ packages:
 - name: google/go-jsonnet@v0.22.0
 - name: grafana/gcx@v1.7.1
 - name: hashicorp/terraform@v1.17.2
-- name: helm/helm@v4.3.1
+- name: helm/helm@v4.3.2
 - name: herdrdev/herdr@v0.9.5
 - name: int128/kubelogin@v1.36.4
 - name: itchyny/mmv@v0.1.6
