@@ -58,6 +58,19 @@
     stripComponents = 4
     refreshPeriod = "168h"
 
+[".agents/skills"]
+    type = "archive"
+    url = "https://github.com/grafana/skills/archive/refs/heads/main.tar.gz"
+    include = [
+        "skills-*/skills/grafana-app-sdk/[!.]*/**",
+        "skills-*/skills/grafana-cloud/[!.]*/**",
+        "skills-*/skills/grafana-core/[!.]*/**",
+        "skills-*/skills/grafana-datasources/[!.]*/**",
+        "skills-*/skills/grafana-lgtm/[!.]*/**",
+    ]
+    stripComponents = 3
+    refreshPeriod = "168h"
+
 
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 {{-   $arch := "" }}
