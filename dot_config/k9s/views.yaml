@@ -1,6 +1,6 @@
 views:
   v1/pods:
-    sortColumn: NAME:asc
+    sortColumn: NAMESPACE:asc
     columns:
       - NAMESPACE
       - NAME
