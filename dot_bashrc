@@ -253,6 +253,10 @@ gcloud-switch() {
 
 bind -x '"\C-g": gcloud-switch'
 
+_gcloud_bin_path() { local p; p=$(aqua which gcloud 2>/dev/null) && echo "PATH=\"\$PATH:${p%/gcloud}\""; }
+eval "$(evalcache _gcloud_bin_path)"
+unset -f _gcloud_bin_path
+
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-$HOME/.local/share}/npm-global
 export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 
