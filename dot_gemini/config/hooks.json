@@ -12,5 +12,26 @@
         ]
       }
     ]
+  },
+  "desktop-notify": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node ~/.gemini/antigravity-cli/notify.ts",
+        "timeout": 10
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "ask_question",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ~/.gemini/antigravity-cli/notify.ts",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }

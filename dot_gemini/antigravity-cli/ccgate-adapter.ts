@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
+import { buildCommandApprovalNotification, sendNotification } from './notify.ts';
 
 export interface PreToolUsePayload {
   toolCall?: {
@@ -282,8 +283,12 @@ async function main(): Promise<void> {
 
     const ccgateResult = executeCcgate(target, ccgatePayload);
     const mapped = mapCcgateDecision(ccgateResult);
+    if (mapped.decision === 'ask' || mapped.decision === 'force_ask') {
+      sendNotification(buildCommandApprovalNotification(parsed.commandLine, parsed.cwd));
+    }
     outputResult(mapped);
   } catch (e: any) {
+    sendNotification(buildCommandApprovalNotification(parsed.commandLine, parsed.cwd));
     outputResult({ decision: 'ask', reason: `ccgate adapter error: ${e.message}` });
   } finally {
     if (tempTranscriptFile && fs.existsSync(tempTranscriptFile)) {
