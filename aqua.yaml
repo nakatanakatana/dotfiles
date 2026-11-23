@@ -77,7 +77,7 @@ packages:
 - name: nodejs/node@v24.22.3
 - name: okteto/okteto@3.25.0
 - name: openai/codex@rust-v0.171.0
-- name: opentofu/opentofu@v1.13.9
+- name: opentofu/opentofu@v1.13.10
 - name: oven-sh/bun@bun-v1.4.5
 - name: peco/peco@v0.6.0
 - name: pnpm/pnpm@v12.23.0
