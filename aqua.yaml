@@ -12,7 +12,7 @@ registries:
 packages:
 - name: BurntSushi/ripgrep@15.2.0
 - name: ByteNess/aws-vault@v7.18.1
-- name: GoogleCloudPlatform/cloud-sql-proxy@v2.28.0
+- name: GoogleCloudPlatform/cloud-sql-proxy@v2.28.1
 - name: RasKrebs/sonar@v0.10.1
 - name: anomalyco/opencode@v2.4.1
 - name: anthropics/claude-code@v2.1.331
