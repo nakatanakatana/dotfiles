@@ -43,7 +43,7 @@ packages:
 - name: fullstorydev/grpcurl@v1.9.4
 - name: github/copilot-cli@v1.0.115
 - name: github/git-sizer@v1.6.0
-- name: gitlab.com/gitlab-org/cli@v1.132.0
+- name: gitlab.com/gitlab-org/cli@v1.133.0
 - name: golang/go@go1.27.4
 - name: golangci/golangci-lint@v2.15.0
 - name: google/go-jsonnet@v0.22.0
