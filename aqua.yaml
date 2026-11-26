@@ -14,7 +14,7 @@ packages:
 - name: ByteNess/aws-vault@v7.19.0
 - name: GoogleCloudPlatform/cloud-sql-proxy@v2.28.1
 - name: RasKrebs/sonar@v0.10.1
-- name: anomalyco/opencode@v2.4.1
+- name: anomalyco/opencode@v2.4.2
 - name: anthropics/claude-code@v2.1.332
 - name: aquasecurity/trivy@v0.76.2
 - name: ariga/atlas@v1.4.0
